@@ -37,25 +37,25 @@ import java.util.Random;
 import java.lang.Thread;
 
 public class Home {
-	private JFrame frm = new JFrame();
-    private JPanel pnl = new JPanel();
-    private JPanel pnlcredits = new JPanel();
-    private JPanel pnlsettings = new JPanel();
-    private JPanel pnlHolder = new JPanel(new GridLayout(3,1));
-    private JPanel pnlHolderSettings = new JPanel(new GridLayout(3,1));
-    private JPanel pnlHolderCredits = new JPanel(new GridLayout(3,1));
-    private JButton btn = new JButton("Start the Faceoff!");
-    private JButton creditsBtn = new JButton("Credits");
-    private JButton settingBtn = new JButton("Settings");
-    private JButton homeBtnCred = new JButton("home");
-    private JButton homeBtnSet = new JButton("home");
-    private int sentLength=20, diff = 5;
-    private JPanel content = new JPanel();
-    private String result;
-    private int progress = 0;
-    private HashMap<Integer, ArrayList<String>> lengthMap;
+	public JFrame frm = new JFrame();
+	public JPanel pnl = new JPanel();
+    //private JPanel pnlcredits = new JPanel();
+    //private JPanel pnlsettings = new JPanel();
+	public JPanel pnlHolder = new JPanel(new GridLayout(3,1));
+    //private JPanel pnlHolderSettings = new JPanel(new GridLayout(3,1));
+    //private JPanel pnlHolderCredits = new JPanel(new GridLayout(3,1));
+	public JButton btn = new JButton("Start the Faceoff!");
+	public JButton creditsBtn = new JButton("Credits");
+	public JButton settingBtn = new JButton("Settings");
+    //private JButton homeBtnCred = new JButton("home");
+    //private JButton homeBtnSet = new JButton("home");
+	public int sentLength=20, diff = 5;
+	public JPanel content = new JPanel();
+	public String result;
+	public int progress = 0;
+	public HashMap<Integer, ArrayList<String>> lengthMap;
 
-    
+  
     public Home() {
         btn.setPreferredSize(new Dimension(400, 40));
         btn.setLayout(null);
@@ -66,27 +66,27 @@ public class Home {
         settingBtn.setPreferredSize(new Dimension(400, 40));
         settingBtn.setLayout(null);
         settingBtn.setLocation(200, 500);
-        homeBtnCred.setLayout(null);
-        homeBtnCred.setLocation(800, 800);
-        homeBtnSet.setLayout(null);
-        homeBtnSet.setLocation(800, 800);
+        //homeBtnCred.setLayout(null);
+        //homeBtnCred.setLocation(800, 800);
+        //homeBtnSet.setLayout(null);
+        //homeBtnSet.setLocation(800, 800);
         JLabel label = new JLabel("Lord of the Keys");
-        JLabel labelCredits = new JLabel("credits page");
-        JLabel labelSettings = new JLabel("settings page");
+        //JLabel labelCredits = new JLabel("credits page");
+        //JLabel labelSettings = new JLabel("settings page");
         pnl.setPreferredSize(new Dimension(640, 480));
         pnl.add(btn, BorderLayout.SOUTH);
         pnl.add(creditsBtn, BorderLayout.SOUTH);
         pnl.add(settingBtn, BorderLayout.SOUTH);
-        pnlcredits.setPreferredSize(new Dimension(640, 480));
-        pnlcredits.add(homeBtnCred, BorderLayout.SOUTH);
-        pnlsettings.setPreferredSize(new Dimension(640, 480));
-        pnlsettings.add(homeBtnSet, BorderLayout.SOUTH);
+        //pnlcredits.setPreferredSize(new Dimension(640, 480));
+        //pnlcredits.add(homeBtnCred, BorderLayout.SOUTH);
+        //pnlsettings.setPreferredSize(new Dimension(640, 480));
+        //pnlsettings.add(homeBtnSet, BorderLayout.SOUTH);
         pnlHolder.add(pnl);
         pnlHolder.add(label);
-        pnlHolderSettings.add(pnlsettings);
-        pnlHolderSettings.add(labelSettings);
-        pnlHolderCredits.add(pnlcredits);
-        pnlHolderCredits.add(labelCredits);
+        //pnlHolderSettings.add(pnlsettings);
+        //pnlHolderSettings.add(labelSettings);
+        //pnlHolderCredits.add(pnlcredits);
+        //pnlHolderCredits.add(labelCredits);
         label.requestFocus();
         label.addKeyListener(new SimpleKeyListener());
 
@@ -137,17 +137,20 @@ public class Home {
             	startRound(finalResultsList);
             }
         });
+        Settings settingsPage = new Settings();
+        settingsPage.homepage = this;
         settingBtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+            	
             	frm.remove(pnlHolder);
-            	frm.setContentPane(pnlHolderSettings);
+            	frm.setContentPane(settingsPage.pnlHolderSettings);
             	frm.validate();
             	frm.repaint();
             }
         });
-        homeBtnCred.addActionListener(new ActionListener() {
+        /*homeBtnCred.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -156,18 +159,22 @@ public class Home {
             	frm.validate();
             	frm.repaint();
             }
-        });
+        });*/
+        Credits creditsPage = new Credits();
+        creditsPage.homepage = this;
         creditsBtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+            	
+            	
             	frm.remove(pnlHolder);
-            	frm.setContentPane(pnlHolderCredits);
+            	frm.setContentPane(creditsPage.pnlHolderCredits);
             	frm.validate();
             	frm.repaint();
             }
         });
-        homeBtnSet.addActionListener(new ActionListener() {
+        /*homeBtnSet.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -176,7 +183,7 @@ public class Home {
             	frm.validate();
             	frm.repaint();
             }
-        });
+        });*/
         
     }
     //picking out sentences from the book
@@ -270,12 +277,12 @@ public class Home {
         return holder;
     }
     
-    
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
             	Home fS = new Home();
+
             }
         });
     }
