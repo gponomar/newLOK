@@ -5,22 +5,22 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+//import java.awt.GridBagConstraints;
+//import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.awt.Image;
+//import java.awt.Image;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.BreakIterator;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -28,17 +28,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
+//import javax.swing.JTextField;
+//import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.Locale;
-import java.util.Map;
+//import java.util.Map;
 import java.util.Random;
-import java.lang.Thread;
+//import java.lang.Thread;
 
 public class Home {
 	public JFrame frm = new JFrame();
@@ -59,6 +59,9 @@ public class Home {
 
   
     public Home() {
+    	//frm.setContentPane(new JLabel(new ImageIcon("resource/BackButton.png")));
+    	//frm.pack();
+    	//frm.setVisible(true);
     	Image playImage = playIcon.getImage();
     	playImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
     	playIcon = new ImageIcon(playImage);

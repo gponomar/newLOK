@@ -1,9 +1,7 @@
-import java.io.File;
-import java.io.IOException;
-import java.awt.BorderLayout;
+//import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+//import java.awt.FlowLayout;
+//import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
@@ -14,9 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
-import javax.imageio.ImageIO;
+//import javax.imageio.ImageIO;
 public class Settings {
-	public JPanel pnlsettings = new JPanel();
+	//public JPanel pnlsettings = new JPanel();
 	public Home homepage; 
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
 	public JButton homeBtnSet = new JButton(back);
@@ -28,7 +26,7 @@ public class Settings {
 		//pnlsettings.setLayout(null);
 		//pnlHolderSettings.setLayout(new BorderLayout());
 		 //homeBtnSet.setLayout(null);
-		 homeBtnSet.setLocation(400, 800);
+		 homeBtnSet.setLocation(40, 80);
 		 homeBtnSet.setSize(new Dimension(64, 48));
 		 difficultySlider.setLocation(100, 10);
 		 //difficultySlider.setExtent(10);
@@ -49,7 +47,6 @@ public class Settings {
 		 position.put(2,  new JLabel("medium"));
 		 position.put(3,  new JLabel("hard"));
 		 difficultySlider.setLabelTable(position);
-		 //difficultySlider.setMajorTickSpacing(1);
 		 difficultySlider.setOrientation(SwingConstants.VERTICAL);
 	     int difficulty = difficultySlider.getValue();
 	     
