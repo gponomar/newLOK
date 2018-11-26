@@ -1,16 +1,19 @@
 
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.Image;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -20,6 +23,7 @@ import java.text.BreakIterator;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -40,9 +44,13 @@ public class Home {
 	public JFrame frm = new JFrame();
 	public JPanel pnl = new JPanel();
 	public JPanel pnlHolder = new JPanel(new GridLayout(3,1));
-    public JButton btn = new JButton("Start the Faceoff!");
-	public JButton creditsBtn = new JButton("Credits");
-	public JButton settingBtn = new JButton("Settings");
+	public ImageIcon playIcon = new ImageIcon ("resource/playButton.png");
+	public ImageIcon creditsIcon = new ImageIcon ("resource/CreditsButton.png");
+	public ImageIcon settingsIcon = new ImageIcon ("resource/SettingsButton.png");
+    public JButton Gamebtn = new JButton(playIcon);
+    
+	public JButton creditsBtn = new JButton(creditsIcon);
+	public JButton settingBtn = new JButton(settingsIcon);
     public int sentLength=20, diff = 5;
 	public JPanel content = new JPanel();
 	public String result;
@@ -51,21 +59,27 @@ public class Home {
 
   
     public Home() {
-        btn.setPreferredSize(new Dimension(400, 40));
-        btn.setLayout(null);
-        btn.setLocation(200, 100);
-        creditsBtn.setPreferredSize(new Dimension(400, 40));
+    	Image playImage = playIcon.getImage();
+    	playImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+    	playIcon = new ImageIcon(playImage);
+    	Gamebtn.setLayout(null);
+    	Gamebtn.setLocation(200, 100);
+    	Image creditsImage = creditsIcon.getImage();
+    	creditsImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+    	creditsIcon = new ImageIcon(creditsImage);
         creditsBtn.setLayout(null);
         creditsBtn.setLocation(200, 300);
-        settingBtn.setPreferredSize(new Dimension(400, 40));
+        Image settingsImage = settingsIcon.getImage();
+        settingsImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        settingsIcon = new ImageIcon(settingsImage);
         settingBtn.setLayout(null);
         settingBtn.setLocation(200, 500);
         JLabel label = new JLabel("Lord of the Keys");
         pnl.setPreferredSize(new Dimension(640, 480));
-        pnl.add(btn, BorderLayout.SOUTH);
+        pnl.add(Gamebtn, BorderLayout.SOUTH);
         pnl.add(creditsBtn, BorderLayout.SOUTH);
         pnl.add(settingBtn, BorderLayout.SOUTH);
-        pnlHolder.add(pnl);
+        pnlHolder.add(pnl, BorderLayout.SOUTH);
         pnlHolder.add(label);
         label.requestFocus();
         label.addKeyListener(new SimpleKeyListener());
@@ -109,7 +123,7 @@ public class Home {
         ArrayList<String> finalResultsList = new ArrayList<String>(getCorrectLengthSentences());
         
         //executes start faceoff
-        btn.addActionListener(new ActionListener() {
+        Gamebtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
