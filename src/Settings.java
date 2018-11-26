@@ -4,6 +4,9 @@ import java.awt.Dimension;
 //import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
@@ -11,32 +14,44 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 //import javax.imageio.ImageIO;
 public class Settings {
-	//public JPanel pnlsettings = new JPanel();
+	public JPanel pnlsettings = new JPanel();
 	public Home homepage; 
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
 	public JButton homeBtnSet = new JButton(back);
-	public JPanel pnlHolderSettings = new JPanel();
+	//public JPanel pnlHolderSettings = new JPanel();
 	public JSlider difficultySlider = new JSlider(1, 3, 3);
-	
+	public JPanel pnlHolderSettings = new JPanel()
+	{
+		public void paintComponent(java.awt.Graphics g)
+		{
+			super.paintComponent(g);
+			BufferedImage image = null;
+			try
+			{
+				image = ImageIO.read(new File("resource/MountainBackgroundBig.png"));
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+			}
+		};
 	public Settings() {
-        //pnlHolderSettings.add(new JLabel(new ImageIcon("resource/BackButton.png")));
-		//pnlsettings.setLayout(null);
-		//pnlHolderSettings.setLayout(new BorderLayout());
-		 //homeBtnSet.setLayout(null);
+
 		 homeBtnSet.setLocation(40, 80);
-		 homeBtnSet.setSize(new Dimension(64, 48));
+		 //homeBtnSet.setSize(new Dimension(64, 48));
+		 homeBtnSet.setBorderPainted(false); 
 		 difficultySlider.setLocation(100, 10);
-		 //difficultySlider.setExtent(10);
 		 JLabel labelSettings = new JLabel(new ImageIcon("resource/Settings.png"));
-		 //pnlsettings.setPreferredSize(new Dimension(6, 4));
-	     //pnlsettings.add(homeBtnSet, BorderLayout.EAST);
-	     pnlHolderSettings.add(labelSettings);
-		 pnlHolderSettings.add(difficultySlider);   
-	     pnlHolderSettings.add(homeBtnSet);
-	     //pnlHolderSettings.add(pnlsettings, BorderLayout.SOUTH);
+	     pnlsettings.add(labelSettings);
+		 pnlsettings.add(difficultySlider);   
+	     pnlsettings.add(homeBtnSet);
+	     pnlsettings.setOpaque(false);
 	     difficultySlider.setSnapToTicks(true);
 	     difficultySlider.setPaintTrack(true);
 		 difficultySlider.setPaintTicks(true);
@@ -48,7 +63,8 @@ public class Settings {
 		 position.put(3,  new JLabel("hard"));
 		 difficultySlider.setLabelTable(position);
 		 difficultySlider.setOrientation(SwingConstants.VERTICAL);
-	     int difficulty = difficultySlider.getValue();
+	     //int difficulty = difficultySlider.getValue();
+		 pnlHolderSettings.add(pnlsettings);
 	     
 	     homeBtnSet.addActionListener(new ActionListener() {
 

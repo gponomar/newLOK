@@ -1,47 +1,63 @@
 import java.awt.BorderLayout;
 
-//import java.awt.GridBagLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 //import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 public class Credits {
-	public JPanel pnlcredits = new JPanel(new GridLayout());
-	public JPanel blankPnl = new JPanel();
-	public JPanel blankPnl1 = new JPanel();
-	public JPanel blankPnl2 = new JPanel();
-	public JPanel blankPnl3 = new JPanel();
-	public JPanel blankPnl4 = new JPanel();
-	public JPanel blankPnl5 = new JPanel();
-	public JPanel blankPnl6 = new JPanel();
+	public JPanel pnlcredits = new JPanel(new GridBagLayout());
+	
 	public Home homepage;
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public JPanel pnlHolderCredits = new JPanel(new GridLayout(5,1, 30, 30));
+	//public JPanel pnlHolderCredits = new JPanel();
 	public JButton homeBtnCred = new JButton(back);
 	JLabel labelCredits = new JLabel(new ImageIcon("resource/Credits.png"));
+	public JPanel pnlHolderCredits = new JPanel()
+	{
+		public void paintComponent(java.awt.Graphics g)
+		{
+			super.paintComponent(g);
+			BufferedImage image = null;
+			try
+			{
+				image = ImageIO.read(new File("resource/MountainBackgroundBig.png"));
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+			}
+		};
 	public Credits() {
-    	
-        homeBtnCred.setLayout(null);
-        homeBtnCred.setLocation(800, 800);
-        //pnlcredits.setPreferredSize(new Dimension(640, 480));
-        pnlcredits.add(blankPnl1);
-        pnlcredits.add(blankPnl2);
-        pnlcredits.add(blankPnl3);
-        pnlcredits.add(blankPnl4);
-        pnlcredits.add(homeBtnCred, BorderLayout.SOUTH);
+		
+		
+		GridBagConstraints gbcTitle = new GridBagConstraints();
+		gbcTitle.gridwidth = GridBagConstraints.REMAINDER;
+		gbcTitle.anchor = GridBagConstraints.NORTH;
+
+        pnlcredits.add(labelCredits, gbcTitle);
+        gbcTitle.anchor = GridBagConstraints.SOUTHEAST;
         
-        pnlHolderCredits.add(labelCredits);
-        pnlHolderCredits.add(blankPnl);
-        pnlHolderCredits.add(blankPnl5);
-        pnlHolderCredits.add(blankPnl6);
-        //pnlHolderCredits.add(homeBtnCred);
+        //pnlHolderCredits.add(pnlcredits);
+        pnlcredits.add(homeBtnCred, gbcTitle);
+        pnlcredits.setOpaque(false);
         pnlHolderCredits.add(pnlcredits);
+        
         homeBtnCred.addActionListener(new ActionListener() {
 
             @Override

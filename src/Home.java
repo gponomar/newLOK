@@ -56,6 +56,7 @@ public class Home {
 	public String result;
 	public int progress = 0;
 	public HashMap<Integer, ArrayList<String>> lengthMap;
+	public Random rand = new Random();
 
   
     public Home() {
@@ -67,16 +68,19 @@ public class Home {
     	playIcon = new ImageIcon(playImage);
     	Gamebtn.setLayout(null);
     	Gamebtn.setLocation(200, 100);
+    	Gamebtn.setBorderPainted(false); 
     	Image creditsImage = creditsIcon.getImage();
     	creditsImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
     	creditsIcon = new ImageIcon(creditsImage);
         creditsBtn.setLayout(null);
         creditsBtn.setLocation(200, 300);
+        creditsBtn.setBorderPainted(false); 
         Image settingsImage = settingsIcon.getImage();
         settingsImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         settingsIcon = new ImageIcon(settingsImage);
         settingBtn.setLayout(null);
         settingBtn.setLocation(200, 500);
+        settingBtn.setBorderPainted(false); 
         JLabel label = new JLabel("Lord of the Keys");
         pnl.setPreferredSize(new Dimension(640, 480));
         pnl.add(Gamebtn, BorderLayout.SOUTH);
@@ -97,7 +101,6 @@ public class Home {
         try {
         	source = new String(Files.readAllBytes(Paths.get("resource/for.txt")), StandardCharsets.UTF_8);
         	source=source.replace("\n", "").replace("\r", "").replaceAll("#", "");
-
 			iterator.setText(source);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -182,7 +185,7 @@ public class Home {
         	if(finalResultsList.size()==1) {
         		result=finalResultsList.get(0);
         	} else {
-        		Random rand = new Random();
+        		
         		result=finalResultsList.get(rand.nextInt(finalResultsList.size()) + 0);
         	}
         }
