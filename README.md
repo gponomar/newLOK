@@ -1,3 +1,3 @@
-# newLOK
+# Lord of the Keys
 
-Lord of the Keys 307 project
+This is the repo for our 307 project
