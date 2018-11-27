@@ -47,6 +47,8 @@ public class Home {
 	public ImageIcon playIcon = new ImageIcon ("resource/playButton.png");
 	public ImageIcon creditsIcon = new ImageIcon ("resource/CreditsButton.png");
 	public ImageIcon settingsIcon = new ImageIcon ("resource/SettingsButton.png");
+	public ImageIcon highScoreIcon = new ImageIcon("resource/HighScoreButton.png");
+	public JButton HighScoreBtn = new JButton(highScoreIcon);
     public JButton Gamebtn = new JButton(playIcon);
     
 	public JButton creditsBtn = new JButton(creditsIcon);
@@ -60,32 +62,23 @@ public class Home {
 
   
     public Home() {
-    	//frm.setContentPane(new JLabel(new ImageIcon("resource/BackButton.png")));
-    	//frm.pack();
-    	//frm.setVisible(true);
-    	Image playImage = playIcon.getImage();
-    	playImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-    	playIcon = new ImageIcon(playImage);
-    	Gamebtn.setLayout(null);
     	Gamebtn.setLocation(200, 100);
     	Gamebtn.setBorderPainted(false); 
-    	Image creditsImage = creditsIcon.getImage();
-    	creditsImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-    	creditsIcon = new ImageIcon(creditsImage);
         creditsBtn.setLayout(null);
         creditsBtn.setLocation(200, 300);
         creditsBtn.setBorderPainted(false); 
-        Image settingsImage = settingsIcon.getImage();
-        settingsImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-        settingsIcon = new ImageIcon(settingsImage);
         settingBtn.setLayout(null);
         settingBtn.setLocation(200, 500);
         settingBtn.setBorderPainted(false); 
+        HighScoreBtn.setLayout(null);
+        HighScoreBtn.setLocation(200, 500);
+        HighScoreBtn.setBorderPainted(false); 
         JLabel label = new JLabel("Lord of the Keys");
         pnl.setPreferredSize(new Dimension(640, 480));
         pnl.add(Gamebtn, BorderLayout.SOUTH);
         pnl.add(creditsBtn, BorderLayout.SOUTH);
         pnl.add(settingBtn, BorderLayout.SOUTH);
+        pnl.add(HighScoreBtn, BorderLayout.SOUTH);
         pnlHolder.add(pnl, BorderLayout.SOUTH);
         pnlHolder.add(label);
         label.requestFocus();
@@ -161,6 +154,20 @@ public class Home {
             	
             	frm.remove(pnlHolder);
             	frm.setContentPane(creditsPage.pnlHolderCredits);
+            	frm.validate();
+            	frm.repaint();
+            }
+        });
+        HighScore highScorePage = new HighScore();
+        highScorePage.homepage = this;
+        HighScoreBtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	
+            	
+            	frm.remove(pnlHolder);
+            	frm.setContentPane(highScorePage.pnlHolderHighScore);
             	frm.validate();
             	frm.repaint();
             }

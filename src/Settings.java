@@ -1,7 +1,10 @@
 //import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
 //import java.awt.FlowLayout;
-//import java.awt.GridLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -18,7 +21,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 //import javax.imageio.ImageIO;
 public class Settings {
-	public JPanel pnlsettings = new JPanel();
+	public JPanel pnlsettings = new JPanel(new GridBagLayout());
+	public JPanel backpnl = new JPanel(new GridBagLayout());
 	public Home homepage; 
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
 	public JButton homeBtnSet = new JButton(back);
@@ -42,15 +46,29 @@ public class Settings {
 			}
 		};
 	public Settings() {
-
-		 homeBtnSet.setLocation(40, 80);
+		GridBagConstraints gbcBack = new GridBagConstraints();
+		gbcBack.anchor = GridBagConstraints.WEST;
+		GridBagConstraints gbcTitle = new GridBagConstraints();
+		gbcTitle.gridx = 1;
+		gbcTitle.gridy = 0;
+		 //homeBtnSet.setLocation(40, 80);
 		 //homeBtnSet.setSize(new Dimension(64, 48));
 		 homeBtnSet.setBorderPainted(false); 
-		 difficultySlider.setLocation(100, 10);
-		 JLabel labelSettings = new JLabel(new ImageIcon("resource/Settings.png"));
-	     pnlsettings.add(labelSettings);
-		 pnlsettings.add(difficultySlider);   
-	     pnlsettings.add(homeBtnSet);
+		 //difficultySlider.setLocation(100, 10);
+		 JLabel labelSettings = new JLabel();
+		 ImageIcon settingsIcon = new ImageIcon("resource/Settings.png");
+		 Image settingsImage = settingsIcon.getImage();
+	    	settingsImage = settingsImage.getScaledInstance(500, 200, Image.SCALE_SMOOTH);
+	    	settingsIcon = new ImageIcon(settingsImage);
+	     labelSettings.setIcon(settingsIcon);
+	     pnlsettings.add(labelSettings, gbcTitle);
+	     gbcTitle.gridx = 1;
+		 gbcTitle.gridy = 1;
+		 difficultySlider.setPreferredSize(new Dimension(400, 360));
+		 pnlsettings.add(difficultySlider, gbcTitle);   
+		 gbcTitle.gridx = 1;
+		 gbcTitle.gridy = 2;
+	     pnlsettings.add(homeBtnSet, gbcTitle);
 	     pnlsettings.setOpaque(false);
 	     difficultySlider.setSnapToTicks(true);
 	     difficultySlider.setPaintTrack(true);
@@ -64,6 +82,13 @@ public class Settings {
 		 difficultySlider.setLabelTable(position);
 		 difficultySlider.setOrientation(SwingConstants.VERTICAL);
 	     //int difficulty = difficultySlider.getValue();
+		 backpnl.setPreferredSize(new Dimension(2000,300));
+		 gbcTitle.gridx = 1;
+		 gbcTitle.gridy = 9;
+	     backpnl.add(homeBtnSet, gbcBack);
+	     backpnl.setOpaque(false);
+	     pnlsettings.add(backpnl, gbcTitle);
+		 
 		 pnlHolderSettings.add(pnlsettings);
 	     
 	     homeBtnSet.addActionListener(new ActionListener() {
