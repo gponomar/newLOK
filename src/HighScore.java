@@ -93,7 +93,7 @@ public class HighScore {
             @Override
             public void actionPerformed(ActionEvent e) {
             	homepage.frm.remove(pnlHolderHighScore);
-            	homepage.frm.setContentPane(homepage.pnlHolder);
+            	homepage.frm.setContentPane(homepage.pnl);
             	homepage.frm.validate();
             	homepage.frm.repaint();
             }
