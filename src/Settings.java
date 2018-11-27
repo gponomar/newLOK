@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -56,6 +57,7 @@ public class Settings {
 	    	settingsIcon = new ImageIcon(settingsImage);
 	     labelSettings.setIcon(settingsIcon);
 	     pnlTitle.add(labelSettings, gbcTitle);
+	     //pnlsettings.add(labelSettings, gbcTitle);
 	     gbcTitle.gridx = 1;
 		 gbcTitle.gridy = 1;
 		 difficultySlider.setPreferredSize(new Dimension(400, 360));
@@ -70,9 +72,15 @@ public class Settings {
 		 difficultySlider.setPaintLabels(true);
 		 
 		 Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
-		 position.put(1,  new JLabel("easy"));
-		 position.put(2,  new JLabel("medium"));
-		 position.put(3,  new JLabel("hard"));
+		 JLabel easyLabel = new JLabel("easy");
+		 easyLabel.setFont(new Font(easyLabel.getName(), Font.PLAIN, 30));
+		 position.put(1,  easyLabel);
+		 JLabel mediumLabel = new JLabel("medium");
+		 mediumLabel.setFont(new Font(mediumLabel.getName(), Font.PLAIN, 30));
+		 position.put(2,  mediumLabel);
+		 JLabel hardLabel = new JLabel("hard");
+		 hardLabel.setFont(new Font(hardLabel.getName(), Font.PLAIN, 30));
+		 position.put(3,  hardLabel);
 		 difficultySlider.setLabelTable(position);
 		 difficultySlider.setOrientation(SwingConstants.VERTICAL);
 	     //int difficulty = difficultySlider.getValue();

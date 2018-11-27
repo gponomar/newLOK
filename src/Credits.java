@@ -59,6 +59,7 @@ public class Credits {
     	creditsIcon = new ImageIcon(creditsImage);
     	labelCredits.setIcon(creditsIcon);
     	pnlTitle.add(labelCredits, gbcTitle);
+    	//pnlcredits.add(labelCredits, gbcTitle);
         gbcTitle.anchor = GridBagConstraints.CENTER;
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 2;

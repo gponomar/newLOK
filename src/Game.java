@@ -23,6 +23,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -51,7 +52,8 @@ public class Game {
     };
 	public Home homepage;
 	public JPanel pnlHolderGame = new JPanel(new GridLayout(3,1));
-	public JButton homeBtnGame = new JButton("home");
+	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
+	public JButton homeBtnGame = new JButton(back);
 	public HashMap<Integer, ArrayList<String>> lengthMap;
 	public int sentLength=20, diff = 5;
 	public String result;

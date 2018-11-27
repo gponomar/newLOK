@@ -57,6 +57,7 @@ public class HighScore {
     	HighScoreIcon = new ImageIcon(HighScoreImage);
     	labelHighScore.setIcon(HighScoreIcon);
         pnlTitle.add(labelHighScore, gbcTitle);
+    	//pnlHighScores.add(labelHighScore, gbcTitle);
         gbcTitle.anchor = GridBagConstraints.CENTER;
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 2;
