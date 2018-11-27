@@ -17,11 +17,11 @@ import javax.swing.JPanel;
 
 
 public class Credits {
+	public JPanel pnlTitle = new JPanel(new GridBagLayout());
 	public JPanel pnlcredits = new JPanel(new GridBagLayout());
 	public JPanel backpnl = new JPanel(new GridBagLayout());
 	public Home homepage;
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	//public JPanel pnlHolderCredits = new JPanel();
 	public JButton homeBtnCred = new JButton(back);
 	ImageIcon creditsIcon = new ImageIcon("resource/Credits.png");
 	JLabel labelCredits = new JLabel();
@@ -58,7 +58,7 @@ public class Credits {
     	creditsImage = creditsImage.getScaledInstance(500, 200, Image.SCALE_SMOOTH);
     	creditsIcon = new ImageIcon(creditsImage);
     	labelCredits.setIcon(creditsIcon);
-        pnlcredits.add(labelCredits, gbcTitle);
+    	pnlTitle.add(labelCredits, gbcTitle);
         gbcTitle.anchor = GridBagConstraints.CENTER;
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 2;
@@ -93,9 +93,9 @@ public class Credits {
 		backpnl.setOpaque(false);
         backpnl.add(homeBtnCred, gbcBack);
         pnlcredits.add(backpnl, gbcTitle);
-        
+        pnlTitle.setOpaque(false);
         pnlcredits.setOpaque(false);
-        //pnlHolderCredits.add(backpnl);
+        pnlHolderCredits.add(pnlTitle);
         pnlHolderCredits.add(pnlcredits);
         
         homeBtnCred.addActionListener(new ActionListener() {
