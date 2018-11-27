@@ -103,7 +103,7 @@ public class Credits {
             @Override
             public void actionPerformed(ActionEvent e) {
             	homepage.frm.remove(pnlHolderCredits);
-            	homepage.frm.setContentPane(homepage.pnlHolder);
+            	homepage.frm.setContentPane(homepage.pnl);
             	homepage.frm.validate();
             	homepage.frm.repaint();
             }

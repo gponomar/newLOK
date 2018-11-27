@@ -91,7 +91,7 @@ public class Settings {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	            	homepage.frm.remove(pnlHolderSettings);
-	            	homepage.frm.setContentPane(homepage.pnlHolder);
+	            	homepage.frm.setContentPane(homepage.pnl);
 	            	homepage.frm.validate();
 	            	homepage.frm.repaint();
 	            }
