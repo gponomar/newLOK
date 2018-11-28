@@ -16,7 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HighScore {
-	public JPanel pnlHighScore = new JPanel(new GridBagLayout());
+	public JPanel pnlTitle = new JPanel(new GridBagLayout());
+	public JPanel pnlHighScores = new JPanel(new GridBagLayout());
 	public JPanel backpnl = new JPanel(new GridBagLayout());
 	public Home homepage;
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
@@ -55,38 +56,40 @@ public class HighScore {
     	HighScoreImage = HighScoreImage.getScaledInstance(500, 200, Image.SCALE_SMOOTH);
     	HighScoreIcon = new ImageIcon(HighScoreImage);
     	labelHighScore.setIcon(HighScoreIcon);
-        pnlHighScore.add(labelHighScore, gbcTitle);
+        pnlTitle.add(labelHighScore, gbcTitle);
+    	//pnlHighScores.add(labelHighScore, gbcTitle);
         gbcTitle.anchor = GridBagConstraints.CENTER;
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 2;
-		score1.setFont(new Font(score1.getName(), Font.PLAIN, 58));
-        pnlHighScore.add(score1, gbcTitle);
+		score1.setFont(new Font(score1.getName(), Font.PLAIN, 60));
+        pnlHighScores.add(score1, gbcTitle);
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 3;
-		score2.setFont(new Font(score1.getName(), Font.PLAIN, 58));
-        pnlHighScore.add(score2, gbcTitle);
+		score2.setFont(new Font(score1.getName(), Font.PLAIN, 60));
+        pnlHighScores.add(score2, gbcTitle);
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 4;
-		score3.setFont(new Font(score1.getName(), Font.PLAIN, 58));
-        pnlHighScore.add(score3, gbcTitle);
+		score3.setFont(new Font(score1.getName(), Font.PLAIN, 60));
+        pnlHighScores.add(score3, gbcTitle);
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 5;
-		score4.setFont(new Font(score1.getName(), Font.PLAIN, 58));
-		pnlHighScore.add(score4, gbcTitle);
+		score4.setFont(new Font(score1.getName(), Font.PLAIN, 60));
+		pnlHighScores.add(score4, gbcTitle);
         gbcTitle.gridx = 1;
 		gbcTitle.gridy = 6;
-		score5.setFont(new Font(score1.getName(), Font.PLAIN, 58));
-        pnlHighScore.add(score5, gbcTitle);
+		score5.setFont(new Font(score1.getName(), Font.PLAIN, 60));
+        pnlHighScores.add(score5, gbcTitle);
 		gbcTitle.gridx = 1;
 		gbcTitle.gridy = 9;
 		backpnl.setPreferredSize(new Dimension(2000,300));
 		backpnl.setOpaque(false);
 		homeBtnHighScore.setBorderPainted(false); 
         backpnl.add(homeBtnHighScore, gbcBack);
-        pnlHighScore.add(backpnl, gbcTitle);
-        pnlHighScore.setOpaque(false);
-        //pnlHolderCredits.add(backpnl);
-        pnlHolderHighScore.add(pnlHighScore);
+        pnlHighScores.add(backpnl, gbcTitle);
+        pnlHighScores.setOpaque(false);
+        pnlTitle.setOpaque(false);
+        pnlHolderHighScore.add(pnlTitle);
+        pnlHolderHighScore.add(pnlHighScores);
         
         homeBtnHighScore.addActionListener(new ActionListener() {
 

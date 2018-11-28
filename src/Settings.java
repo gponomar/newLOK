@@ -1,10 +1,8 @@
-//import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-//import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -19,14 +17,14 @@ import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-//import javax.imageio.ImageIO;
+
 public class Settings {
+	public JPanel pnlTitle = new JPanel(new GridBagLayout());
 	public JPanel pnlsettings = new JPanel(new GridBagLayout());
 	public JPanel backpnl = new JPanel(new GridBagLayout());
 	public Home homepage; 
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
 	public JButton homeBtnSet = new JButton(back);
-	//public JPanel pnlHolderSettings = new JPanel();
 	public JSlider difficultySlider = new JSlider(1, 3, 3);
 	public JPanel pnlHolderSettings = new JPanel()
 	{
@@ -51,17 +49,15 @@ public class Settings {
 		GridBagConstraints gbcTitle = new GridBagConstraints();
 		gbcTitle.gridx = 1;
 		gbcTitle.gridy = 0;
-		 //homeBtnSet.setLocation(40, 80);
-		 //homeBtnSet.setSize(new Dimension(64, 48));
 		 homeBtnSet.setBorderPainted(false); 
-		 //difficultySlider.setLocation(100, 10);
 		 JLabel labelSettings = new JLabel();
 		 ImageIcon settingsIcon = new ImageIcon("resource/Settings.png");
 		 Image settingsImage = settingsIcon.getImage();
 	    	settingsImage = settingsImage.getScaledInstance(500, 200, Image.SCALE_SMOOTH);
 	    	settingsIcon = new ImageIcon(settingsImage);
 	     labelSettings.setIcon(settingsIcon);
-	     pnlsettings.add(labelSettings, gbcTitle);
+	     pnlTitle.add(labelSettings, gbcTitle);
+	     //pnlsettings.add(labelSettings, gbcTitle);
 	     gbcTitle.gridx = 1;
 		 gbcTitle.gridy = 1;
 		 difficultySlider.setPreferredSize(new Dimension(400, 360));
@@ -75,10 +71,16 @@ public class Settings {
 		 difficultySlider.setPaintTicks(true);
 		 difficultySlider.setPaintLabels(true);
 		 
-		 Hashtable position = new Hashtable();
-		 position.put(1,  new JLabel("easy"));
-		 position.put(2,  new JLabel("medium"));
-		 position.put(3,  new JLabel("hard"));
+		 Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
+		 JLabel easyLabel = new JLabel("easy");
+		 easyLabel.setFont(new Font(easyLabel.getName(), Font.PLAIN, 30));
+		 position.put(1,  easyLabel);
+		 JLabel mediumLabel = new JLabel("medium");
+		 mediumLabel.setFont(new Font(mediumLabel.getName(), Font.PLAIN, 30));
+		 position.put(2,  mediumLabel);
+		 JLabel hardLabel = new JLabel("hard");
+		 hardLabel.setFont(new Font(hardLabel.getName(), Font.PLAIN, 30));
+		 position.put(3,  hardLabel);
 		 difficultySlider.setLabelTable(position);
 		 difficultySlider.setOrientation(SwingConstants.VERTICAL);
 	     //int difficulty = difficultySlider.getValue();
@@ -88,7 +90,8 @@ public class Settings {
 	     backpnl.add(homeBtnSet, gbcBack);
 	     backpnl.setOpaque(false);
 	     pnlsettings.add(backpnl, gbcTitle);
-		 
+	     pnlTitle.setOpaque(false);
+		 pnlHolderSettings.add(pnlTitle);
 		 pnlHolderSettings.add(pnlsettings);
 	     
 	     homeBtnSet.addActionListener(new ActionListener() {
