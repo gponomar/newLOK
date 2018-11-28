@@ -92,16 +92,6 @@ public class HighScore {
     	gbcNames.gridy = 4;
         pnlHighScores.add(score5, gbcNames);
         blank.setFont(new Font(score1.getName(), Font.PLAIN, 50));
-
-        
-		/*labelName6.setFont(new Font(score1.getName(), Font.PLAIN, 50));
-    	gbcNames.gridx = 0;
-    	gbcNames.gridy = 5;
-        pnlHighScores.add(labelName6, gbcNames);
-    	bigGBC.gridx = 0;
-    	bigGBC.gridy = 1;
-    	labelName7.setPreferredSize(new Dimension(10, 50));
-        pnlHighScores.add(labelName7, gbcNames);*/
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 1;
         pnlHolderHighScore.add(pnlHighScores, bigGBC);
@@ -116,51 +106,6 @@ public class HighScore {
     	bigGBC.gridy = 2;
     	backpnl.setOpaque(false);
         pnlHolderHighScore.add(backpnl, bigGBC);
-		
-		
-		/*GridBagConstraints gbcBack = new GridBagConstraints();
-		gbcBack.anchor = GridBagConstraints.WEST;
-		GridBagConstraints gbcTitle = new GridBagConstraints();
-		gbcTitle.gridx = 1;
-		gbcTitle.gridy = 0;
-		Image HighScoreImage = HighScoreIcon.getImage();
-    	HighScoreImage = HighScoreImage.getScaledInstance(500, 200, Image.SCALE_SMOOTH);
-    	HighScoreIcon = new ImageIcon(HighScoreImage);
-    	labelHighScore.setIcon(HighScoreIcon);
-        pnlTitle.add(labelHighScore, gbcTitle);
-    	//pnlHighScores.add(labelHighScore, gbcTitle);
-        gbcTitle.anchor = GridBagConstraints.CENTER;
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 2;
-		score1.setFont(new Font(score1.getName(), Font.PLAIN, 60));
-        pnlHighScores.add(score1, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 3;
-		score2.setFont(new Font(score1.getName(), Font.PLAIN, 60));
-        pnlHighScores.add(score2, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 4;
-		score3.setFont(new Font(score1.getName(), Font.PLAIN, 60));
-        pnlHighScores.add(score3, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 5;
-		score4.setFont(new Font(score1.getName(), Font.PLAIN, 60));
-		pnlHighScores.add(score4, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 6;
-		score5.setFont(new Font(score1.getName(), Font.PLAIN, 60));
-        pnlHighScores.add(score5, gbcTitle);
-		gbcTitle.gridx = 1;
-		gbcTitle.gridy = 9;
-		backpnl.setPreferredSize(new Dimension(2000,300));
-		backpnl.setOpaque(false);
-		homeBtnHighScore.setBorderPainted(false); 
-        backpnl.add(homeBtnHighScore, gbcBack);
-        pnlHighScores.add(backpnl, gbcTitle);
-        pnlHighScores.setOpaque(false);
-        pnlTitle.setOpaque(false);
-        pnlHolderHighScore.add(pnlTitle);
-        pnlHolderHighScore.add(pnlHighScores);*/
         
         homeBtn.addActionListener(new ActionListener() {
 
