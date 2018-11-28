@@ -78,11 +78,13 @@ public class Home {
 	public Boolean restart = false;
   
     public Home() {
+    	frm.pack();
+    	//frm.setSize(720,512);
     	JPanel titlePanel = new JPanel();
     	titlePanel.setOpaque(false);
     	JPanel btnPanel = new JPanel(new GridBagLayout());
     	JPanel bigPanel = new JPanel(new GridBagLayout());
-    	pnl.setPreferredSize(new Dimension(640, 480));
+    	pnl.setPreferredSize(new Dimension(720, 512));
     	    
         playBtn.setPreferredSize(new Dimension(100, 100));
     	Image playImage = playIcon.getImage();
@@ -161,7 +163,7 @@ public class Home {
         frm.add(pnl);
         frm.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-        frm.pack();
+        //frm.pack();
         frm.setVisible(true);
 
         //executes game
@@ -174,6 +176,7 @@ public class Home {
             	
             	frm.remove(pnl);
             	frm.setContentPane(gamePage.pnlHolderGame);
+            	//frm.setContentPane(gamePage.pnlHolderGame);
             	gamePage.labelGame.requestFocus();
             	frm.validate();
             	frm.repaint();
@@ -222,15 +225,14 @@ public class Home {
             	frm.repaint();
             }
         });
-        
     }
+    
     
 	public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
             	Home fS = new Home();
-
             }
         });
     }

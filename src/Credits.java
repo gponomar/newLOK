@@ -21,7 +21,6 @@ public class Credits {
 	public JPanel backpnl = new JPanel(new GridBagLayout());
 	public Home homepage;
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	//public JPanel pnlHolderCredits = new JPanel();
 	public JButton homeBtnCred = new JButton(back);
 	ImageIcon creditsIcon = new ImageIcon("resource/Credits.png");
 	JLabel labelCredits = new JLabel();
