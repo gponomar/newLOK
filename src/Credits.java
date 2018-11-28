@@ -1,8 +1,10 @@
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -14,24 +16,26 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 
 public class Credits {
-	public JPanel pnlTitle = new JPanel(new GridBagLayout());
+	public JPanel pnlTitle = new JPanel();
 	public JPanel pnlcredits = new JPanel(new GridBagLayout());
-	public JPanel backpnl = new JPanel(new GridBagLayout());
+	public JPanel backpnl = new JPanel();
 	public Home homepage;
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public JButton homeBtnCred = new JButton(back);
+	public JButton homeBtn = new JButton(back);
 	ImageIcon creditsIcon = new ImageIcon("resource/Credits.png");
 	JLabel labelCredits = new JLabel();
-	JLabel labelName1 = new JLabel("Evan Jameson");
-	JLabel labelName2 = new JLabel("Ryan Nevils");
-	JLabel labelName3 = new JLabel("Ishan Pandey");
-	JLabel labelName4 = new JLabel("Grant Parton");
-	JLabel labelName5 = new JLabel("Grace Ponomaroff");
-	JLabel labelName6 = new JLabel("Kiley Roberson");
-	public JPanel pnlHolderCredits = new JPanel()
+	JLabel labelName1 = new JLabel("Evan Jameson", SwingConstants.CENTER);
+	JLabel labelName2 = new JLabel("Ryan Nevils", SwingConstants.CENTER);
+	JLabel labelName3 = new JLabel("Ishan Pandey", SwingConstants.CENTER);
+	JLabel labelName4 = new JLabel("Grant Parton", SwingConstants.CENTER);
+	JLabel labelName5 = new JLabel("Grace Ponomaroff", SwingConstants.CENTER);
+	JLabel labelName6 = new JLabel("Kiley Roberson", SwingConstants.CENTER);
+	JLabel labelName7 = new JLabel("");
+	public JPanel pnlHolderCredits = new JPanel(new GridBagLayout())
 	{
 		public void paintComponent(java.awt.Graphics g)
 		{
@@ -49,57 +53,70 @@ public class Credits {
 			}
 		};
 	public Credits() {
-		GridBagConstraints gbcBack = new GridBagConstraints();
-		gbcBack.anchor = GridBagConstraints.WEST;
-		GridBagConstraints gbcTitle = new GridBagConstraints();
-		gbcTitle.gridx = 1;
-		gbcTitle.gridy = 0;
+    	GridBagConstraints gbcNames = new GridBagConstraints();
+    	gbcNames.fill = GridBagConstraints.HORIZONTAL;
+    	GridBagConstraints bigGBC = new GridBagConstraints();
+    	bigGBC.fill = GridBagConstraints.HORIZONTAL;
+    	bigGBC.anchor = GridBagConstraints.NORTH;
+		
+		
 		Image creditsImage = creditsIcon.getImage();
     	creditsImage = creditsImage.getScaledInstance(500, 200, Image.SCALE_SMOOTH);
     	creditsIcon = new ImageIcon(creditsImage);
     	labelCredits.setIcon(creditsIcon);
-    	pnlTitle.add(labelCredits, gbcTitle);
-    	//pnlcredits.add(labelCredits, gbcTitle);
-        gbcTitle.anchor = GridBagConstraints.CENTER;
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 2;
+    	pnlTitle.add(labelCredits);
+    	
+    	bigGBC.gridx = 0;
+    	bigGBC.gridy = 0;
+    	pnlTitle.setOpaque(false);
+    	pnlHolderCredits.add(pnlTitle, bigGBC);
+    	
+    	bigGBC.insets = new Insets(30, 2, 2, 30);
+    	pnlcredits.setOpaque(false);
 		labelName1.setFont(new Font(labelName1.getName(), Font.PLAIN, 50));
-        pnlcredits.add(labelName1, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 3;
+    	gbcNames.gridx = 0;
+    	gbcNames.gridy = 0;
+        pnlcredits.add(labelName1, gbcNames);
 		labelName2.setFont(new Font(labelName1.getName(), Font.PLAIN, 50));
-        pnlcredits.add(labelName2, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 4;
+    	gbcNames.gridx = 0;
+    	gbcNames.gridy = 1;
+        pnlcredits.add(labelName2, gbcNames);
 		labelName3.setFont(new Font(labelName1.getName(), Font.PLAIN, 50));
-        pnlcredits.add(labelName3, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 5;
+    	gbcNames.gridx = 0;
+    	gbcNames.gridy = 2;
+        pnlcredits.add(labelName3, gbcNames);
 		labelName4.setFont(new Font(labelName1.getName(), Font.PLAIN, 50));
-		pnlcredits.add(labelName4, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 6;
+    	gbcNames.gridx = 0;
+    	gbcNames.gridy = 3;
+        pnlcredits.add(labelName4, gbcNames);
 		labelName5.setFont(new Font(labelName1.getName(), Font.PLAIN, 50));
-        pnlcredits.add(labelName5, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 7;
+    	gbcNames.gridx = 0;
+    	gbcNames.gridy = 4;
+        pnlcredits.add(labelName5, gbcNames);
 		labelName6.setFont(new Font(labelName1.getName(), Font.PLAIN, 50));
-        pnlcredits.add(labelName6, gbcTitle);
-        gbcTitle.gridx = 1;
-		gbcTitle.gridy = 8;
-		backpnl.setPreferredSize(new Dimension(2000,300));
-		gbcTitle.gridx = 1;
-		gbcTitle.gridy = 9;
-		homeBtnCred.setBorderPainted(false); 
-		backpnl.setOpaque(false);
-        backpnl.add(homeBtnCred, gbcBack);
-        pnlcredits.add(backpnl, gbcTitle);
-        pnlTitle.setOpaque(false);
-        pnlcredits.setOpaque(false);
-        pnlHolderCredits.add(pnlTitle);
-        pnlHolderCredits.add(pnlcredits);
+    	gbcNames.gridx = 0;
+    	gbcNames.gridy = 5;
+        pnlcredits.add(labelName6, gbcNames);
+    	bigGBC.gridx = 0;
+    	bigGBC.gridy = 1;
+    	labelName7.setPreferredSize(new Dimension(10, 50));
+        pnlcredits.add(labelName7, gbcNames);
+    	bigGBC.gridx = 0;
+    	bigGBC.gridy = 1;
+        pnlHolderCredits.add(pnlcredits, bigGBC);
         
-        homeBtnCred.addActionListener(new ActionListener() {
+        homeBtn.setPreferredSize(new Dimension(100, 80));
+    	Image backImage = back.getImage();
+    	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+    	back = new ImageIcon(backImage);
+    	backpnl.add(homeBtn, BorderLayout.CENTER);
+    	
+    	bigGBC.gridx = 0;
+    	bigGBC.gridy = 2;
+    	backpnl.setOpaque(false);
+        pnlHolderCredits.add(backpnl, bigGBC);
+        
+        homeBtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {

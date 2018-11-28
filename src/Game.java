@@ -2,9 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -27,12 +26,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.border.EtchedBorder;
 
 
 public class Game {
-	public JPanel pnlGame = new JPanel()
+	
+	public Home homepage;
+	public JPanel pnlGame = new JPanel();
+	public JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
     {
         public void paintComponent(java.awt.Graphics g)
         {
@@ -40,20 +41,17 @@ public class Game {
             BufferedImage image = null;
             try
             {
-                image = ImageIO.read(new File("resource/bridgeScene.png"));
+                image = ImageIO.read(new File("resource/fullScene1.png"));
             }
             catch (IOException e)
             {
-
                 e.printStackTrace();
             }
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         }
     };
-	public Home homepage;
-	public JPanel pnlHolderGame = new JPanel(new GridLayout(3,1));
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public JButton homeBtnGame = new JButton(back);
+	public JButton homeBtn = new JButton(back);
 	public HashMap<Integer, ArrayList<String>> lengthMap;
 	public int sentLength=20, diff = 5;
 	public String result;
@@ -62,20 +60,22 @@ public class Game {
 	public JLabel labelGame = new JLabel();
 	
 	public Game() {
-	
-
-        //homeBtnGame.setLayout(null);
-        //homeBtnGame.setLocation(800, 800);
-        pnlGame.setPreferredSize(new Dimension(640, 480));
-        pnlGame.add(homeBtnGame, BorderLayout.SOUTH);
+		
+		//Formatting
+		content.setOpaque(false);
+        pnlGame.add(homeBtn, BorderLayout.WEST);
+        pnlGame.setOpaque(false);
         pnlHolderGame.add(pnlGame);
         pnlHolderGame.add(labelGame);
-        
-        
+        homeBtn.setPreferredSize(new Dimension(100, 80));
+    	Image backImage = back.getImage();
+    	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+    	back = new ImageIcon(backImage);
         
         labelGame.requestFocus();
         labelGame.addKeyListener(new SimpleKeyListener());
         
+        //Create sentences
         BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
         String source;
         try {
@@ -105,11 +105,12 @@ public class Game {
         	}
         }
         
-        
+        // Start the game
         ArrayList<String> finalResultsList = new ArrayList<String>(getCorrectLengthSentences());       
     	startRound(finalResultsList);
 
-        homeBtnGame.addActionListener(new ActionListener() {
+    	// Exit to main menu
+        homeBtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -123,7 +124,7 @@ public class Game {
         
     }
 	
-	// sentence typing stuff
+	// Sentence logic 
 	
     //picking out sentences from the book
     private ArrayList<String> getCorrectLengthSentences() {
@@ -200,6 +201,7 @@ public class Game {
     
     private JPanel makeKey(char c, boolean entered) {
     	JPanel holder = new JPanel();
+    	holder.setOpaque(false);
     	JPanel key = new JPanel();
         key.setPreferredSize(new Dimension(50, 50));
         if(!entered) {
