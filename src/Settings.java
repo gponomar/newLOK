@@ -22,7 +22,6 @@ import javax.swing.ImageIcon;
 
 public class Settings {
 	public JPanel pnlTitle = new JPanel();
-	//public JPanel pnlsettings = new JPanel();
 	public JPanel backpnl = new JPanel();
 	public Home homepage; 
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
