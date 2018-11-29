@@ -6,12 +6,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,12 +18,12 @@ import javax.swing.SwingConstants;
 
 
 public class Credits {
-	public JPanel pnlTitle = new JPanel();
-	public JPanel pnlcredits = new JPanel(new GridBagLayout());
-	public JPanel backpnl = new JPanel();
-	public Home homepage;
-	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public JButton homeBtn = new JButton(back);
+	public static JPanel pnlTitle = new JPanel();
+	public static JPanel pnlcredits = new JPanel(new GridBagLayout());
+	public static JPanel backpnl = new JPanel();
+	public static Home homepage;
+	public static ImageIcon back = new ImageIcon ("resource/BackButton.png");
+	public static JButton homeBtn = new JButton(back);
 	ImageIcon creditsIcon = new ImageIcon("resource/Credits.png");
 	JLabel labelCredits = new JLabel();
 	JLabel labelName1 = new JLabel("Evan Jameson", SwingConstants.CENTER);
@@ -48,9 +45,7 @@ public class Credits {
 				image = ImageIO.read(new File("resource/MountainBackgroundBig.png"));
 			}
 			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
+			{}
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}
 		};
