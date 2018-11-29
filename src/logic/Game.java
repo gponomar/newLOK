@@ -66,6 +66,9 @@ public class Game {
 	public void setDiff(String val) {
 		difficulty = val;
 	}
+	public String getDiff() {
+		return difficulty;
+	}
 	public static final JLabel labelGame = new JLabel();
 	private Random rand = new Random();
 	

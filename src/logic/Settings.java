@@ -29,9 +29,15 @@ public class Settings {
 	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
 	private ImageIcon settingsIcon = new ImageIcon("resource/Settings.png");
 	private JButton homeBtn = new JButton(back);
+	public JButton getHomeBtn() {
+		return homeBtn;
+	}
 	private JLabel labelSettings = new JLabel(settingsIcon);
 	private String[] diffs = { "Easy", "Medium", "Hard" };
 	private JComboBox selectDiffs = new JComboBox(diffs);
+	public JComboBox getSelectDiffs() {
+		return selectDiffs;
+	}
 	public static final JPanel pnlHolderSettings = new JPanel(new GridBagLayout())
 	{
 		@Override

@@ -47,14 +47,29 @@ public class Home {
     private ImageIcon settingsIcon = new ImageIcon ("resource/SettingsButton.png");
     private ImageIcon scoreIcon = new ImageIcon ("resource/HighScore.png");
     private JButton playBtn = new JButton(playIcon);
+    public JButton getPlayBtn() {
+    	return playBtn;
+    }
     private JButton creditsBtn = new JButton(creditsIcon);
+    public JButton getCreditsBtn() {
+    	return creditsBtn;
+    }
     private JButton settingBtn = new JButton(settingsIcon);
+    public JButton getSettingsBtn() {
+    	return settingBtn;
+    }
     private JButton scoreBtn = new JButton(scoreIcon);
+    public JButton getScoreBtn() {
+    	return scoreBtn;
+    }
     private String diff = "Easy";
 	public void setDiff(String val) {
 		diff = val;
 	}
-
+	public static final Settings settingsPage = new Settings();
+    public static final Credits creditsPage = new Credits();
+    public static final HighScore scorePage = new HighScore();
+    public static final Game gamePage = new Game();
   
     public Home() {
     	frm.pack();
@@ -130,28 +145,24 @@ public class Home {
 
         pnl.add(bigPanel, BorderLayout.NORTH);
 
-        frm.add(pnl);
+    	frm.setContentPane(pnl);
         frm.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
         frm.setVisible(true);
 
         //executes game
-        Game gamePage = new Game();
         gamePage.setHomepage(this);
         playBtn.addActionListener(action -> playBtnAction(gamePage));
         
         //settings page
-        Settings settingsPage = new Settings();
         settingsPage.setHomepage(this);
         settingBtn.addActionListener(action -> settingsBtnAction(settingsPage));
         
         //credits page
-        Credits creditsPage = new Credits();
         creditsPage.setHomepage(this);
         creditsBtn.addActionListener(action -> creditsBtnAction(creditsPage));
         
         //score page
-        HighScore scorePage = new HighScore();
         scorePage.setHomepage(this);
         scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
         
@@ -193,7 +204,6 @@ public class Home {
     
     
 	public static void main(String[] args) {
-        //java.awt.EventQueue.invokeLater(() -> new Home());
 		java.awt.EventQueue.invokeLater(Home::new);
     }
 
