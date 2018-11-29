@@ -37,6 +37,8 @@ public class Home {
         }
     };
     
+	private ImageIcon titleIcon = new ImageIcon("resource/TheLordOfTheKeysTitle3.png");
+	private JLabel labelTitle = new JLabel(titleIcon);
     private ImageIcon playIcon = new ImageIcon ("resource/playButton.png");
     private ImageIcon creditsIcon = new ImageIcon ("resource/CreditsButton.png");
     private ImageIcon settingsIcon = new ImageIcon ("resource/SettingsButton.png");
@@ -77,19 +79,28 @@ public class Home {
     	playIcon = new ImageIcon(playImage);
     	btnPanel.setOpaque(false);
         
-    	JLabel titleLabel = new JLabel();
+    	
+    	
+       	Image titleImage = titleIcon.getImage();
+    	titleImage = titleImage.getScaledInstance(600, 200, Image.SCALE_SMOOTH);
+    	titleIcon = new ImageIcon(titleImage);
+    	labelTitle.setIcon(titleIcon);
+    	titlePanel.add(labelTitle);
+    	
+    	
+    	/*JLabel titleLabel = new JLabel();
         titleLabel.setPreferredSize(new Dimension(600,300));
         BufferedImage titleImg = null;
         try {
             titleImg = ImageIO.read(new File("resource/TheLordOfTheKeysTitle3.png"));
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         
-        Image timg = titleImg.getScaledInstance(600, 125, Image.SCALE_SMOOTH);
+        /*Image timg = titleImg.getScaledInstance(600, 125, Image.SCALE_SMOOTH);
         ImageIcon titleIcon = new ImageIcon(timg);
         titleLabel.setIcon(titleIcon);
-        titlePanel.add(titleLabel);
+        titlePanel.add(titleLabel);*/
         
     	GridBagConstraints gbc = new GridBagConstraints();
     	gbc.fill = GridBagConstraints.HORIZONTAL;
