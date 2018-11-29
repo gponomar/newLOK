@@ -129,7 +129,7 @@ public class HighScore {
     	homepage.frm.repaint();
 	}
 	
-	public ArrayList<ArrayList<String>> getTopScores() {
+	private ArrayList<ArrayList<String>> getTopScores() {
 		ArrayList<ArrayList<String>> answer = new ArrayList<>();
 		ArrayList<String> inner = new ArrayList<>();
 		try
@@ -153,7 +153,8 @@ public class HighScore {
 			answer.add(temp);
 		}
 		
-		Collections.sort(answer, new Comparator<ArrayList<String>>() {
+		
+		Comparator toSort = new Comparator<ArrayList<String>>() {
 			@Override
 			public int compare(ArrayList<String> a, ArrayList<String>b) {
 				if (Integer.parseInt(a.get(0)) > Integer.parseInt((b.get(0))))
@@ -166,11 +167,13 @@ public class HighScore {
 				}
 				else return 0;
 			}
-		});
+		};
+		
+		Collections.sort(answer, toSort);
 		return answer;		
 	}
 	
-	public void setHighScoreLabels() {
+	private void setHighScoreLabels() {
 		ArrayList<ArrayList<String>> highScoreList =  getTopScores();
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +

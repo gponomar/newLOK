@@ -9,12 +9,14 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
 
 
 public class Credits {
@@ -48,7 +50,9 @@ public class Credits {
 				image = ImageIO.read(new File("resource/MountainBackgroundBig.png"));
 			}
 			catch (IOException e)
-			{}
+			{
+				e.printStackTrace();
+			}
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}
 		};

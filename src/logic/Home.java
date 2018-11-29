@@ -196,12 +196,14 @@ public class Home {
     
     
 	public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
+		Runnable toRun = new Runnable() {
             @Override
             public void run() {
             	new Home();
             }
-        });
+        };
+        
+        java.awt.EventQueue.invokeLater(toRun);
     }
 
 }
