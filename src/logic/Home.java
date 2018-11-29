@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Home {
-	public JFrame frm = new JFrame();		
-	public JPanel pnl = new JPanel()
+	public static final JFrame frm = new JFrame();		
+	public static final JPanel pnl = new JPanel()
     {
 		@Override
         public void paintComponent(java.awt.Graphics g)
@@ -37,16 +37,19 @@ public class Home {
         }
     };
     
-    public ImageIcon playIcon = new ImageIcon ("resource/playButton.png");
-    public ImageIcon creditsIcon = new ImageIcon ("resource/CreditsButton.png");
-    public ImageIcon settingsIcon = new ImageIcon ("resource/SettingsButton.png");
-    public ImageIcon scoreIcon = new ImageIcon ("resource/HighScore.png");
-    public JButton playBtn = new JButton(playIcon);
-	public JButton creditsBtn = new JButton(creditsIcon);
-	public JButton settingBtn = new JButton(settingsIcon);
-	public JButton scoreBtn = new JButton(scoreIcon);
-	
-	public Boolean restart = false;
+    private ImageIcon playIcon = new ImageIcon ("resource/playButton.png");
+    private ImageIcon creditsIcon = new ImageIcon ("resource/CreditsButton.png");
+    private ImageIcon settingsIcon = new ImageIcon ("resource/SettingsButton.png");
+    private ImageIcon scoreIcon = new ImageIcon ("resource/HighScore.png");
+    private JButton playBtn = new JButton(playIcon);
+    private JButton creditsBtn = new JButton(creditsIcon);
+    private JButton settingBtn = new JButton(settingsIcon);
+    private JButton scoreBtn = new JButton(scoreIcon);
+    private String diff = "Easy";
+	public void setDiff(String val) {
+		diff = val;
+	}
+
   
     public Home() {
     	frm.pack();
@@ -159,6 +162,7 @@ public class Home {
     
 	// action to be performed when back button is hit
 	private void playBtnAction(Game gamePage) {
+		gamePage.setDiff(diff);
     	frm.remove(pnl);
     	frm.setContentPane(gamePage.pnlHolderGame);
     	gamePage.labelGame.requestFocus();

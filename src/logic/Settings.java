@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -32,7 +33,8 @@ public class Settings {
 	private ImageIcon settingsIcon = new ImageIcon("resource/Settings.png");
 	private JButton homeBtn = new JButton(back);
 	private JLabel labelSettings = new JLabel(settingsIcon);
-	private JSlider difficultySlider = new JSlider(1, 3, 3);
+	private String[] diffs = { "Easy", "Medium", "Hard" };
+	private JComboBox selectDiffs = new JComboBox(diffs);
 	public static final JPanel pnlHolderSettings = new JPanel(new GridBagLayout())
 	{
 		@Override
@@ -72,28 +74,11 @@ public class Settings {
     	pnlTitle.setOpaque(false);
     	pnlHolderSettings.add(pnlTitle, bigGBC);
 		
-    	// add difficulty slider
-		bigGBC.gridx = 0;
+    	// add difficulty combo box
+    	bigGBC.gridx = 0;
 		bigGBC.gridy = 1;
-    	bigGBC.insets = new Insets(70, 2, 2, 30);
-		difficultySlider.setPreferredSize(new Dimension(400, 360));
-	    difficultySlider.setSnapToTicks(true);
-	    difficultySlider.setPaintTrack(true);
-		difficultySlider.setPaintTicks(true);
-		difficultySlider.setPaintLabels(true);
-		Hashtable<Integer, JLabel> position = new Hashtable<>();
-		JLabel easyLabel = new JLabel("Easy");
-		easyLabel.setFont(new Font(easyLabel.getName(), Font.PLAIN, 25));
-		position.put(1,  easyLabel);
-		JLabel mediumLabel = new JLabel("Medium");
-		mediumLabel.setFont(new Font(mediumLabel.getName(), Font.PLAIN, 25));
-		position.put(2,  mediumLabel);
-		JLabel hardLabel = new JLabel("Hard");
-		hardLabel.setFont(new Font(hardLabel.getName(), Font.PLAIN, 25));
-		position.put(3,  hardLabel);
-		difficultySlider.setLabelTable(position);
-		difficultySlider.setOrientation(SwingConstants.HORIZONTAL);
-    	pnlHolderSettings.add(difficultySlider, bigGBC);
+	   	bigGBC.insets = new Insets(90, 2, 2, 30);
+		pnlHolderSettings.add(selectDiffs, bigGBC);
     	
     	// add back button
 		homeBtn.setPreferredSize(new Dimension(100, 80));
@@ -103,7 +88,7 @@ public class Settings {
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 2;
-    	bigGBC.insets = new Insets(280, 2, 2, 30);
+    	bigGBC.insets = new Insets(275, 2, 2, 30);
     	backpnl.setOpaque(false);
         pnlHolderSettings.add(backpnl, bigGBC);
 	     
@@ -112,6 +97,7 @@ public class Settings {
 	
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
+		homepage.setDiff(String.valueOf(selectDiffs.getSelectedItem()));
     	homepage.frm.remove(pnlHolderSettings);
     	homepage.frm.setContentPane(homepage.pnl);
     	homepage.frm.validate();

@@ -61,6 +61,10 @@ public class Game {
 	private String result;
 	private int progress = 0;
 	private JPanel content = new JPanel();
+	private String difficulty;
+	public void setDiff(String val) {
+		difficulty = val;
+	}
 	public static final JLabel labelGame = new JLabel();
 	private Random rand = new Random();
 	

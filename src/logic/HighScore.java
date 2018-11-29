@@ -112,7 +112,7 @@ public class HighScore {
     	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	
-      	bigGBC.insets = new Insets(60, 2, 2, 30);
+      	bigGBC.insets = new Insets(70, 2, 2, 30);
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 2;
     	backpnl.setOpaque(false);
