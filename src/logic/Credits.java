@@ -38,6 +38,7 @@ public class Credits {
 	JLabel labelName7 = new JLabel("");
 	public JPanel pnlHolderCredits = new JPanel(new GridBagLayout())
 	{
+		@Override
 		public void paintComponent(java.awt.Graphics g)
 		{
 			super.paintComponent(g);
@@ -115,17 +116,18 @@ public class Credits {
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 2;
     	backpnl.setOpaque(false);
-        pnlHolderCredits.add(backpnl, bigGBC);
+        pnlHolderCredits.add(backpnl, bigGBC);      
         
-        homeBtn.addActionListener(new ActionListener() {
+        homeBtn.addActionListener(action -> homeBtnAction());
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	homepage.frm.remove(pnlHolderCredits);
-            	homepage.frm.setContentPane(homepage.pnl);
-            	homepage.frm.validate();
-            	homepage.frm.repaint();
-            }
-        });
     }
+	
+	// action to be performed when back button is hit
+	private void homeBtnAction() {
+    	homepage.frm.remove(pnlHolderCredits);
+    	homepage.frm.setContentPane(homepage.pnl);
+    	homepage.frm.validate();
+    	homepage.frm.repaint();
+	}
+
 }

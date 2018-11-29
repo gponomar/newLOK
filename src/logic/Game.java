@@ -36,6 +36,7 @@ public class Game {
 	public JPanel pnlGame = new JPanel();
 	public JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
     {
+		@Override
         public void paintComponent(java.awt.Graphics g)
         {
             super.paintComponent(g);
@@ -111,19 +112,17 @@ public class Game {
     	startRound(finalResultsList);
 
     	// Exit to main menu
-        homeBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-         
-            	homepage.frm.remove(pnlHolderGame);
-            	homepage.frm.setContentPane(homepage.pnl);
-            	homepage.frm.validate();
-            	homepage.frm.repaint();
-            }
-        });
+        homeBtn.addActionListener(action -> homeBtnAction());
         
     }
+	
+	// action to be performed when back button is hit
+	private void homeBtnAction() {
+    	homepage.frm.remove(pnlHolderGame);
+    	homepage.frm.setContentPane(homepage.pnl);
+    	homepage.frm.validate();
+    	homepage.frm.repaint();
+	}
 	
 	// Sentence logic 
 	

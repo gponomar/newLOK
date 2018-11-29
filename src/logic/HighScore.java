@@ -41,6 +41,7 @@ public class HighScore {
 	JLabel blank = new JLabel("");
 	public JPanel pnlHolderHighScore = new JPanel(new GridBagLayout())
 	{
+		@Override
 		public void paintComponent(java.awt.Graphics g)
 		{
 			super.paintComponent(g);
@@ -116,17 +117,17 @@ public class HighScore {
     	backpnl.setOpaque(false);
         pnlHolderHighScore.add(backpnl, bigGBC);
         
-        homeBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	homepage.frm.remove(pnlHolderHighScore);
-            	homepage.frm.setContentPane(homepage.pnl);
-            	homepage.frm.validate();
-            	homepage.frm.repaint();
-            }
-        });
+        homeBtn.addActionListener(action -> homeBtnAction());
     }
+	
+	// action to be performed when back button is hit
+	private void homeBtnAction() {
+    	homepage.frm.remove(pnlHolderHighScore);
+    	homepage.frm.setContentPane(homepage.pnl);
+    	homepage.frm.validate();
+    	homepage.frm.repaint();
+	}
+	
 	public ArrayList<ArrayList<String>> getTopScores() {
 		ArrayList<ArrayList<String>> answer = new ArrayList<ArrayList<String>>();
 		ArrayList<String> inner = new ArrayList<String>();

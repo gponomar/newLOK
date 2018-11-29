@@ -21,6 +21,7 @@ public class Home {
 	public JFrame frm = new JFrame();		
 	public JPanel pnl = new JPanel()
     {
+		@Override
         public void paintComponent(java.awt.Graphics g)
         {
             super.paintComponent(g);
@@ -139,62 +140,57 @@ public class Home {
         //executes game
         Game gamePage = new Game();
         gamePage.homepage = this;
-        playBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	
-            	frm.remove(pnl);
-            	frm.setContentPane(gamePage.pnlHolderGame);
-            	gamePage.labelGame.requestFocus();
-            	frm.validate();
-            	frm.repaint();
-
-            }
-        });
+        playBtn.addActionListener(action -> playBtnAction(gamePage));
         
+        //settings page
         Settings settingsPage = new Settings();
         settingsPage.homepage = this;
-        settingBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	
-            	frm.remove(pnl);
-            	frm.setContentPane(settingsPage.pnlHolderSettings);
-            	frm.validate();
-            	frm.repaint();
-            }
-        });
+        settingBtn.addActionListener(action -> settingsBtnAction(settingsPage));
         
+        //credits page
         Credits creditsPage = new Credits();
         creditsPage.homepage = this;
-        creditsBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	
-            	frm.remove(pnl);
-            	frm.setContentPane(creditsPage.pnlHolderCredits);
-            	frm.validate();
-            	frm.repaint();
-            }
-        });
+        creditsBtn.addActionListener(action -> creditsBtnAction(creditsPage));
         
+        //score page
         HighScore scorePage = new HighScore();
         scorePage.homepage = this;
-        scoreBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	
-            	frm.remove(pnl);
-            	frm.setContentPane(scorePage.pnlHolderHighScore);
-            	frm.validate();
-            	frm.repaint();
-            }
-        });
+        scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
+        
     }
+    
+	// action to be performed when back button is hit
+	private void playBtnAction(Game gamePage) {
+    	frm.remove(pnl);
+    	frm.setContentPane(gamePage.pnlHolderGame);
+    	gamePage.labelGame.requestFocus();
+    	frm.validate();
+    	frm.repaint();
+	}
+	
+	// action to be performed when back button is hit
+	private void creditsBtnAction(Credits creditsPage) {
+    	frm.remove(pnl);
+    	frm.setContentPane(creditsPage.pnlHolderCredits);
+    	frm.validate();
+    	frm.repaint();
+	}
+	
+	// action to be performed when back button is hit
+	private void scoreBtnAction(HighScore scorePage) {
+    	frm.remove(pnl);
+    	frm.setContentPane(scorePage.pnlHolderHighScore);
+    	frm.validate();
+    	frm.repaint();
+	}
+	
+	// action to be performed when back button is hit
+	private void settingsBtnAction(Settings settingsPage) {
+    	frm.remove(pnl);
+    	frm.setContentPane(settingsPage.pnlHolderSettings);
+    	frm.validate();
+    	frm.repaint();
+	}
     
     
 	public static void main(String[] args) {

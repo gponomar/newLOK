@@ -34,6 +34,7 @@ public class Settings {
 	public JSlider difficultySlider = new JSlider(1, 3, 3);
 	public JPanel pnlHolderSettings = new JPanel(new GridBagLayout())
 	{
+		@Override
 		public void paintComponent(java.awt.Graphics g)
 		{
 			super.paintComponent(g);
@@ -103,17 +104,15 @@ public class Settings {
     	bigGBC.insets = new Insets(280, 2, 2, 30);
     	backpnl.setOpaque(false);
         pnlHolderSettings.add(backpnl, bigGBC);
-		
 	     
-	    homeBtn.addActionListener(new ActionListener() {
-
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	            	homepage.frm.remove(pnlHolderSettings);
-	            	homepage.frm.setContentPane(homepage.pnl);
-	            	homepage.frm.validate();
-	            	homepage.frm.repaint();
-	            }
-	        });
+	    homeBtn.addActionListener(action -> homeBtnAction());
 	 }
+	
+	// action to be performed when back button is hit
+	private void homeBtnAction() {
+    	homepage.frm.remove(pnlHolderSettings);
+    	homepage.frm.setContentPane(homepage.pnl);
+    	homepage.frm.validate();
+    	homepage.frm.repaint();
+	}
 }
