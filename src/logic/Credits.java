@@ -105,7 +105,6 @@ public class Credits {
         homeBtn.setPreferredSize(new Dimension(100, 80));
     	Image backImage = back.getImage();
     	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	back = new ImageIcon(backImage);
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	
     	bigGBC.gridx = 0;

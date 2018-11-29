@@ -137,7 +137,7 @@ public class Home {
 
         //executes game
         Game gamePage = new Game();
-        gamePage.homepage = this;
+        gamePage.setHomepage(this);// = this;
         playBtn.addActionListener(action -> playBtnAction(gamePage));
         
         //settings page

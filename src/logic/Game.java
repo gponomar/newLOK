@@ -30,9 +30,12 @@ import javax.swing.border.EtchedBorder;
 
 public class Game {
 	
-	public Home homepage;
-	public JPanel pnlGame = new JPanel();
-	public JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
+	private Home homepage;
+	public void setHomepage(Home val) {
+		homepage = val;
+	}
+	private JPanel pnlGame = new JPanel();
+	public static final JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
     {
 		@Override
         public void paintComponent(java.awt.Graphics g)
@@ -50,14 +53,16 @@ public class Game {
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         }
     };
-	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public JButton homeBtn = new JButton(back);
-	public HashMap<Integer, ArrayList<String>> lengthMap;
-	public int sentLength=20, diff = 5;
-	public String result;
-	public int progress = 0;
-	public JPanel content = new JPanel();
-	public JLabel labelGame = new JLabel();
+	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
+	private JButton homeBtn = new JButton(back);
+	private HashMap<Integer, ArrayList<String>> lengthMap;
+	private int sentLength=20;
+	private int diff = 5;
+	private String result;
+	private int progress = 0;
+	private JPanel content = new JPanel();
+	public static final JLabel labelGame = new JLabel();
+	private Random rand = new Random();
 	
 	public Game() {
 		
@@ -70,7 +75,6 @@ public class Game {
         homeBtn.setPreferredSize(new Dimension(100, 80));
     	Image backImage = back.getImage();
     	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	back = new ImageIcon(backImage);
         
         labelGame.requestFocus();
         labelGame.addKeyListener(new SimpleKeyListener());
@@ -106,7 +110,7 @@ public class Game {
         }
         
         // Start the game
-        ArrayList<String> finalResultsList = new ArrayList<String>(getCorrectLengthSentences());       
+        ArrayList<String> finalResultsList = new ArrayList<>(getCorrectLengthSentences());       
     	startRound(finalResultsList);
 
     	// Exit to main menu
@@ -126,7 +130,7 @@ public class Game {
 	
     //picking out sentences from the book
     private ArrayList<String> getCorrectLengthSentences() {
-    	ArrayList<String> resultsList = new ArrayList<String>();
+    	ArrayList<String> resultsList = new ArrayList<>();
         for(int i=sentLength-diff; i<sentLength+diff; i++) {
         	if(lengthMap.containsKey(i)) {
         		for(String s : lengthMap.get(i)) {
@@ -138,11 +142,10 @@ public class Game {
     }
     private void startRound(ArrayList<String> finalResultsList) {
         progress=0;
-        if(finalResultsList.size()!=0) {
+        if(!finalResultsList.isEmpty()) {
         	if(finalResultsList.size()==1) {
         		result=finalResultsList.get(0);
         	} else {
-        		Random rand = new Random();
         		result=finalResultsList.get(rand.nextInt(finalResultsList.size()) + 0);
         	}
         }
@@ -154,7 +157,6 @@ public class Game {
 
         @Override
         public void keyTyped(KeyEvent e) {
-        	System.out.println(String.valueOf(e.getKeyChar()));
             if(e.getKeyChar()==result.charAt(progress)) {
             	progress++;
             	setContent(result, progress);
@@ -167,10 +169,12 @@ public class Game {
 
         @Override
         public void keyPressed(KeyEvent e) {
+        	// no changes needed 
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
+        	// no changes needed 
         }
     }
     
@@ -191,10 +195,7 @@ public class Game {
     }
     
     public boolean approxEquals(double a, double b, double diff) {
-    	if(Math.abs(a-b)<=diff) {
-    		return true;
-    	}
-    	return false;
+    	return (Math.abs(a-b)<=diff);
     }
     
     private JPanel makeKey(char c, boolean entered) {
