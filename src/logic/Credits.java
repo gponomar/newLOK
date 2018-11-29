@@ -16,10 +16,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import java.util.logging.Logger;
+
 
 
 
 public class Credits {
+	private static final Logger LOGGER = Logger.getLogger(Credits.class.getName());
 	private JPanel pnlTitle = new JPanel();
 	private JPanel pnlcredits = new JPanel(new GridBagLayout());
 	private JPanel backpnl = new JPanel();
@@ -51,7 +54,7 @@ public class Credits {
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				LOGGER.severe("File not found");
 			}
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}

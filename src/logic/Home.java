@@ -8,6 +8,8 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Home {
+	private static final Logger LOGGER = Logger.getLogger(Home.class.getName());
 	public static final JFrame frm = new JFrame();		
 	public static final JPanel pnl = new JPanel()
     {
@@ -31,7 +34,7 @@ public class Home {
             catch (IOException e)
             {
 
-                e.printStackTrace();
+            	LOGGER.severe("File not found");
             }
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         }
@@ -79,28 +82,11 @@ public class Home {
     	playIcon = new ImageIcon(playImage);
     	btnPanel.setOpaque(false);
         
-    	
-    	
        	Image titleImage = titleIcon.getImage();
     	titleImage = titleImage.getScaledInstance(600, 200, Image.SCALE_SMOOTH);
     	titleIcon = new ImageIcon(titleImage);
     	labelTitle.setIcon(titleIcon);
     	titlePanel.add(labelTitle);
-    	
-    	
-    	/*JLabel titleLabel = new JLabel();
-        titleLabel.setPreferredSize(new Dimension(600,300));
-        BufferedImage titleImg = null;
-        try {
-            titleImg = ImageIO.read(new File("resource/TheLordOfTheKeysTitle3.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        
-        /*Image timg = titleImg.getScaledInstance(600, 125, Image.SCALE_SMOOTH);
-        ImageIcon titleIcon = new ImageIcon(timg);
-        titleLabel.setIcon(titleIcon);
-        titlePanel.add(titleLabel);*/
         
     	GridBagConstraints gbc = new GridBagConstraints();
     	gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -207,14 +193,7 @@ public class Home {
     
     
 	public static void main(String[] args) {
-		Runnable toRun = new Runnable() {
-            @Override
-            public void run() {
-            	new Home();
-            }
-        };
-        
-        java.awt.EventQueue.invokeLater(toRun);
+        java.awt.EventQueue.invokeLater(() -> {new Home();});
     }
 
 }

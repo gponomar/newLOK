@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -29,7 +30,7 @@ import javax.swing.border.EtchedBorder;
 
 
 public class Game {
-	
+	private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 	private Home homepage;
 	public void setHomepage(Home val) {
 		homepage = val;
@@ -48,7 +49,7 @@ public class Game {
             }
             catch (IOException e)
             {
-                e.printStackTrace();
+            	LOGGER.severe("File not found");
             }
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         }
@@ -92,7 +93,7 @@ public class Game {
 
 			iterator.setText(source);
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			LOGGER.severe("File not found");
 			return;
 		}
         int start = iterator.first();

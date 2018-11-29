@@ -9,6 +9,8 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -17,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class Settings {
+	private static final Logger LOGGER = Logger.getLogger(Settings.class.getName());
 	private JPanel pnlTitle = new JPanel();
 	private JPanel backpnl = new JPanel();
 	private Home homepage;
@@ -42,7 +45,7 @@ public class Settings {
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				LOGGER.severe("File not found");
 			}
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -22,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HighScore {
+	private static final Logger LOGGER = Logger.getLogger(HighScore.class.getName());
 	private JPanel pnlTitle = new JPanel();
 	private JPanel pnlHighScores = new JPanel(new GridBagLayout());
 	private JPanel backpnl = new JPanel();
@@ -53,7 +55,7 @@ public class HighScore {
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				LOGGER.severe("File not found");
 			}
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}
@@ -142,7 +144,7 @@ public class HighScore {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			LOGGER.severe("File not found");
 		}
 		ArrayList<String> temp;
 		for(int i = 0; i<= inner.size()-1; i+=2)
@@ -153,23 +155,18 @@ public class HighScore {
 			answer.add(temp);
 		}
 		
-		
-		Comparator toSort = new Comparator<ArrayList<String>>() {
-			@Override
-			public int compare(ArrayList<String> a, ArrayList<String>b) {
-				if (Integer.parseInt(a.get(0)) > Integer.parseInt((b.get(0))))
-				{
-					return -1;
-				}
-				else if (Integer.parseInt(a.get(0)) < Integer.parseInt((b.get(0))))
-				{
-					return 1;
-				}
-				else return 0;
+		Collections.sort(answer, (a, b) -> {
+			if (Integer.parseInt(a.get(0)) > Integer.parseInt((b.get(0))))
+			{
+				return -1;
 			}
-		};
+			else if (Integer.parseInt(a.get(0)) < Integer.parseInt((b.get(0))))
+			{
+				return 1;
+			}
+			else return 0;
+		});
 		
-		Collections.sort(answer, toSort);
 		return answer;		
 	}
 	
