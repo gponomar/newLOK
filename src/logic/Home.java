@@ -1,49 +1,21 @@
+package logic;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.text.BreakIterator;
-import java.util.Scanner;
-
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
-import java.lang.Thread;
 
 public class Home {
 	public JFrame frm = new JFrame();		
@@ -79,7 +51,6 @@ public class Home {
   
     public Home() {
     	frm.pack();
-    	//frm.setSize(720,512);
     	JPanel titlePanel = new JPanel();
     	titlePanel.setOpaque(false);
     	JPanel btnPanel = new JPanel(new GridBagLayout());
@@ -163,7 +134,6 @@ public class Home {
         frm.add(pnl);
         frm.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-        //frm.pack();
         frm.setVisible(true);
 
         //executes game
@@ -176,7 +146,6 @@ public class Home {
             	
             	frm.remove(pnl);
             	frm.setContentPane(gamePage.pnlHolderGame);
-            	//frm.setContentPane(gamePage.pnlHolderGame);
             	gamePage.labelGame.requestFocus();
             	frm.validate();
             	frm.repaint();

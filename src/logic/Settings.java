@@ -1,3 +1,5 @@
+package logic;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
