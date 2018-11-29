@@ -193,7 +193,8 @@ public class Home {
     
     
 	public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(() -> {new Home();});
+        //java.awt.EventQueue.invokeLater(() -> new Home());
+		java.awt.EventQueue.invokeLater(Home::new);
     }
 
 }
