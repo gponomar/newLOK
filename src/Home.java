@@ -100,7 +100,7 @@ public class Home {
     	playIcon = new ImageIcon(playImage);
         scoreBtn.setPreferredSize(new Dimension(100, 100));
     	Image scoreImage = playIcon.getImage();
-    	scoreImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+    	scoreImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
     	playIcon = new ImageIcon(playImage);
     	btnPanel.setOpaque(false);
         
