@@ -22,15 +22,18 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class Settings {
-	public JPanel pnlTitle = new JPanel();
-	public JPanel backpnl = new JPanel();
-	public Home homepage; 
-	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public ImageIcon settingsIcon = new ImageIcon("resource/Settings.png");
-	public JButton homeBtn = new JButton(back);
-	JLabel labelSettings = new JLabel(settingsIcon);
-	public JSlider difficultySlider = new JSlider(1, 3, 3);
-	public JPanel pnlHolderSettings = new JPanel(new GridBagLayout())
+	private JPanel pnlTitle = new JPanel();
+	private JPanel backpnl = new JPanel();
+	private Home homepage;
+	public void setHomepage(Home val) {
+		homepage = val;
+	}
+	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
+	private ImageIcon settingsIcon = new ImageIcon("resource/Settings.png");
+	private JButton homeBtn = new JButton(back);
+	private JLabel labelSettings = new JLabel(settingsIcon);
+	private JSlider difficultySlider = new JSlider(1, 3, 3);
+	public static final JPanel pnlHolderSettings = new JPanel(new GridBagLayout())
 	{
 		@Override
 		public void paintComponent(java.awt.Graphics g)
@@ -48,6 +51,7 @@ public class Settings {
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}
 		};
+		
 	public Settings() {
 		
     	GridBagConstraints gbcSettings = new GridBagConstraints();
@@ -77,7 +81,7 @@ public class Settings {
 	    difficultySlider.setPaintTrack(true);
 		difficultySlider.setPaintTicks(true);
 		difficultySlider.setPaintLabels(true);
-		Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
+		Hashtable<Integer, JLabel> position = new Hashtable<>();
 		JLabel easyLabel = new JLabel("Easy");
 		easyLabel.setFont(new Font(easyLabel.getName(), Font.PLAIN, 25));
 		position.put(1,  easyLabel);

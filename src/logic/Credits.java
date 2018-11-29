@@ -18,22 +18,25 @@ import javax.swing.SwingConstants;
 
 
 public class Credits {
-	public static JPanel pnlTitle = new JPanel();
-	public static JPanel pnlcredits = new JPanel(new GridBagLayout());
-	public static JPanel backpnl = new JPanel();
-	public static Home homepage;
-	public static ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public static JButton homeBtn = new JButton(back);
-	ImageIcon creditsIcon = new ImageIcon("resource/Credits.png");
-	JLabel labelCredits = new JLabel();
-	JLabel labelName1 = new JLabel("Evan Jameson", SwingConstants.CENTER);
-	JLabel labelName2 = new JLabel("Ryan Nevils", SwingConstants.CENTER);
-	JLabel labelName3 = new JLabel("Ishan Pandey", SwingConstants.CENTER);
-	JLabel labelName4 = new JLabel("Grant Parton", SwingConstants.CENTER);
-	JLabel labelName5 = new JLabel("Grace Ponomaroff", SwingConstants.CENTER);
-	JLabel labelName6 = new JLabel("Kiley Roberson", SwingConstants.CENTER);
-	JLabel labelName7 = new JLabel("");
-	public JPanel pnlHolderCredits = new JPanel(new GridBagLayout())
+	private JPanel pnlTitle = new JPanel();
+	private JPanel pnlcredits = new JPanel(new GridBagLayout());
+	private JPanel backpnl = new JPanel();
+	private Home homepage;
+	public void setHomepage(Home val) {
+		homepage = val;
+	}
+	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
+	private JButton homeBtn = new JButton(back);
+	private ImageIcon creditsIcon = new ImageIcon("resource/Credits.png");
+	private JLabel labelCredits = new JLabel();
+	private JLabel labelName1 = new JLabel("Evan Jameson", SwingConstants.CENTER);
+	private JLabel labelName2 = new JLabel("Ryan Nevils", SwingConstants.CENTER);
+	private JLabel labelName3 = new JLabel("Ishan Pandey", SwingConstants.CENTER);
+	private JLabel labelName4 = new JLabel("Grant Parton", SwingConstants.CENTER);
+	private JLabel labelName5 = new JLabel("Grace Ponomaroff", SwingConstants.CENTER);
+	private JLabel labelName6 = new JLabel("Kiley Roberson", SwingConstants.CENTER);
+	private JLabel labelName7 = new JLabel("");
+	public static final JPanel pnlHolderCredits = new JPanel(new GridBagLayout())
 	{
 		@Override
 		public void paintComponent(java.awt.Graphics g)
@@ -49,7 +52,8 @@ public class Credits {
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}
 		};
-	public Credits() {
+	
+		public Credits() {
     	GridBagConstraints gbcNames = new GridBagConstraints();
     	gbcNames.fill = GridBagConstraints.HORIZONTAL;
     	GridBagConstraints bigGBC = new GridBagConstraints();

@@ -22,22 +22,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HighScore {
-	public JPanel pnlTitle = new JPanel();
-	public JPanel pnlHighScores = new JPanel(new GridBagLayout());
-	public JPanel backpnl = new JPanel();
-	public Home homepage;
-	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public JButton homeBtn = new JButton(back);
-	ImageIcon highScoreIcon = new ImageIcon("resource/HighScore.png");
-	JLabel labelHighScore = new JLabel(highScoreIcon);
+	private JPanel pnlTitle = new JPanel();
+	private JPanel pnlHighScores = new JPanel(new GridBagLayout());
+	private JPanel backpnl = new JPanel();
+	private Home homepage;
+	public void setHomepage(Home val) {
+		homepage = val;
+	}
+	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
+	private JButton homeBtn = new JButton(back);
+	private ImageIcon highScoreIcon = new ImageIcon("resource/HighScore.png");
+	private JLabel labelHighScore = new JLabel(highScoreIcon);
 
-	JLabel score1 = new JLabel("1.   " + "-");
-	JLabel score2 = new JLabel("2.   " + "-");
-	JLabel score3 = new JLabel("3.   " + "-");
-	JLabel score4 = new JLabel("4.   " + "-");
-	JLabel score5 = new JLabel("5.   " + "-");
-	JLabel blank = new JLabel("");
-	public JPanel pnlHolderHighScore = new JPanel(new GridBagLayout())
+	private JLabel score1 = new JLabel("1.   " + "-");
+	private JLabel score2 = new JLabel("2.   " + "-");
+	private JLabel score3 = new JLabel("3.   " + "-");
+	private JLabel score4 = new JLabel("4.   " + "-");
+	private JLabel score5 = new JLabel("5.   " + "-");
+	private JLabel blank = new JLabel("");
+	public static final JPanel pnlHolderHighScore = new JPanel(new GridBagLayout())
 	{
 		@Override
 		public void paintComponent(java.awt.Graphics g)
@@ -55,6 +58,7 @@ public class HighScore {
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}
 		};
+		
 	public HighScore() {
 		
 		setHighScoreLabels();
@@ -126,8 +130,8 @@ public class HighScore {
 	}
 	
 	public ArrayList<ArrayList<String>> getTopScores() {
-		ArrayList<ArrayList<String>> answer = new ArrayList<ArrayList<String>>();
-		ArrayList<String> inner = new ArrayList<String>();
+		ArrayList<ArrayList<String>> answer = new ArrayList<>();
+		ArrayList<String> inner = new ArrayList<>();
 		try
 		{
 			Scanner scanner = new Scanner(new File("resource/HighScoreList"));
@@ -140,10 +144,10 @@ public class HighScore {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		ArrayList<String> temp = new  ArrayList<String>();
+		ArrayList<String> temp;
 		for(int i = 0; i<= inner.size()-1; i+=2)
 		{
-			temp = new ArrayList<String>();
+			temp = new ArrayList<>();
 			temp.add(inner.get(i));
 			temp.add(inner.get(i+1));
 			answer.add(temp);
@@ -167,9 +171,7 @@ public class HighScore {
 	}
 	
 	public void setHighScoreLabels() {
-		ArrayList<ArrayList<String>> highScoreList = 
-				new ArrayList<ArrayList<String>>();
-		highScoreList = getTopScores();
+		ArrayList<ArrayList<String>> highScoreList =  getTopScores();
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +
 				"   " + highScoreList.get(0).get(1));

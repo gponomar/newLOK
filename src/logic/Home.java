@@ -137,22 +137,22 @@ public class Home {
 
         //executes game
         Game gamePage = new Game();
-        gamePage.setHomepage(this);// = this;
+        gamePage.setHomepage(this);
         playBtn.addActionListener(action -> playBtnAction(gamePage));
         
         //settings page
         Settings settingsPage = new Settings();
-        settingsPage.homepage = this;
+        settingsPage.setHomepage(this);
         settingBtn.addActionListener(action -> settingsBtnAction(settingsPage));
         
         //credits page
         Credits creditsPage = new Credits();
-        creditsPage.homepage = this;
+        creditsPage.setHomepage(this);
         creditsBtn.addActionListener(action -> creditsBtnAction(creditsPage));
         
         //score page
         HighScore scorePage = new HighScore();
-        scorePage.homepage = this;
+        scorePage.setHomepage(this);
         scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
         
     }
@@ -192,7 +192,6 @@ public class Home {
     
     
 	public static void main(String[] args) {
-		//new Home();
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
