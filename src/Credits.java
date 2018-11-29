@@ -71,7 +71,7 @@ public class Credits {
     	pnlTitle.setOpaque(false);
     	pnlHolderCredits.add(pnlTitle, bigGBC);
     	
-    	bigGBC.insets = new Insets(30, 2, 2, 30);
+    	bigGBC.insets = new Insets(20, 2, 2, 30);
     	pnlcredits.setOpaque(false);
 		labelName1.setFont(new Font(labelName1.getName(), Font.PLAIN, 50));
     	gbcNames.gridx = 0;

@@ -31,13 +31,12 @@ public class HighScore {
 	public JButton homeBtn = new JButton(back);
 	ImageIcon highScoreIcon = new ImageIcon("resource/HighScore.png");
 	JLabel labelHighScore = new JLabel(highScoreIcon);
-	ArrayList<ArrayList<String>> highScoreList = 
-			new ArrayList<ArrayList<String>>();
-	JLabel score1 = new JLabel("1.	" + "Score1");
-	JLabel score2 = new JLabel("2.	" + "Score2");
-	JLabel score3 = new JLabel("3.	" + "Score3");
-	JLabel score4 = new JLabel("4.	" + "Score4");
-	JLabel score5 = new JLabel("5.	" + "Score5");
+
+	JLabel score1 = new JLabel("1.   " + "-");
+	JLabel score2 = new JLabel("2.   " + "-");
+	JLabel score3 = new JLabel("3.   " + "-");
+	JLabel score4 = new JLabel("4.   " + "-");
+	JLabel score5 = new JLabel("5.   " + "-");
 	JLabel blank = new JLabel("");
 	public JPanel pnlHolderHighScore = new JPanel(new GridBagLayout())
 	{
@@ -57,23 +56,9 @@ public class HighScore {
 			}
 		};
 	public HighScore() {
-		highScoreList = getTopScores();
 		
-		score1.setText("1.   " +
-				highScoreList.get(0).get(0) +
-				"   " + highScoreList.get(0).get(1));
-		score2.setText("2.   " +
-				highScoreList.get(1).get(0)+ 
-				"   " + highScoreList.get(1).get(1));
-		score3.setText("3.   " +
-				highScoreList.get(2).get(0)+ 
-				"   " + highScoreList.get(2).get(1));
-		score4.setText("4.   " +
-				highScoreList.get(3).get(0)+ 
-				"   " + highScoreList.get(3).get(1));
-		score5.setText("5.   " +
-				highScoreList.get(4).get(0)+ 
-				"   " + highScoreList.get(4).get(1));
+		setHighScoreLabels();
+		
     	GridBagConstraints gbcNames = new GridBagConstraints();
     	gbcNames.fill = GridBagConstraints.HORIZONTAL;
     	GridBagConstraints bigGBC = new GridBagConstraints();
@@ -91,7 +76,7 @@ public class HighScore {
     	pnlTitle.setOpaque(false);
     	pnlHolderHighScore.add(pnlTitle, bigGBC);
     	
-    	bigGBC.insets = new Insets(60, 2, 2, 30);
+    	bigGBC.insets = new Insets(20, 2, 2, 30);
     	pnlHighScores.setOpaque(false);
 		score1.setFont(new Font(score1.getName(), Font.PLAIN, 50));
     	gbcNames.gridx = 0;
@@ -124,6 +109,7 @@ public class HighScore {
     	back = new ImageIcon(backImage);
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	
+      	bigGBC.insets = new Insets(60, 2, 2, 30);
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 2;
     	backpnl.setOpaque(false);
@@ -150,9 +136,8 @@ public class HighScore {
 			{
 				String line = scanner.next();
 				inner.add(line);
-				//System.out.println(line);
-				
 			}
+			scanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -164,10 +149,6 @@ public class HighScore {
 			temp.add(inner.get(i+1));
 			answer.add(temp);
 		}
-		//for(int j = 0; j< answer.size(); j++)
-		//{
-		//	System.out.printf("Before %d: %s %s\n", j, answer.get(j).get(0), answer.get(j).get(1));
-		//}
 		
 		Collections.sort(answer, new Comparator<ArrayList<String>>() {
 			@Override
@@ -183,12 +164,28 @@ public class HighScore {
 				else return 0;
 			}
 		});
-		//for(int j = 0; j< answer.size(); j++)
-		//{
-		//	System.out.printf("After %d: %s %s\n", j, answer.get(j).get(0), answer.get(j).get(1));
-		//}
-		return answer;
-		
+		return answer;		
+	}
+	
+	public void setHighScoreLabels() {
+		ArrayList<ArrayList<String>> highScoreList = 
+				new ArrayList<ArrayList<String>>();
+		highScoreList = getTopScores();
+		score1.setText("1.   " +
+				highScoreList.get(0).get(0) +
+				"   " + highScoreList.get(0).get(1));
+		score2.setText("2.   " +
+				highScoreList.get(1).get(0)+ 
+				"   " + highScoreList.get(1).get(1));
+		score3.setText("3.   " +
+				highScoreList.get(2).get(0)+ 
+				"   " + highScoreList.get(2).get(1));
+		score4.setText("4.   " +
+				highScoreList.get(3).get(0)+ 
+				"   " + highScoreList.get(3).get(1));
+		score5.setText("5.   " +
+				highScoreList.get(4).get(0)+ 
+				"   " + highScoreList.get(4).get(1));
 	}
 
 }
