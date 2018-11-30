@@ -16,6 +16,6 @@ public class TestPlayBtn {
 		test.getPlayBtn().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
 		String newClass = String.valueOf(test.frm.getContentPane().getClass());
-		assertEquals("class logic.Game", newClass.substring(0, newClass.indexOf("$")));
+		assertEquals("class logic.Game", newClass.substring(0, newClass.indexOf('$')));
 	}
 }

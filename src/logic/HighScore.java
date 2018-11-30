@@ -1,6 +1,5 @@
 package logic;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HighScore {
+	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(HighScore.class.getName());
 	private JPanel pnlTitle = new JPanel();
 	private JPanel pnlHighScores = new JPanel(new GridBagLayout());
@@ -30,8 +30,7 @@ public class HighScore {
 	public void setHomepage(Home val) {
 		homepage = val;
 	}
-	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	private JButton homeBtn = new JButton(back);
+	private JButton homeBtn;
 	private ImageIcon highScoreIcon = new ImageIcon("resource/HighScore.png");
 	private JLabel labelHighScore = new JLabel(highScoreIcon);
 
@@ -108,9 +107,8 @@ public class HighScore {
     	bigGBC.gridy = 1;
         pnlHolderHighScore.add(pnlHighScores, bigGBC);
         
-        homeBtn.setPreferredSize(new Dimension(100, 80));
-    	Image backImage = back.getImage();
-    	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+		DrawnButton dbBack = btnFactory.getButton("BACK");
+		homeBtn = dbBack.draw();
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	
       	bigGBC.insets = new Insets(70, 2, 2, 30);

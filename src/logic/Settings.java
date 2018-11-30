@@ -1,7 +1,6 @@
 package logic;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -19,6 +18,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class Settings {
+	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Settings.class.getName());
 	private JPanel pnlTitle = new JPanel();
 	private JPanel backpnl = new JPanel();
@@ -26,9 +26,8 @@ public class Settings {
 	public void setHomepage(Home val) {
 		homepage = val;
 	}
-	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
 	private ImageIcon settingsIcon = new ImageIcon("resource/Settings.png");
-	private JButton homeBtn = new JButton(back);
+	private JButton homeBtn;
 	public JButton getHomeBtn() {
 		return homeBtn;
 	}
@@ -84,10 +83,8 @@ public class Settings {
 		pnlHolderSettings.add(selectDiffs, bigGBC);
     	
     	// add back button
-		homeBtn.setPreferredSize(new Dimension(100, 80));
-    	Image backImage = back.getImage();
-    	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	back = new ImageIcon(backImage);
+		DrawnButton dbBack = btnFactory.getButton("BACK");
+		homeBtn = dbBack.draw();
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 2;

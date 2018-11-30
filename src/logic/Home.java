@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Home {
+	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Home.class.getName());
 	public static final JFrame frm = new JFrame();		
 	public static final JPanel pnl = new JPanel()
@@ -42,25 +42,25 @@ public class Home {
     
 	private ImageIcon titleIcon = new ImageIcon("resource/TheLordOfTheKeysTitle3.png");
 	private JLabel labelTitle = new JLabel(titleIcon);
-    private ImageIcon playIcon = new ImageIcon ("resource/playButton.png");
-    private ImageIcon creditsIcon = new ImageIcon ("resource/CreditsButton.png");
-    private ImageIcon settingsIcon = new ImageIcon ("resource/SettingsButton.png");
-    private ImageIcon scoreIcon = new ImageIcon ("resource/HighScore.png");
-    private JButton playBtn = new JButton(playIcon);
+	private JButton playBtn;
+	//private DrawnButton dbPlay = btnFactory.getButton("PLAY");
     public JButton getPlayBtn() {
     	return playBtn;
     }
-    private JButton creditsBtn = new JButton(creditsIcon);
+	private JButton creditsBtn;
+	//private DrawnButton dbCredits = btnFactory.getButton("CREDITS");
     public JButton getCreditsBtn() {
     	return creditsBtn;
     }
-    private JButton settingBtn = new JButton(settingsIcon);
+	private JButton settingBtn;
+	//private DrawnButton dbSettings = btnFactory.getButton("SETTINGS");
     public JButton getSettingsBtn() {
     	return settingBtn;
     }
-    private JButton scoreBtn = new JButton(scoreIcon);
+    private JButton scoreBtn;
+	//private DrawnButton dbScore = btnFactory.getButton("SCORES");
     public JButton getScoreBtn() {
-    	return scoreBtn;
+    	return scoreBtn; 
     }
     private String diff = "Easy";
 	public void setDiff(String val) {
@@ -78,23 +78,17 @@ public class Home {
     	JPanel btnPanel = new JPanel(new GridBagLayout());
     	JPanel bigPanel = new JPanel(new GridBagLayout());
     	pnl.setPreferredSize(new Dimension(720, 512));
-    	    
-        playBtn.setPreferredSize(new Dimension(100, 100));
-    	Image playImage = playIcon.getImage();
-    	playImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	playIcon = new ImageIcon(playImage);
-        creditsBtn.setPreferredSize(new Dimension(100, 100));
-    	Image creditsImage = playIcon.getImage();
-    	creditsImage.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
-    	playIcon = new ImageIcon(playImage);
-        settingBtn.setPreferredSize(new Dimension(100, 100));
-    	Image settingsImage = playIcon.getImage();
-    	settingsImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	playIcon = new ImageIcon(playImage);
-        scoreBtn.setPreferredSize(new Dimension(100, 100));
-    	Image scoreImage = playIcon.getImage();
-    	scoreImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-    	playIcon = new ImageIcon(playImage);
+    	
+    	DrawnButton dbPlay = btnFactory.getButton("PLAY");
+    	DrawnButton dbCredits = btnFactory.getButton("CREDITS");
+    	DrawnButton dbSettings = btnFactory.getButton("SETTINGS");
+    	DrawnButton dbScore = btnFactory.getButton("SCORES");
+
+    	playBtn = dbPlay.draw();
+    	settingBtn = dbSettings.draw();
+    	creditsBtn = dbCredits.draw();
+    	scoreBtn = dbScore.draw();
+    	
     	btnPanel.setOpaque(false);
         
        	Image titleImage = titleIcon.getImage();
@@ -186,7 +180,7 @@ public class Home {
     	frm.repaint();
 	}
 	
-	// action to be performed when back button is hit
+	// action to be performed when back button is hit 
 	private void scoreBtnAction(HighScore scorePage) {
     	frm.remove(pnl);
     	frm.setContentPane(scorePage.pnlHolderHighScore);

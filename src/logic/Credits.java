@@ -9,7 +9,6 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,9 +18,8 @@ import javax.swing.SwingConstants;
 import java.util.logging.Logger;
 
 
-
-
 public class Credits {
+	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Credits.class.getName());
 	private JPanel pnlTitle = new JPanel();
 	private JPanel pnlcredits = new JPanel(new GridBagLayout());
@@ -30,8 +28,7 @@ public class Credits {
 	public void setHomepage(Home val) {
 		homepage = val;
 	}
-	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	private JButton homeBtn = new JButton(back);
+	private JButton homeBtn;
 	private ImageIcon creditsIcon = new ImageIcon("resource/Credits.png");
 	private JLabel labelCredits = new JLabel();
 	private JLabel labelName1 = new JLabel("Evan Jameson", SwingConstants.CENTER);
@@ -113,9 +110,8 @@ public class Credits {
     	bigGBC.gridy = 1;
         pnlHolderCredits.add(pnlcredits, bigGBC);
         
-        homeBtn.setPreferredSize(new Dimension(100, 80));
-    	Image backImage = back.getImage();
-    	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+		DrawnButton dbBack = btnFactory.getButton("BACK");
+		homeBtn = dbBack.draw();
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	
     	bigGBC.gridx = 0;

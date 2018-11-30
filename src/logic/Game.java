@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -22,7 +21,6 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,6 +28,7 @@ import javax.swing.border.EtchedBorder;
 
 
 public class Game {
+	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 	private Home homepage;
 	public void setHomepage(Home val) {
@@ -54,8 +53,8 @@ public class Game {
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         }
     };
-	private ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	private JButton homeBtn = new JButton(back);
+
+	private JButton homeBtn;
 	private HashMap<Integer, ArrayList<String>> lengthMap;
 	private int sentLength=20;
 	private int diff = 5;
@@ -76,13 +75,12 @@ public class Game {
 		
 		//Formatting
 		content.setOpaque(false);
+		DrawnButton dbBack = btnFactory.getButton("BACK");
+		homeBtn = dbBack.draw();
         pnlGame.add(homeBtn, BorderLayout.WEST);
         pnlGame.setOpaque(false);
         pnlHolderGame.add(pnlGame);
         pnlHolderGame.add(labelGame);
-        homeBtn.setPreferredSize(new Dimension(100, 80));
-    	Image backImage = back.getImage();
-    	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
         
         labelGame.requestFocus();
         labelGame.addKeyListener(new SimpleKeyListener());
