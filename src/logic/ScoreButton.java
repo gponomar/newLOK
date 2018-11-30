@@ -15,7 +15,6 @@ public class ScoreButton implements DrawnButton {
     	scoreBtn.setPreferredSize(new Dimension(100, 100));
     	Image scoreImage = scoreIcon.getImage();
     	scoreImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-    	scoreIcon = new ImageIcon(scoreImage);
 		
     	return scoreBtn;
 	}

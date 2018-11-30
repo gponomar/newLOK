@@ -16,7 +16,6 @@ public class CreditsButton implements DrawnButton {
     	creditsBtn.setPreferredSize(new Dimension(100, 100));
     	Image creditsImage = creditsIcon.getImage();
     	creditsImage.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
-    	creditsIcon = new ImageIcon(creditsImage);
 		
     	return creditsBtn;
 	}

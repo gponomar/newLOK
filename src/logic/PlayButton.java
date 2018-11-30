@@ -15,7 +15,6 @@ public class PlayButton implements DrawnButton {
         playBtn.setPreferredSize(new Dimension(100, 100));
     	Image playImage = playIcon.getImage();
     	playImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	playIcon = new ImageIcon(playImage);
     	
     	return playBtn;
 	}

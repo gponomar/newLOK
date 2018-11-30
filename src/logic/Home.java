@@ -43,22 +43,18 @@ public class Home {
 	private ImageIcon titleIcon = new ImageIcon("resource/TheLordOfTheKeysTitle3.png");
 	private JLabel labelTitle = new JLabel(titleIcon);
 	private JButton playBtn;
-	//private DrawnButton dbPlay = btnFactory.getButton("PLAY");
     public JButton getPlayBtn() {
     	return playBtn;
     }
 	private JButton creditsBtn;
-	//private DrawnButton dbCredits = btnFactory.getButton("CREDITS");
     public JButton getCreditsBtn() {
     	return creditsBtn;
     }
 	private JButton settingBtn;
-	//private DrawnButton dbSettings = btnFactory.getButton("SETTINGS");
     public JButton getSettingsBtn() {
     	return settingBtn;
     }
     private JButton scoreBtn;
-	//private DrawnButton dbScore = btnFactory.getButton("SCORES");
     public JButton getScoreBtn() {
     	return scoreBtn; 
     }

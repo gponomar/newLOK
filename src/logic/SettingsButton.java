@@ -15,7 +15,6 @@ public class SettingsButton implements DrawnButton {
     	settingBtn.setPreferredSize(new Dimension(100, 100));
     	Image settingsImage = settingsIcon.getImage();
     	settingsImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	settingsIcon = new ImageIcon(settingsImage);
     	
 		return settingBtn;
 	}
