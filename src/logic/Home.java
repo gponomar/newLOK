@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -181,12 +182,18 @@ public class Home {
     	frm.remove(pnl);
     	frm.setContentPane(gamePage.pnlHolderGame);
     	gamePage.labelGame.requestFocus();
-    	new CountDown(new Observer<Boolean>() {
+    	new CountDown(new Observer<Long>() {
 
 			@Override
-			public void update(Boolean val) {
+			public void update(Long val) {
 				// TODO Auto-generated method stub
-				endGame();
+		          java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
+				Game.clockLabel.setText(sdf.format(new Date(val)));
+				frm.validate();
+				frm.repaint();
+				if(val<0) {
+					endGame();
+				}
 			}
     		
     	});
