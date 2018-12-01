@@ -116,7 +116,6 @@ public class HighScore {
     	bigGBC.gridy = 2;
     	backpnl.setOpaque(false);
         pnlHolderHighScore.add(backpnl, bigGBC);
-        
         homeBtn.addActionListener(action -> homeBtnAction());
     }
 	
@@ -127,6 +126,7 @@ public class HighScore {
     	homepage.frm.validate();
     	homepage.frm.repaint();
 	}
+
 	
 	private ArrayList<ArrayList<String>> getTopScores() {
 		ArrayList<ArrayList<String>> answer = new ArrayList<>();
@@ -144,7 +144,7 @@ public class HighScore {
 			LOGGER.severe("File not found");
 		}
 		ArrayList<String> temp;
-		for(int i = 0; i<= inner.size()-1; i+=2)
+		for(int i = 0; i< inner.size()-1; i+=2)
 		{
 			temp = new ArrayList<>();
 			temp.add(inner.get(i));
@@ -167,7 +167,7 @@ public class HighScore {
 		return answer;		
 	}
 	
-	private void setHighScoreLabels() {
+	public void setHighScoreLabels() {
 		ArrayList<ArrayList<String>> highScoreList =  getTopScores();
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +

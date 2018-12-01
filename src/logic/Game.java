@@ -31,6 +31,7 @@ public class Game {
 	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 	private Home homepage;
+	public int score = 0;
 	public void setHomepage(Home val) {
 		homepage = val;
 	}
@@ -169,6 +170,7 @@ public class Game {
             }
             if(progress==result.length()) {
             	sentLength++;
+            	score++;
                 startRound(getCorrectLengthSentences());
             }
         }
@@ -220,5 +222,8 @@ public class Game {
         key.add(label);
         holder.add(key);
         return holder;
+    }
+    public int getScore() {
+    	return this.score;
     }
 }

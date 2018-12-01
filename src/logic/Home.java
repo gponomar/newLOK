@@ -39,10 +39,11 @@ public class Home {
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         }
     };
-    
 	private ImageIcon titleIcon = new ImageIcon("resource/TheLordOfTheKeysTitle3.png");
 	private JLabel labelTitle = new JLabel(titleIcon);
 	private JButton playBtn;
+	//for testing of yourScore
+	//private JButton yourscoreBtn = new JButton("temp your score");
     public JButton getPlayBtn() {
     	return playBtn;
     }
@@ -128,6 +129,13 @@ public class Home {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         btnPanel.add(scoreBtn, gbc); 
         
+        ////for testing of yourScore
+        //gbc.gridx = 4;
+        //gbc.gridy = 1;
+        //gbc.fill = GridBagConstraints.HORIZONTAL;
+        //btnPanel.add(yourscoreBtn, gbc); 
+        
+        
         bigGBC.gridx = 0;
         bigGBC.gridy = 1;
         bigPanel.add(btnPanel, bigGBC);
@@ -141,6 +149,9 @@ public class Home {
         frm.setVisible(true);
 
         //executes game
+        Game gamePage = new Game();
+        //score = gamePage.score;
+        //System.out.println(score);
         gamePage.setHomepage(this);
         playBtn.addActionListener(action -> playBtnAction(gamePage));
         
@@ -155,7 +166,14 @@ public class Home {
         //score page
         scorePage.setHomepage(this);
         scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
-        
+
+        //your score page
+        YourScore yourscorePage = new YourScore();
+        yourscorePage.setHomepage(this);
+        yourscorePage.setScorepage(scorePage);
+        yourscorePage.setGamepage(gamePage);
+      //for testing of yourScore
+        //yourscoreBtn.addActionListener(action -> tempBtnAction(yourscorePage));
     }
     
 	// action to be performed when back button is hit
@@ -179,6 +197,8 @@ public class Home {
 	// action to be performed when back button is hit 
 	private void scoreBtnAction(HighScore scorePage) {
     	frm.remove(pnl);
+    	//whenever scorepage is called this needs to be done first
+    	scorePage.setHighScoreLabels();
     	frm.setContentPane(scorePage.pnlHolderHighScore);
     	frm.validate();
     	frm.repaint();
@@ -191,7 +211,13 @@ public class Home {
     	frm.validate();
     	frm.repaint();
 	}
-    
+	//for testing of yourScore
+	/*private void tempBtnAction(YourScore yourscorePage) {
+    	frm.remove(pnl);
+    	frm.setContentPane(yourscorePage.pnlHolderYourScore);
+    	frm.validate();
+    	frm.repaint();
+	}*/
     
 	public static void main(String[] args) {
 		java.awt.EventQueue.invokeLater(Home::new);
