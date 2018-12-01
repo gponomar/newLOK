@@ -66,8 +66,6 @@ public class Home {
 	public static final Settings settingsPage = new Settings();
     public static final Credits creditsPage = new Credits();
     public static final HighScore scorePage = new HighScore();
-    public static final Game gamePage = new Game();
-  
     public Home() {
     	frm.pack();
     	JPanel titlePanel = new JPanel();
@@ -149,12 +147,8 @@ public class Home {
         frm.setVisible(true);
 
         //executes game
-        Game gamePage = new Game();
-        //score = gamePage.score;
-        //System.out.println(score);
-        gamePage.setHomepage(this);
-        playBtn.addActionListener(action -> playBtnAction(gamePage));
-        
+        playBtn.addActionListener(action -> playBtnAction());
+
         //settings page
         settingsPage.setHomepage(this);
         settingBtn.addActionListener(action -> settingsBtnAction(settingsPage));
@@ -166,18 +160,16 @@ public class Home {
         //score page
         scorePage.setHomepage(this);
         scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
-
-        //your score page
-        YourScore yourscorePage = new YourScore();
-        yourscorePage.setHomepage(this);
-        yourscorePage.setScorepage(scorePage);
-        yourscorePage.setGamepage(gamePage);
       //for testing of yourScore
         //yourscoreBtn.addActionListener(action -> tempBtnAction(yourscorePage));
     }
     
 	// action to be performed when back button is hit
-	private void playBtnAction(Game gamePage) {
+	private void playBtnAction() {
+		Game gamePage = new Game();
+        //score = gamePage.score;
+        //System.out.println(score);
+        gamePage.setHomepage(this);
 		gamePage.setDiff(diff);
     	frm.remove(pnl);
     	frm.setContentPane(gamePage.pnlHolderGame);

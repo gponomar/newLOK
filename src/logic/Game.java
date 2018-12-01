@@ -36,7 +36,7 @@ public class Game {
 		homepage = val;
 	}
 	private JPanel pnlGame = new JPanel();
-	public static final JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
+	public final JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
     {
 		@Override
         public void paintComponent(java.awt.Graphics g)
@@ -69,7 +69,7 @@ public class Game {
 	public String getDiff() {
 		return difficulty;
 	}
-	public static final JLabel labelGame = new JLabel();
+	public final JLabel labelGame = new JLabel();
 	private Random rand = new Random();
 	
 	public Game() {
