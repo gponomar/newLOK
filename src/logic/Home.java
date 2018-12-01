@@ -20,6 +20,7 @@ public class Home {
 	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Home.class.getName());
 	public static final JFrame frm = new JFrame();		
+	private Game curGamePage;
 	public static final JPanel pnl = new JPanel()
     {
 		@Override
@@ -163,17 +164,32 @@ public class Home {
       //for testing of yourScore
         //yourscoreBtn.addActionListener(action -> tempBtnAction(yourscorePage));
     }
+    public void endGame() {
+    	YourScore yourscorePage = new YourScore();
+        yourscorePage.setHomepage(this);
+        yourscorePage.setScorepage(scorePage);
+        yourscorePage.setGamepage(curGamePage);
+        openScorePageAction(yourscorePage);
+    }
     
-	// action to be performed when back button is hit
+	// action to be performed when play button is hit
 	private void playBtnAction() {
 		Game gamePage = new Game();
-        //score = gamePage.score;
-        //System.out.println(score);
-        gamePage.setHomepage(this);
+		curGamePage = gamePage;
+		gamePage.setHomepage(this);
 		gamePage.setDiff(diff);
     	frm.remove(pnl);
     	frm.setContentPane(gamePage.pnlHolderGame);
     	gamePage.labelGame.requestFocus();
+    	new CountDown(new Observer<Boolean>() {
+
+			@Override
+			public void update(Boolean val) {
+				// TODO Auto-generated method stub
+				endGame();
+			}
+    		
+    	});
     	frm.validate();
     	frm.repaint();
 	}
@@ -204,12 +220,12 @@ public class Home {
     	frm.repaint();
 	}
 	//for testing of yourScore
-	/*private void tempBtnAction(YourScore yourscorePage) {
+	private void openScorePageAction(YourScore yourscorePage) {
     	frm.remove(pnl);
     	frm.setContentPane(yourscorePage.pnlHolderYourScore);
     	frm.validate();
     	frm.repaint();
-	}*/
+	}
     
 	public static void main(String[] args) {
 		java.awt.EventQueue.invokeLater(Home::new);
