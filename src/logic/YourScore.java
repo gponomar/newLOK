@@ -41,7 +41,7 @@ public class YourScore {
 	public JButton done = new JButton("done");
 	ImageIcon yourScoreIcon = new ImageIcon("resource/HighScore.png");
 	JLabel labelYourScore = new JLabel(yourScoreIcon);
-	JLabel yourScore = new JLabel();//(Integer.toString(gamepage.getScore()));
+	JLabel yourScore = new JLabel();
 	JLabel score = new JLabel();
 	JLabel blank = new JLabel("");
 	public static final JPanel pnlHolderYourScore = new JPanel(new GridBagLayout())
@@ -62,7 +62,6 @@ public class YourScore {
 			}
 		};
 	public YourScore() {
-		//score.setText(Integer.toString(gamepage.score));
 		
 		getname.setFont(new Font(getname.getName(), Font.ITALIC, 50));
 		GridBagConstraints gbcNames = new GridBagConstraints();
@@ -112,7 +111,13 @@ public class YourScore {
     	backpnl.setOpaque(false);
         pnlHolderYourScore.add(backpnl, bigGBC);
         homeBtn.addActionListener(action -> homeBtnAction());
-        done.addActionListener(action -> doneBtnAction());
+        done.addActionListener(action -> {
+			try {
+				doneBtnAction();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
     }
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
@@ -122,7 +127,7 @@ public class YourScore {
     	homepage.frm.validate();
     	homepage.frm.repaint();
 	}
-	private void doneBtnAction() {
+	private void doneBtnAction() throws IOException {
 		String myName = getname.getText();
 		getname.setText("Your Name");
 		appendStrToScoreFile(gamepage.getScore(), myName); 
@@ -133,17 +138,20 @@ public class YourScore {
     	homepage.frm.repaint();
 	}
     private static void appendStrToScoreFile(
-            int score, String name)
+            int score, String name) throws IOException
     {
+    	BufferedWriter out = null;
     	try {
-    		BufferedWriter out = new BufferedWriter(
+    		out = new BufferedWriter(
     				new FileWriter("resource/HighScoreList", true));
     		String str = "\n" + Integer.toString(score)+ " " + name;
     		out.write(str);
-    		out.close();
     	}
     	catch (IOException e) {
     		System.out.println("exception occoured" + e);
+    	}
+    	finally {
+    	    out.close();
     	}
     }
 }

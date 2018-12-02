@@ -1,8 +1,8 @@
 package logic;
 import java.util.TimerTask;
 class CountDown {
-  public static long curTime = 0;
-  public CountDown(final Observer<Long> o, String diff) {
+  static long curTime = 0;
+  CountDown(final Observer<Long> o, String diff) {
 	 if(diff.equals("Easy")) {
 		 curTime = 15000;
 	 } else if(diff.equals("Medium")) {
