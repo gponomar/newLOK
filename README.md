@@ -1,6 +1,6 @@
 # Lord of the Keys
 
-https://travis-ci.org/gponomar/newLOK.svg?branch=master
+[![Build Status](https://travis-ci.org/gponomar/newLOK.svg?branch=master)](https://travis-ci.org/gponomar/newLOK)
 
 This is the repo for our 307 project
 
