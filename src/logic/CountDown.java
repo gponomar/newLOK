@@ -1,13 +1,15 @@
 package logic;
-import javax.swing.*;
-import java.awt.event.*;
-import java.util.Date;
 import java.util.TimerTask;
-@SuppressWarnings("serial")
 class CountDown {
-  public static long curTime = 5000;
-  public CountDown(final Observer<Long> o) {
-	 curTime= 5000;
+  public static long curTime = 0;
+  public CountDown(final Observer<Long> o, String diff) {
+	 if(diff.equals("Easy")) {
+		 curTime = 15000;
+	 } else if(diff.equals("Medium")) {
+		 curTime = 10000;
+	 } else {
+		 curTime = 5000;
+	 }
 	 java.util.Timer clock = new java.util.Timer("Timer");
 	 TimerTask task = new TimerTask() {
 	      public void run() {

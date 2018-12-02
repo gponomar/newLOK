@@ -186,8 +186,7 @@ public class Home {
 
 			@Override
 			public void update(Long val) {
-				// TODO Auto-generated method stub
-		          java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
+		        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
 				Game.clockLabel.setText(sdf.format(new Date(val)));
 				frm.validate();
 				frm.repaint();
@@ -196,7 +195,7 @@ public class Home {
 				}
 			}
     		
-    	});
+    	}, gamePage.getDiff());
     	frm.validate();
     	frm.repaint();
 	}
