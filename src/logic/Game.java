@@ -32,7 +32,7 @@ public class Game {
 	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 	private Home homepage;
-	public int score = 0;
+	public static int score = 0;
 	public void setHomepage(Home val) {
 		homepage = val;
 	}

@@ -44,8 +44,7 @@ public class Home {
 	private ImageIcon titleIcon = new ImageIcon("resource/TheLordOfTheKeysTitle3.png");
 	private JLabel labelTitle = new JLabel(titleIcon);
 	private JButton playBtn;
-	//for testing of yourScore
-	//private JButton yourscoreBtn = new JButton("temp your score");
+
     public JButton getPlayBtn() {
     	return playBtn;
     }
@@ -129,13 +128,6 @@ public class Home {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         btnPanel.add(scoreBtn, gbc); 
         
-        ////for testing of yourScore
-        //gbc.gridx = 4;
-        //gbc.gridy = 1;
-        //gbc.fill = GridBagConstraints.HORIZONTAL;
-        //btnPanel.add(yourscoreBtn, gbc); 
-        
-        
         bigGBC.gridx = 0;
         bigGBC.gridy = 1;
         bigPanel.add(btnPanel, bigGBC);
@@ -162,8 +154,6 @@ public class Home {
         //score page
         scorePage.setHomepage(this);
         scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
-      //for testing of yourScore
-        //yourscoreBtn.addActionListener(action -> tempBtnAction(yourscorePage));
     }
     public void endGame() {
     	YourScore yourscorePage = new YourScore();
