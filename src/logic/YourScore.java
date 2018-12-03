@@ -41,11 +41,12 @@ public class YourScore {
 	public JButton done = new JButton("done");
 	ImageIcon yourScoreIcon = new ImageIcon("resource/HighScore.png");
 	JLabel labelYourScore = new JLabel(yourScoreIcon);
-	JLabel yourScore = new JLabel();//(Integer.toString(gamepage.getScore()));
+	JLabel scoreLabels = new JLabel();
 	JLabel score = new JLabel();
 	JLabel blank = new JLabel("");
 	public static final JPanel pnlHolderYourScore = new JPanel(new GridBagLayout())
 	{
+		@Override
 		public void paintComponent(java.awt.Graphics g)
 		{
 			super.paintComponent(g);
@@ -62,7 +63,6 @@ public class YourScore {
 			}
 		};
 	public YourScore() {
-		//score.setText(Integer.toString(gamepage.score));
 		
 		getname.setFont(new Font(getname.getName(), Font.ITALIC, 50));
 		GridBagConstraints gbcNames = new GridBagConstraints();
@@ -75,7 +75,7 @@ public class YourScore {
     	highScoreImage = highScoreImage.getScaledInstance(500, 200, Image.SCALE_SMOOTH);
     	yourScoreIcon = new ImageIcon(highScoreImage);
     	labelYourScore.setIcon(yourScoreIcon);
-    	pnlTitle.add(yourScore);
+    	pnlTitle.add(scoreLabels);
     	
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 0;
@@ -85,10 +85,10 @@ public class YourScore {
     	
     	bigGBC.insets = new Insets(60, 2, 2, 30);
     	pnlScore.setOpaque(false);
-		yourScore.setFont(new Font(yourScore.getName(), Font.PLAIN, 50));
+    	scoreLabels.setFont(new Font(scoreLabels.getName(), Font.PLAIN, 50));
     	gbcNames.gridx = 0;
     	gbcNames.gridy = 0;
-        pnlScore.add(yourScore, gbcNames);
+        pnlScore.add(scoreLabels, gbcNames);
     	bigGBC.gridx = 0;
     	bigGBC.gridy = 1;
     	
@@ -98,7 +98,6 @@ public class YourScore {
         pnlHolderYourScore.add(getname, bigGBC);
         bigGBC.gridx = 0;
     	bigGBC.gridy = 3;
-    	//System.out.println(name);
     	pnlHolderYourScore.add(done, bigGBC);
         
         homeBtn.setPreferredSize(new Dimension(100, 80));
@@ -112,17 +111,22 @@ public class YourScore {
     	backpnl.setOpaque(false);
         pnlHolderYourScore.add(backpnl, bigGBC);
         homeBtn.addActionListener(action -> homeBtnAction());
-        done.addActionListener(action -> doneBtnAction());
+        done.addActionListener(action -> {
+			try {
+				doneBtnAction();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
     }
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
-		System.out.printf("%d", gamepage.getScore());
     	homepage.frm.remove(pnlHolderYourScore);
     	homepage.frm.setContentPane(homepage.pnl);
     	homepage.frm.validate();
     	homepage.frm.repaint();
 	}
-	private void doneBtnAction() {
+	private void doneBtnAction() throws IOException {
 		String myName = getname.getText();
 		getname.setText("Your Name");
 		appendStrToScoreFile(gamepage.getScore(), myName); 
@@ -133,17 +137,22 @@ public class YourScore {
     	homepage.frm.repaint();
 	}
     public static void appendStrToScoreFile(
-            int score, String name)
+            int score, String name)throws IOException
     {
+    	BufferedWriter out = null;
     	try {
-    		BufferedWriter out = new BufferedWriter(
+    		out = new BufferedWriter(
     				new FileWriter("resource/HighScoreList", true));
     		String str = "\n" + Integer.toString(score)+ " " + name;
     		out.write(str);
-    		out.close();
     	}
     	catch (IOException e) {
     		System.out.println("exception occoured" + e);
+    	}
+    	finally {
+    		if(out != null) {
+    			out.close();
+    		}
     	}
     }
 }

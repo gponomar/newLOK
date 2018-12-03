@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
@@ -31,12 +32,12 @@ public class Game {
 	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 	private Home homepage;
-	public int score = 0;
+	public static int score = 0;
 	public void setHomepage(Home val) {
 		homepage = val;
 	}
 	private JPanel pnlGame = new JPanel();
-	public static final JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
+	public final JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
     {
 		@Override
         public void paintComponent(java.awt.Graphics g)
@@ -63,13 +64,14 @@ public class Game {
 	private int progress = 0;
 	private JPanel content = new JPanel();
 	private String difficulty;
+	public static JLabel clockLabel = new JLabel("Time");
 	public void setDiff(String val) {
 		difficulty = val;
 	}
 	public String getDiff() {
 		return difficulty;
 	}
-	public static final JLabel labelGame = new JLabel();
+	public final JLabel labelGame = new JLabel();
 	private Random rand = new Random();
 	
 	public Game() {
@@ -82,6 +84,9 @@ public class Game {
         pnlGame.setOpaque(false);
         pnlHolderGame.add(pnlGame);
         pnlHolderGame.add(labelGame);
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
+        clockLabel = new JLabel(sdf.format(new Date(CountDown.curTime)),JLabel.CENTER);
+        pnlHolderGame.add(clockLabel);
         
         labelGame.requestFocus();
         labelGame.addKeyListener(new SimpleKeyListener());

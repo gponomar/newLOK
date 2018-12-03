@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.junit.Test;
@@ -18,6 +19,7 @@ public class TestAppendStrToScoreFile {
 		boolean answer = false;
 		//Home test = new Home();
 		YourScore test = new YourScore();
+		try {
 		test.appendStrToScoreFile(10000, "Gracie");
 		try
 		{
@@ -38,5 +40,8 @@ public class TestAppendStrToScoreFile {
 		}
 		assertTrue(answer);
 		
-	}
+	} catch (IOException e) {
+		System.out.println("exception occoured" + e);
+		}
+}
 }

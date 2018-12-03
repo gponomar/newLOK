@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -20,6 +21,7 @@ public class Home {
 	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Home.class.getName());
 	public static final JFrame frm = new JFrame();		
+	private Game curGamePage;
 	public static final JPanel pnl = new JPanel()
     {
 		@Override
@@ -42,8 +44,7 @@ public class Home {
 	private ImageIcon titleIcon = new ImageIcon("resource/TheLordOfTheKeysTitle3.png");
 	private JLabel labelTitle = new JLabel(titleIcon);
 	private JButton playBtn;
-	//for testing of yourScore
-	//private JButton yourscoreBtn = new JButton("temp your score");
+
     public JButton getPlayBtn() {
     	return playBtn;
     }
@@ -66,8 +67,6 @@ public class Home {
 	public static final Settings settingsPage = new Settings();
     public static final Credits creditsPage = new Credits();
     public static final HighScore scorePage = new HighScore();
-    public static final Game gamePage = new Game();
-  
     public Home() {
     	frm.pack();
     	JPanel titlePanel = new JPanel();
@@ -129,13 +128,6 @@ public class Home {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         btnPanel.add(scoreBtn, gbc); 
         
-        ////for testing of yourScore
-        //gbc.gridx = 4;
-        //gbc.gridy = 1;
-        //gbc.fill = GridBagConstraints.HORIZONTAL;
-        //btnPanel.add(yourscoreBtn, gbc); 
-        
-        
         bigGBC.gridx = 0;
         bigGBC.gridy = 1;
         bigPanel.add(btnPanel, bigGBC);
@@ -149,12 +141,8 @@ public class Home {
         frm.setVisible(true);
 
         //executes game
-        Game gamePage = new Game();
-        //score = gamePage.score;
-        //System.out.println(score);
-        gamePage.setHomepage(this);
-        playBtn.addActionListener(action -> playBtnAction(gamePage));
-        
+        playBtn.addActionListener(action -> playBtnAction());
+
         //settings page
         settingsPage.setHomepage(this);
         settingBtn.addActionListener(action -> settingsBtnAction(settingsPage));
@@ -166,22 +154,38 @@ public class Home {
         //score page
         scorePage.setHomepage(this);
         scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
-
-        //your score page
-        YourScore yourscorePage = new YourScore();
+    }
+    public void endGame() {
+    	YourScore yourscorePage = new YourScore();
         yourscorePage.setHomepage(this);
         yourscorePage.setScorepage(scorePage);
-        yourscorePage.setGamepage(gamePage);
-      //for testing of yourScore
-        //yourscoreBtn.addActionListener(action -> tempBtnAction(yourscorePage));
+        yourscorePage.setGamepage(curGamePage);
+        openScorePageAction(yourscorePage);
     }
     
-	// action to be performed when back button is hit
-	private void playBtnAction(Game gamePage) {
+	// action to be performed when play button is hit
+	private void playBtnAction() {
+		Game gamePage = new Game();
+		curGamePage = gamePage;
+		gamePage.setHomepage(this);
 		gamePage.setDiff(diff);
     	frm.remove(pnl);
     	frm.setContentPane(gamePage.pnlHolderGame);
     	gamePage.labelGame.requestFocus();
+    	new CountDown(new Observer<Long>() {
+
+			@Override
+			public void update(Long val) {
+		        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
+				Game.clockLabel.setText(sdf.format(new Date(val)));
+				frm.validate();
+				frm.repaint();
+				if(val<0) {
+					endGame();
+				}
+			}
+    		
+    	}, gamePage.getDiff());
     	frm.validate();
     	frm.repaint();
 	}
@@ -212,12 +216,12 @@ public class Home {
     	frm.repaint();
 	}
 	//for testing of yourScore
-	/*private void tempBtnAction(YourScore yourscorePage) {
+	private void openScorePageAction(YourScore yourscorePage) {
     	frm.remove(pnl);
     	frm.setContentPane(yourscorePage.pnlHolderYourScore);
     	frm.validate();
     	frm.repaint();
-	}*/
+	}
     
 	public static void main(String[] args) {
 		java.awt.EventQueue.invokeLater(Home::new);
