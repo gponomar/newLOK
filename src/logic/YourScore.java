@@ -132,7 +132,7 @@ public class YourScore {
     	homepage.frm.validate();
     	homepage.frm.repaint();
 	}
-    private static void appendStrToScoreFile(
+    public static void appendStrToScoreFile(
             int score, String name)
     {
     	try {
