@@ -5,13 +5,13 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="newLOK">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../../Applications/Eclipse Java.app/Contents/Eclipse/"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipse/java-oxygen/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <path id="newLOK.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../../Downloads/junit4.10/junit-4.10.jar"/>
+        <pathelement location="resource/junit-4.10.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
