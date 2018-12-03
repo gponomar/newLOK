@@ -1,6 +1,8 @@
 package logic;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -22,6 +24,9 @@ public class Home {
 	private static final Logger LOGGER = Logger.getLogger(Home.class.getName());
 	public static final JFrame frm = new JFrame();		
 	private Game curGamePage;
+	public Game getGamePage() {
+		return curGamePage;
+	}
 	public static final JPanel pnl = new JPanel()
     {
 		@Override
@@ -67,6 +72,7 @@ public class Home {
 	public static final Settings settingsPage = new Settings();
     public static final Credits creditsPage = new Credits();
     public static final HighScore scorePage = new HighScore();
+    
     public Home() {
     	frm.pack();
     	JPanel titlePanel = new JPanel();
@@ -155,6 +161,7 @@ public class Home {
         scorePage.setHomepage(this);
         scoreBtn.addActionListener(action -> scoreBtnAction(scorePage));
     }
+    
     public void endGame() {
     	YourScore yourscorePage = new YourScore();
         yourscorePage.setHomepage(this);
@@ -178,6 +185,9 @@ public class Home {
 			public void update(Long val) {
 		        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
 				Game.clockLabel.setText(sdf.format(new Date(val)));
+				Game.clockLabel.setForeground(Color.white);
+				Game.clockLabel.setFont(new Font(Game.clockLabel.getName(), Font.PLAIN, 50));
+
 				frm.validate();
 				frm.repaint();
 				if(val<0) {

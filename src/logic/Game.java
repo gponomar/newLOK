@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.BreakIterator;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
@@ -64,7 +63,7 @@ public class Game {
 	private int progress = 0;
 	private JPanel content = new JPanel();
 	private String difficulty;
-	public static JLabel clockLabel = new JLabel("Time");
+	public static JLabel clockLabel = new JLabel("  Time ");
 	public void setDiff(String val) {
 		difficulty = val;
 	}
@@ -84,9 +83,10 @@ public class Game {
         pnlGame.setOpaque(false);
         pnlHolderGame.add(pnlGame);
         pnlHolderGame.add(labelGame);
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
-        clockLabel = new JLabel(sdf.format(new Date(CountDown.curTime)),JLabel.CENTER);
-        pnlHolderGame.add(clockLabel);
+		Game.clockLabel.setForeground(Color.white);
+		Game.clockLabel.setFont(new Font(Game.clockLabel.getName(), Font.PLAIN, 50));
+        pnlGame.add(clockLabel, BorderLayout.EAST);
+      
         
         labelGame.requestFocus();
         labelGame.addKeyListener(new SimpleKeyListener());
