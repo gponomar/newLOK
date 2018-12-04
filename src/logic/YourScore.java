@@ -11,6 +11,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -35,6 +36,7 @@ public class YourScore {
 	public void setScorepage(HighScore val) {
 		scorepage = val;
 	}
+	private static final Logger LOGGER = Logger.getLogger(YourScore.class.getName());
 	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
 	public JButton homeBtn = new JButton(back);
 	public static JTextArea getname = new JTextArea("Your_Name");
@@ -140,14 +142,13 @@ public class YourScore {
             int score, String name)throws IOException
     {
     	BufferedWriter out = null;
-    	try {
-    		out = new BufferedWriter(
-    				new FileWriter("resource/HighScoreList", true));
+    	String path = "resource/HighScoreList";
+    	try (BufferedWriter br = new BufferedWriter(new FileWriter(path, true))){
     		String str = "\n" + Integer.toString(score)+ " " + name;
-    		out.write(str);
+    		br.write(str);
     	}
     	catch (IOException e) {
-    		System.err.println("exception occoured" + e);
+    		LOGGER.severe("exception occoured" + e);
     	}
     	finally {
     		if(out != null) {
