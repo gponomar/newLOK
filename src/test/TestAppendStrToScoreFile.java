@@ -15,7 +15,6 @@ public class TestAppendStrToScoreFile {
 	@Test
 	public void testAppend() {
 		boolean answer = false;
-		//Home test = new Home();
 		YourScore test = new YourScore();
 		try {
 		test.appendStrToScoreFile(10000, "Gracie");
@@ -34,12 +33,12 @@ public class TestAppendStrToScoreFile {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
+			System.err.println("File not found");
 		}
 		assertTrue(answer);
 		
 	} catch (IOException e) {
-		System.out.println("exception occoured" + e);
+		System.err.println("exception occoured" + e);
 		}
 }
 }
