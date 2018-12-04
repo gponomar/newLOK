@@ -1,4 +1,5 @@
 package logic;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,10 +32,13 @@ public class Game {
 	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
 	private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 	private Home homepage;
-	private int score = 0;
 	public void setHomepage(Home val) {
 		homepage = val;
 	}
+	private int score = 0;
+    public int getScore() {
+    	return this.score;
+    }
 	private JPanel pnlGame = new JPanel();
 	public final JPanel pnlHolderGame = new JPanel(new GridLayout(3,1))
     {
@@ -134,6 +138,7 @@ public class Game {
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
 		this.score = 0;
+		homepage.getClock().quit = true;
     	homepage.frm.remove(pnlHolderGame);
     	homepage.frm.setContentPane(homepage.pnl);
     	homepage.frm.validate();
@@ -230,7 +235,5 @@ public class Game {
         holder.add(key);
         return holder;
     }
-    public int getScore() {
-    	return this.score;
-    }
+
 }

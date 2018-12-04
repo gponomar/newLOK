@@ -1,6 +1,5 @@
 package logic;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,7 +10,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,7 +20,6 @@ import javax.swing.JTextArea;
 public class YourScore {
 	public JPanel pnlTitle = new JPanel();
 	public JPanel pnlScore = new JPanel(new GridBagLayout());
-	public JPanel backpnl = new JPanel();
 	public Home homepage;
 	public void setHomepage(Home val) {
 		homepage = val;
@@ -35,19 +32,19 @@ public class YourScore {
 	public void setScorepage(HighScore val) {
 		scorepage = val;
 	}
-	public ImageIcon back = new ImageIcon ("resource/BackButton.png");
-	public JButton homeBtn = new JButton(back);
 	public static JTextArea getname = new JTextArea("Your_Name");
 	public JButton done = new JButton("done");
 	private int theScore;
 	public void setScore(int x) {
 		this.theScore = x;
 	}
-	ImageIcon yourScoreIcon = new ImageIcon("resource/HighScore.png");
-	JLabel labelYourScore = new JLabel(yourScoreIcon);
-	JLabel scoreLabels = new JLabel();
-	JLabel score = new JLabel();
-	JLabel blank = new JLabel("");
+	private String theDiff;
+	public void setDiff(String x) {
+		this.theDiff = x;
+	}
+	private ImageIcon yourScoreIcon = new ImageIcon("resource/HighScore.png");
+	private JLabel labelYourScore = new JLabel(yourScoreIcon);
+	private JLabel scoreLabels = new JLabel();
 	public static final JPanel pnlHolderYourScore = new JPanel(new GridBagLayout())
 	{
 		@Override
@@ -104,17 +101,6 @@ public class YourScore {
     	bigGBC.gridy = 3;
     	pnlHolderYourScore.add(done, bigGBC);
         
-        homeBtn.setPreferredSize(new Dimension(100, 80));
-    	Image backImage = back.getImage();
-    	backImage.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-    	back = new ImageIcon(backImage);
-    	backpnl.add(homeBtn, BorderLayout.CENTER);
-    	
-    	bigGBC.gridx = 0;
-    	bigGBC.gridy = 4;
-    	backpnl.setOpaque(false);
-        pnlHolderYourScore.add(backpnl, bigGBC);
-        homeBtn.addActionListener(action -> homeBtnAction());
         done.addActionListener(action -> {
 			try {
 				doneBtnAction();
@@ -133,8 +119,7 @@ public class YourScore {
 	private void doneBtnAction() throws IOException {
 		String myName = getname.getText();
 		getname.setText("Your Name");
-		System.out.println("the score " + this.theScore);
-		appendStrToScoreFile(theScore, myName); 
+		appendStrToScoreFile(theScore, myName, theDiff); 
 		homepage.frm.remove(pnlHolderYourScore);
 		scorepage.setHighScoreLabels();
     	homepage.frm.setContentPane(scorepage.pnlHolderHighScore);
@@ -142,13 +127,13 @@ public class YourScore {
     	homepage.frm.repaint();
 	}
     public static void appendStrToScoreFile(
-            int score, String name)throws IOException
+            int score, String name, String diff)throws IOException
     {
     	BufferedWriter out = null;
     	try {
     		out = new BufferedWriter(
     				new FileWriter("resource/HighScoreList", true));
-    		String str = "\n" + Integer.toString(score)+ " " + name;
+    		String str = "\n" + Integer.toString(score)+ " " + name +"-" + diff;
     		out.write(str);
     	}
     	catch (IOException e) {

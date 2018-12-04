@@ -1,4 +1,5 @@
 package logic;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -73,6 +74,13 @@ public class Home {
     public static final Credits creditsPage = new Credits();
     public static final HighScore scorePage = new HighScore();
 	public static final YourScore yourscorePage = new YourScore();
+	
+	private CountDown clock;
+	public CountDown getClock() {
+		return clock;
+	}
+	
+	
     
     public Home() {
     	frm.pack();
@@ -164,8 +172,8 @@ public class Home {
     }
     
     public void endGame() {
-    	System.out.println(curGamePage.getScore());
     	yourscorePage.setScore(curGamePage.getScore());
+    	yourscorePage.setDiff(curGamePage.getDiff());
         yourscorePage.setHomepage(this);
         yourscorePage.setScorepage(scorePage);
         yourscorePage.setGamepage(curGamePage);
@@ -181,7 +189,7 @@ public class Home {
     	frm.remove(pnl);
     	frm.setContentPane(gamePage.pnlHolderGame);
     	gamePage.labelGame.requestFocus();
-    	new CountDown(new Observer<Long>() {
+    	clock = new CountDown(new Observer<Long>() {
 
 			@Override
 			public void update(Long val) {

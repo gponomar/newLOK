@@ -17,7 +17,7 @@ public class TestAppendStrToScoreFile {
 		boolean answer = false;
 		YourScore test = new YourScore();
 		try {
-		test.appendStrToScoreFile(10000, "Gracie");
+		test.appendStrToScoreFile(10000, "Gracie", "Hard");
 		try
 		{
 			Scanner scanner = new Scanner(new File("resource/HighScoreList"));
