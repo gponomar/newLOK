@@ -72,6 +72,7 @@ public class Home {
 	public static final Settings settingsPage = new Settings();
     public static final Credits creditsPage = new Credits();
     public static final HighScore scorePage = new HighScore();
+	public static final YourScore yourscorePage = new YourScore();
     
     public Home() {
     	frm.pack();
@@ -163,7 +164,8 @@ public class Home {
     }
     
     public void endGame() {
-    	YourScore yourscorePage = new YourScore();
+    	System.out.println(curGamePage.getScore());
+    	yourscorePage.setScore(curGamePage.getScore());
         yourscorePage.setHomepage(this);
         yourscorePage.setScorepage(scorePage);
         yourscorePage.setGamepage(curGamePage);

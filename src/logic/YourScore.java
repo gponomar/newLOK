@@ -41,6 +41,10 @@ public class YourScore {
 	public JButton homeBtn = new JButton(back);
 	public static JTextArea getname = new JTextArea("Your_Name");
 	public JButton done = new JButton("done");
+	private int theScore;
+	public void setScore(int x) {
+		this.theScore = x;
+	}
 	ImageIcon yourScoreIcon = new ImageIcon("resource/HighScore.png");
 	JLabel labelYourScore = new JLabel(yourScoreIcon);
 	JLabel scoreLabels = new JLabel();
@@ -131,7 +135,8 @@ public class YourScore {
 	private void doneBtnAction() throws IOException {
 		String myName = getname.getText();
 		getname.setText("Your Name");
-		appendStrToScoreFile(gamepage.getScore(), myName); 
+		System.out.println("the score " + this.theScore);
+		appendStrToScoreFile(theScore, myName); 
 		homepage.frm.remove(pnlHolderYourScore);
 		scorepage.setHighScoreLabels();
     	homepage.frm.setContentPane(scorepage.pnlHolderHighScore);
