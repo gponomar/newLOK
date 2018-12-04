@@ -147,7 +147,7 @@ public class YourScore {
     		out.write(str);
     	}
     	catch (IOException e) {
-    		System.out.println("exception occoured" + e);
+    		System.err.println("exception occoured" + e);
     	}
     	finally {
     		if(out != null) {
