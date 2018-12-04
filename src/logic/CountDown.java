@@ -1,7 +1,7 @@
 package logic;
 import java.util.TimerTask;
 class CountDown {
-  static long curTime = 0;
+  private long curTime = 0;
   CountDown(final Observer<Long> o, String diff) {
 	 if(diff.equals("Easy")) {
 		 curTime = 15000;
@@ -22,5 +22,8 @@ class CountDown {
 	      }
 	  };
     clock.schedule(task, 1000, 1000);
+  }
+  public long getcurTime() {
+	  return curTime;
   }
 }

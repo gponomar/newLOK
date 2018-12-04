@@ -11,7 +11,7 @@ import logic.Home;
 public class TestScorePageBtn {
 
 	@Test
-	public void testPlayBtn() throws InterruptedException {
+	public void testScorePageButton() throws InterruptedException {
 		Home test = new Home();
 		test.getScoreBtn().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
