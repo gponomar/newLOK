@@ -24,7 +24,6 @@ public class TestAppendStrToScoreFile {
 			while (scanner.hasNextLine())
 			{
 				String line = scanner.nextLine();
-				System.out.println(line);
 				if (line.compareTo("10000 Gracie") == 0)
 				{
 					answer = true;
