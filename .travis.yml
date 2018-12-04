@@ -2,14 +2,10 @@ language: java
 jdk:
 - oraclejdk8
 
-before_install:
-  - ls ../
-
 addons:
   sonarcloud:
     organization: gponomar-github
     token:
       secure: "YW3ur6rjXJk8g5yTkk7P36NU5jWEgeCB+EWCqm/F4dzW3BYLg3Uq70r83MKtdBgTOkBMk2g39TtVKIq4arFYS+/tVwgWqE1gz5q49RuKMgvTze5SrqS+LsECakZyCDxkLL/3VDQV4O18KQaDkjkFnx5a1t9ayHPuVIawWJsZqE7T7QofivTR1tvCjboOVVt0G39caswi0W3caA4Psp/xZSbx3rYHUD6Am7PAQMZAVMN8N2rO2B6RYJPtwBJ/yDq4OK6ZJIk28aWciu59M4MJ7sScSDO4/rXJuttbLKI1Q8I3F3iVlfkCnggd+S7gX8B2FjOYeP145QpAfTwcmJfVFZ1cm5OfqmOBXVZxHxFVYxhcZRoMBfBqemoVOtpwMQYuByvwuqD97iZVaP4LxrwJ86OLmmuJfsuK/c1CqafT70kBMlkKluR8hUQAzwqpDf9tQgUl3/P8b+ukWrb6wWtq+EfixFmhNgQ8YzWJnT2ByIjQ25kZ5hgtC+KuzlTmqhTtCxeRdJr4Gaaraf5Qx2BCRo6J+DNHP0MojC1nBDutt8AxtcQ+2B5fkysu4dE3jWkebY9iPAN1h3AdFH4VX4onYW79Uo5vmR7xRKuTn56D5JIdFB9hsbx6Ph63q+xS/sN06v8nT0dc4qkSwakilQB1sKkBJF/aGK8L7fP/sw78pXI="
 script:
-- ant test
-- sonar-scanner
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
