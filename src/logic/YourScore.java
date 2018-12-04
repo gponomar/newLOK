@@ -10,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,6 +33,7 @@ public class YourScore {
 	public void setScorepage(HighScore val) {
 		scorepage = val;
 	}
+	private static final Logger LOGGER = Logger.getLogger(YourScore.class.getName());
 	public static JTextArea getname = new JTextArea("Your_Name");
 	public JButton done = new JButton("done");
 	private int theScore;
@@ -121,7 +123,7 @@ public class YourScore {
 		getname.setText("Your Name");
 		appendStrToScoreFile(theScore, myName, theDiff); 
 		homepage.frm.remove(pnlHolderYourScore);
-		scorepage.setHighScoreLabels();
+		scorepage.setHighScoreLabels("resource/HighScoreList");
     	homepage.frm.setContentPane(scorepage.pnlHolderHighScore);
     	homepage.frm.validate();
     	homepage.frm.repaint();
@@ -130,14 +132,13 @@ public class YourScore {
             int score, String name, String diff)throws IOException
     {
     	BufferedWriter out = null;
-    	try {
-    		out = new BufferedWriter(
-    				new FileWriter("resource/HighScoreList", true));
-    		String str = "\n" + Integer.toString(score)+ " " + name +"-" + diff;
-    		out.write(str);
+    	String path = "resource/HighScoreList";
+    	try (BufferedWriter br = new BufferedWriter(new FileWriter(path, true))){
+    		String str = "\n" + Integer.toString(score)+ " " + name + "-"+ diff;
+    		br.write(str);
     	}
     	catch (IOException e) {
-    		System.err.println("exception occoured" + e);
+    		LOGGER.severe("exception occoured" + e);
     	}
     	finally {
     		if(out != null) {
