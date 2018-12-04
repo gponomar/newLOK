@@ -61,7 +61,7 @@ public class HighScore {
 		
 	public HighScore() {
 		
-		setHighScoreLabels();
+		setHighScoreLabels("resource/HighScoreList");
 		
     	GridBagConstraints gbcNames = new GridBagConstraints();
     	gbcNames.fill = GridBagConstraints.HORIZONTAL;
@@ -128,12 +128,12 @@ public class HighScore {
 	}
 
 	
-	private ArrayList<ArrayList<String>> getTopScores() {
+	public ArrayList<ArrayList<String>> getTopScores(String filename) {
 		ArrayList<ArrayList<String>> answer = new ArrayList<>();
 		ArrayList<String> inner = new ArrayList<>();
 		try
 		{
-			Scanner scanner = new Scanner(new File("resource/HighScoreList"));
+			Scanner scanner = new Scanner(new File(filename));
 			while (scanner.hasNext())
 			{
 				String line = scanner.next();
@@ -167,8 +167,8 @@ public class HighScore {
 		return answer;		
 	}
 	
-	public void setHighScoreLabels() {
-		ArrayList<ArrayList<String>> highScoreList =  getTopScores();
+	public void setHighScoreLabels(String filename) {
+		ArrayList<ArrayList<String>> highScoreList =  getTopScores(filename);
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +
 				"   " + highScoreList.get(0).get(1));
@@ -185,5 +185,10 @@ public class HighScore {
 				highScoreList.get(4).get(0)+ 
 				"   " + highScoreList.get(4).get(1));
 	}
-
+	public String getScore1() {
+		return this.score1.getText();
+	}
+	 public JButton getBackBtn() {
+	    	return homeBtn;
+	    }
 }

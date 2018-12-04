@@ -138,7 +138,7 @@ public class YourScore {
 		System.out.println("the score " + this.theScore);
 		appendStrToScoreFile(theScore, myName); 
 		homepage.frm.remove(pnlHolderYourScore);
-		scorepage.setHighScoreLabels();
+		scorepage.setHighScoreLabels("resource/HighScoreList");
     	homepage.frm.setContentPane(scorepage.pnlHolderHighScore);
     	homepage.frm.validate();
     	homepage.frm.repaint();
