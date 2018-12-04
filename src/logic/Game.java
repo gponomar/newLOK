@@ -76,6 +76,7 @@ public class Game {
 	public Game() {
 		
 		//Formatting
+		this.score = 0;
 		content.setOpaque(false);
 		DrawnButton dbBack = btnFactory.getButton("BACK");
 		homeBtn = dbBack.draw();
@@ -132,6 +133,7 @@ public class Game {
 	
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
+		this.score = 0;
     	homepage.frm.remove(pnlHolderGame);
     	homepage.frm.setContentPane(homepage.pnl);
     	homepage.frm.validate();
