@@ -170,15 +170,13 @@ public class HighScore {
 			ArrayList<String> temp = new ArrayList<>();
 			temp.add(inner.get(i));
 			temp.add(inner.get(i+1));
-			answer.add(temp);
+			answer.add(temp); 
 		}
-		System.out.println(answer);
 		return answer;
 	}
 	
 	public void setHighScoreLabels() {
 		List<List<String>> highScoreList =  TopScoreManager.getInstance().getTopScores();
-		//System.out.println(highScoreList);
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +
 				"   " + highScoreList.get(0).get(1));
