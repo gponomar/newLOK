@@ -15,8 +15,7 @@ public class TestJunitCounter {
 
 			@Override
 			public void update(Long val) {
-				// TODO Auto-generated method stub
-				
+				//Auto-generated method stub
 			}
 			
 		}, "empty");

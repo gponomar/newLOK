@@ -14,10 +14,10 @@ public class TestLoopGetTop11 {
 
 	@Test
 	public void testTopScores() throws FileNotFoundException {
+		ArrayList<ArrayList<String>> expected = new ArrayList<>();
 		HighScore test = new HighScore();
 		List<List<String>> answer = test.getTopScores("resource/testTopScores11");
-		ArrayList<ArrayList<String>> expected = new ArrayList<>();
-
+		
 		expected.add(addScore("25", "Kiley"));
 		expected.add(addScore("22", "Grant"));
 		expected.add(addScore("20", "Evan"));
@@ -29,8 +29,7 @@ public class TestLoopGetTop11 {
 		expected.add(addScore("0", "-"));
 		expected.add(addScore("0", "-"));
 		expected.add(addScore("0", "-"));
-		assertTrue(answer.equals(expected));
-		
+		assertTrue(answer.equals(expected));	
 
 	}
 	private ArrayList<String> addScore(String score, String name){
