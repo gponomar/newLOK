@@ -135,9 +135,7 @@ public class YourScore {
     		LOGGER.severe("exception occoured" + e);
     	}
     	finally {
-    		if(out != null) {
-    			out.close();
-    		}
+    		out.close();
     	}
     }
 }
