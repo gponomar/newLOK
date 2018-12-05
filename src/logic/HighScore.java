@@ -131,7 +131,6 @@ public class HighScore {
 
 	
 	public List<List<String>> getTopScores(String filename) {
-		List<List<String>> answer = new ArrayList<>();
 		List<String> inner = new ArrayList<>();
 		try
 		{
@@ -145,14 +144,8 @@ public class HighScore {
 		} catch (FileNotFoundException e) {
 			LOGGER.severe("File not found");
 		}
-		ArrayList<String> temp;
-		for(int i = 0; i< inner.size()-1; i+=2)
-		{
-			temp = new ArrayList<>();
-			temp.add(inner.get(i));
-			temp.add(inner.get(i+1));
-			answer.add(temp);
-		}
+
+		List<List<String>> answer = addToAnswer(inner);
 		
 		Collections.sort(answer, (a, b) -> {
 			if (Integer.parseInt(a.get(0)) > Integer.parseInt((b.get(0))))
@@ -169,8 +162,23 @@ public class HighScore {
 		return answer;		
 	}
 	
+	public List<List<String>> addToAnswer(List<String> inner) {
+		
+		List<List<String>> answer = new ArrayList<>();
+		for(int i = 0; i< inner.size()-1; i+=2)
+		{
+			ArrayList<String> temp = new ArrayList<>();
+			temp.add(inner.get(i));
+			temp.add(inner.get(i+1));
+			answer.add(temp);
+		}
+		System.out.println(answer);
+		return answer;
+	}
+	
 	public void setHighScoreLabels() {
 		List<List<String>> highScoreList =  TopScoreManager.getInstance().getTopScores();
+		//System.out.println(highScoreList);
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +
 				"   " + highScoreList.get(0).get(1));

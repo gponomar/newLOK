@@ -10,7 +10,7 @@ public class TestSetHighScoreLabels {
 	@Test
 	public void testSetScores() throws FileNotFoundException {
 		HighScore test = new HighScore();
-		TopScoreManager.getInstance().refreshScores("resource/testTopScores");
+		TopScoreManager.getInstance().refreshScores("resource/testTopScores11");
 		test.setHighScoreLabels();
 		String score1 = test.getScore1();
 		String expected = "1.   25   Kiley";

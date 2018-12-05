@@ -11,7 +11,7 @@ import logic.Home;
 public class TestMedDifficulty {
 
 	@Test
-	public void testPlayBtn() throws InterruptedException {
+	public void testMedDiffBtn() throws InterruptedException {
 		Home test =  new Home();
 		test.getSettingsBtn().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
