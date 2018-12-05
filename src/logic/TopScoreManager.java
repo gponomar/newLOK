@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class TopScoreManager {
 	private static TopScoreManager myInstance;
-	List<List<String>> answer = new ArrayList<List<String>>();
+	List<List<String>> answer = new ArrayList<>();
 	private TopScoreManager() {
 		
 	}
@@ -20,8 +20,8 @@ public class TopScoreManager {
 		return myInstance;
 	}
 	public void refreshScores(String fileName) {
-		answer = new ArrayList<List<String>>();
-		List<String> inner = new ArrayList<String>();
+		answer = new ArrayList<>();
+		List<String> inner = new ArrayList<>();
 		try
 		{
 			Scanner scanner = new Scanner(new File(fileName));

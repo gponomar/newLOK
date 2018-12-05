@@ -17,7 +17,6 @@ import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -128,7 +127,7 @@ public class Game {
 
 			iterator.setText(source);
 		} catch (IOException e1) {
-			
+			LOGGER.severe("File not found");
 		}
         int start = iterator.first();
         
