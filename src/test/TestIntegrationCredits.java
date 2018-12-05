@@ -1,3 +1,5 @@
+// Grant Parton Integration test 1
+// Tests that going to and from the home button takes you back to the home page.
 package test;
 import static org.junit.Assert.assertEquals;
 import java.util.concurrent.TimeUnit;
