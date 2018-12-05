@@ -103,4 +103,7 @@ public class Settings {
     	homepage.frm.validate();
     	homepage.frm.repaint();
 	}
+	 public JButton getBackBtn() {
+	    	return this.homeBtn;
+	    }
 }

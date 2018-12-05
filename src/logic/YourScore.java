@@ -111,13 +111,7 @@ public class YourScore {
 			}
 		});
     }
-	// action to be performed when back button is hit
-	private void homeBtnAction() {
-    	homepage.frm.remove(pnlHolderYourScore);
-    	homepage.frm.setContentPane(homepage.pnl);
-    	homepage.frm.validate();
-    	homepage.frm.repaint();
-	}
+	// action to be performed when done button is hit
 	private void doneBtnAction() throws IOException {
 		String myName = getname.getText();
 		getname.setText("Your Name");
@@ -142,9 +136,7 @@ public class YourScore {
     		LOGGER.severe("exception occoured" + e);
     	}
     	finally {
-    		if(out != null) {
-    			out.close();
-    		}
+    		out.close();
     	}
     }
 }

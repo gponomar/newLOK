@@ -180,6 +180,10 @@ public class Home {
         openScorePageAction(yourscorePage);
     }
     
+    public JPanel getPnl() {
+    	return pnl;
+    }
+    
 	// action to be performed when play button is hit
 	private void playBtnAction() {
 		Game gamePage = new Game();

@@ -16,40 +16,26 @@ public class TestGetTopScores {
 		HighScore test = new HighScore();
 		List<List<String>> answer = test.getTopScores("resource/testTopScores");
 		ArrayList<ArrayList<String>> expected = new ArrayList<>();
-		ArrayList<String> added = new ArrayList<>();
-		added.add("25");
-		added.add("Kiley");
-		expected.add(added);
-		added = new ArrayList<>();
-		added.add("22");
-		added.add("Grant");
-		expected.add(added);
-		added = new ArrayList<>();
-		added.add("20");
-		added.add("Evan");
-		expected.add(added);
-		added = new ArrayList<>();
-		added.add("15");
-		added.add("Ryan");
-		expected.add(added);
-		added = new ArrayList<>();
-		added.add("13");
-		added.add("Gracie");
-		expected.add(added);
-		added = new ArrayList<>();
-		added.add("12");
-		added.add("Ishan");
-		expected.add(added);
-		added = new ArrayList<>();
-		added.add("0");
-		added.add("-");
-		expected.add(added);
-		expected.add(added);
-		expected.add(added);
-		expected.add(added);
-		expected.add(added);
+
+		expected.add(addScore("25", "Kiley"));
+		expected.add(addScore("22", "Grant"));
+		expected.add(addScore("20", "Evan"));
+		expected.add(addScore("15", "Ryan"));
+		expected.add(addScore("13", "Gracie"));
+		expected.add(addScore("12", "Ishan"));
+		expected.add(addScore("0", "-"));
+		expected.add(addScore("0", "-"));
+		expected.add(addScore("0", "-"));
+		expected.add(addScore("0", "-"));
+		expected.add(addScore("0", "-"));
 		assertTrue(answer.equals(expected));
 		
 
+	}
+	private ArrayList<String> addScore(String score, String name){
+		ArrayList<String>added = new ArrayList<>();
+		added.add(score);
+		added.add(name);
+		return added;
 	}
 }

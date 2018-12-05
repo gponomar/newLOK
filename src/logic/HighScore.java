@@ -131,8 +131,8 @@ public class HighScore {
 
 	
 	public List<List<String>> getTopScores(String filename) {
-		List<List<String>> answer = new ArrayList<List<String>>();
-		List<String> inner = new ArrayList<String>();
+		List<List<String>> answer = new ArrayList<>();
+		List<String> inner = new ArrayList<>();
 		try
 		{
 			Scanner scanner = new Scanner(new File(filename));
