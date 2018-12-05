@@ -222,7 +222,8 @@ public class Home {
 	private void scoreBtnAction(HighScore scorePage) {
     	frm.remove(pnl);
     	//whenever scorepage is called this needs to be done first
-    	scorePage.setHighScoreLabels("resource/HighScoreList");
+    	TopScoreManager.getInstance().refreshScores("resource/HighScoreList");
+    	scorePage.setHighScoreLabels();
     	frm.setContentPane(scorePage.pnlHolderHighScore);
     	frm.validate();
     	frm.repaint();

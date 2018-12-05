@@ -123,7 +123,8 @@ public class YourScore {
 		getname.setText("Your Name");
 		appendStrToScoreFile(theScore, myName, theDiff); 
 		homepage.frm.remove(pnlHolderYourScore);
-		scorepage.setHighScoreLabels("resource/HighScoreList");
+		TopScoreManager.getInstance().refreshScores("resource/HighScoreList");
+		scorepage.setHighScoreLabels();
     	homepage.frm.setContentPane(scorepage.pnlHolderHighScore);
     	homepage.frm.validate();
     	homepage.frm.repaint();
