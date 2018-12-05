@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
@@ -64,7 +65,7 @@ public class Game {
 	public JButton getBackBtn() {
 		return homeBtn;
 	}
-	private HashMap<Integer, ArrayList<String>> lengthMap;
+	private Map<Integer, ArrayList<String>> lengthMap;
 	private int sentLength=20;
 	public int getSentLength() {
 		return sentLength;
@@ -84,7 +85,7 @@ public class Game {
 	public final JLabel labelGame = new JLabel();
 	private Random rand = new Random();
 	
-	public void setLengthMap(HashMap<Integer, ArrayList<String>> map) {
+	public void setLengthMap(Map<Integer, ArrayList<String>> map) {
 		lengthMap = map;
 	}
 	
@@ -117,9 +118,9 @@ public class Game {
         homeBtn.addActionListener(action -> homeBtnAction());
         
     }
-	public HashMap<Integer, ArrayList<String>> createSentences() {
+	public Map<Integer, ArrayList<String>> createSentences() {
 		//Create sentences
-		HashMap<Integer, ArrayList<String>> ans = new HashMap<>();
+		Map<Integer, ArrayList<String>> ans = new HashMap<>();
         BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
         String source = null;
         try {
