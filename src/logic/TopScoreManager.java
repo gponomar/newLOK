@@ -32,6 +32,7 @@ public class TopScoreManager {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
+			
 		}
 		ArrayList<String> temp;
 		for(int i = 0; i< inner.size()-1; i+=2)
