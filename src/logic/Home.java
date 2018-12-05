@@ -180,6 +180,10 @@ public class Home {
         openScorePageAction(yourscorePage);
     }
     
+    public JPanel getPnl() {
+    	return pnl;
+    }
+    
 	// action to be performed when play button is hit
 	private void playBtnAction() {
 		Game gamePage = new Game();
@@ -222,7 +226,8 @@ public class Home {
 	private void scoreBtnAction(HighScore scorePage) {
     	frm.remove(pnl);
     	//whenever scorepage is called this needs to be done first
-    	scorePage.setHighScoreLabels("resource/HighScoreList");
+    	TopScoreManager.getInstance().refreshScores("resource/HighScoreList");
+    	scorePage.setHighScoreLabels();
     	frm.setContentPane(scorePage.pnlHolderHighScore);
     	frm.validate();
     	frm.repaint();

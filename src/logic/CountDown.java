@@ -20,13 +20,9 @@ public class CountDown {
 			public void run() {
 				curTime -= 1000;
 				o.update(curTime);
-				if(curTime<0) {
+				if(curTime<0 || quit) {
 					clock.cancel();
 					clock.purge();
-				}
-				else if(quit) {
-					clock.cancel();
-					clock.purge();	
 				}
 			}
 		};

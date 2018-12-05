@@ -65,6 +65,9 @@ public class Game {
 	}
 	private HashMap<Integer, ArrayList<String>> lengthMap;
 	private int sentLength=20;
+	public int getSentLength() {
+		return sentLength;
+	}
 	private int diff = 5;
 	private String result;
 	private int progress = 0;
@@ -200,6 +203,7 @@ public class Game {
         	// no changes needed 
         }
     }
+
     
     //sets all the keys 
     public void setContent(String finalResult, int prog) {
