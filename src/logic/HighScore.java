@@ -62,8 +62,8 @@ public class HighScore {
 		};
 		
 	public HighScore() {
-		
-		setHighScoreLabels("resource/HighScoreList");
+		TopScoreManager.getInstance().refreshScores("resource/HighScoreList");
+		setHighScoreLabels();
 		
     	GridBagConstraints gbcNames = new GridBagConstraints();
     	gbcNames.fill = GridBagConstraints.HORIZONTAL;
@@ -169,8 +169,8 @@ public class HighScore {
 		return answer;		
 	}
 	
-	public void setHighScoreLabels(String filename) {
-		List<List<String>> highScoreList =  getTopScores(filename);
+	public void setHighScoreLabels() {
+		List<List<String>> highScoreList =  TopScoreManager.getInstance().getTopScores();
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +
 				"   " + highScoreList.get(0).get(1));

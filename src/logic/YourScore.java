@@ -34,8 +34,14 @@ public class YourScore {
 		scorepage = val;
 	}
 	private static final Logger LOGGER = Logger.getLogger(YourScore.class.getName());
-	public static JTextArea getname = new JTextArea("Your_Name");
-	public JButton done = new JButton("done");
+	private JTextArea getname = new JTextArea("Your_Name");
+	public JTextArea getGetName() {
+		return getname;
+	}
+	private JButton done = new JButton("done");
+	public JButton getDone() {
+		return done;
+	}
 	private int theScore;
 	public void setScore(int x) {
 		this.theScore = x;
@@ -117,7 +123,8 @@ public class YourScore {
 		getname.setText("Your Name");
 		appendStrToScoreFile(theScore, myName, theDiff); 
 		homepage.frm.remove(pnlHolderYourScore);
-		scorepage.setHighScoreLabels("resource/HighScoreList");
+		TopScoreManager.getInstance().refreshScores("resource/HighScoreList");
+		scorepage.setHighScoreLabels();
     	homepage.frm.setContentPane(scorepage.pnlHolderHighScore);
     	homepage.frm.validate();
     	homepage.frm.repaint();

@@ -1,6 +1,7 @@
-// Kiley Roberson - Junit Test 2
-// Test that when the difficulty is selected in settings
-// the level difficulty is changed in the game
+// Kiley Roberson - Integration Test 1
+// Test that the settings selector is working and that choosing a 
+// diff on the selector and exiting to the home page sets the game difficulty
+
 package test;
 
 import static org.junit.Assert.*;
