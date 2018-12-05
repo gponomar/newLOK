@@ -13,7 +13,7 @@ public class TestIntegrationGameSize {
 		Home testHome = new Home();
 		TimeUnit.MILLISECONDS.sleep(1000);
 		JPanel backPanelExists = testHome.getPnl();
-		boolean doesExist = (backPanelExists == null) ? true : false;
+		boolean doesExist = (backPanelExists == null);
 		assertEquals(false, doesExist);
 	}
 }
