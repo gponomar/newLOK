@@ -23,6 +23,6 @@ public class TestGameLoop {
 		Game game = new Game();
 		game.setLengthMap(game.createSentences());
 		ArrayList<String> sents = game.getCorrectLengthSentences();
-		assertTrue(sents.size() >0);
+		assertTrue(!sents.isEmpty());
 	}
 }

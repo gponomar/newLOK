@@ -12,13 +12,13 @@ public class TestTopScoreManager {
 	@Test
 	public void testSingleton() throws InterruptedException {
 		TopScoreManager instance = TopScoreManager.getInstance();
-		assertTrue(instance!=null && instance instanceof TopScoreManager);
+		assertTrue(instance instanceof TopScoreManager);
 	}
 	//unit
 	@Test
 	public void testSingletonReturnsList() throws InterruptedException {
 		TopScoreManager instance = TopScoreManager.getInstance();
 		instance.refreshScores("resource/testTopScores");
-		assertTrue(instance.getTopScores() !=null && instance.getTopScores() instanceof List<?>);
+		assertTrue(instance.getTopScores() instanceof List<?>);
 	}
 }
