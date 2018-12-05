@@ -1,7 +1,6 @@
 package test;
 
 import static org.junit.Assert.assertTrue;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -9,13 +8,12 @@ import org.junit.Test;
 
 import logic.HighScore;
 
-public class testGetTopScores {
+public class TestGetTopScores {
 
 	@Test
 	public void testTopScores() throws FileNotFoundException {
 		HighScore test = new HighScore();
-		ArrayList<ArrayList<String>> answer = new ArrayList<ArrayList<String>>();
-		answer = test.getTopScores("resource/testTopScores");
+		ArrayList<ArrayList<String>> answer = test.getTopScores("resource/testTopScores");
 		ArrayList<ArrayList<String>> expected = new ArrayList<>();
 		ArrayList<String> added = new ArrayList<>();
 		added.add("25");
@@ -49,8 +47,6 @@ public class testGetTopScores {
 		expected.add(added);
 		expected.add(added);
 		expected.add(added);
-		System.out.println(expected);
-		System.out.println(answer);
 		assertTrue(answer.equals(expected));
 		
 
