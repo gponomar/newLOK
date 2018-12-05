@@ -60,6 +60,9 @@ public class Game {
     };
 
 	private JButton homeBtn;
+	public JButton getBackBtn() {
+		return homeBtn;
+	}
 	private HashMap<Integer, ArrayList<String>> lengthMap;
 	private int sentLength=20;
 	private int diff = 5;
@@ -127,7 +130,7 @@ public class Game {
         }
         
         // Start the game
-        ArrayList<String> finalResultsList = new ArrayList<>(getCorrectLengthSentences());       
+        ArrayList<String> finalResultsList = new ArrayList<>(getCorrectLengthSentences()); 
     	startRound(finalResultsList);
 
     	// Exit to main menu
