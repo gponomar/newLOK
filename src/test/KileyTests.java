@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestDifficultySet.class, TestPlayBtn.class, TestTimer.class, TestDoneButton.class })
+@SuiteClasses({ TestHardDifficultySet.class, TestPlayBtn.class, TestTimer.class, TestDoneButton.class })
 public class KileyTests {
 
 }
