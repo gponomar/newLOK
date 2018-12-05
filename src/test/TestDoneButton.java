@@ -1,5 +1,6 @@
-// Kiley Roberson - JUnit test 2
-// Test that clicking the done button writes score to file
+// Kiley Roberson - Integration test 2
+// Tests that done button actions is performed and that 
+// strAppendFile which is called on done button, works
 package test;
 
 import static org.junit.Assert.assertTrue;
