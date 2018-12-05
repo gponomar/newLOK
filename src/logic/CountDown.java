@@ -23,7 +23,9 @@ public class CountDown {
 		TimerTask task = new TimerTask() {
 			public void run() {
 				curTime -= 1000;
-				o.update(curTime);
+				if(o!=null) {
+					o.update(curTime);
+				}
 				if(curTime<0 || quit) {
 					clock.cancel();
 					clock.purge();
