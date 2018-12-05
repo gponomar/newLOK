@@ -122,6 +122,10 @@ public class Credits {
         homeBtn.addActionListener(action -> homeBtnAction());
 
     }
+		
+	public JButton getBackBtn() {
+		return homeBtn;
+	}
 	
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
