@@ -9,10 +9,10 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 import logic.Home;
 
-public class TestDifficultySet {
+public class TestHardDifficultySet {
 
 	@Test
-	public void testPlayBtn() throws InterruptedException {
+	public void testHardDiffBtn() throws InterruptedException {
 		Home test =  new Home();
 		test.getSettingsBtn().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
@@ -20,7 +20,7 @@ public class TestDifficultySet {
 		test.settingsPage.getHomeBtn().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
 		test.getPlayBtn().doClick();
-		String output = test.getGamePage().getDiff();
+		String output = test.getGamePage().getDiff(); 
 		assertEquals("Hard", output);
 	}
 }

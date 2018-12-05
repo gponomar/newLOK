@@ -38,6 +38,11 @@ public class Credits {
 	private JLabel labelName5 = new JLabel("Grace Ponomaroff", SwingConstants.CENTER);
 	private JLabel labelName6 = new JLabel("Kiley Roberson", SwingConstants.CENTER);
 	private JLabel labelName7 = new JLabel("");
+	
+	public String getGrantLabel() {
+		return labelName4.getText();
+	}
+	
 	public static final JPanel pnlHolderCredits = new JPanel(new GridBagLayout())
 	{
 		@Override
