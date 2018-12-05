@@ -1,5 +1,5 @@
-// JUnit Test 2: Ryan Nevils
-
+// Evan - Junit Test
+// Test that the Junit counter is set correctly
 package test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +15,8 @@ public class TestJunitCounter {
 
 			@Override
 			public void update(Long val) {
-				//Auto-generated method stub
+				// TODO Auto-generated method stub
+				
 			}
 			
 		}, "empty");

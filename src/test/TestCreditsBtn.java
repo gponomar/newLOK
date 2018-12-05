@@ -1,5 +1,6 @@
 package test;
-//JUnit test, tests that credits button takes you to the right page
+// Ryan -JUnit test
+// tests that credits button takes you to the right page
 import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
