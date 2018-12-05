@@ -3,7 +3,6 @@ package test;
 import static org.junit.Assert.assertEquals;
 import java.util.concurrent.TimeUnit;
 import org.junit.Test;
-import logic.Settings;
 import logic.Home;
 
 public class TestSettingBackBtn {
