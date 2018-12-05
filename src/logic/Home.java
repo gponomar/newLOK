@@ -95,6 +95,7 @@ public class Home {
 	}
     
     public Home() {
+    	int ununsedVariables = 0;
     	frm.pack();
     	JPanel titlePanel = new JPanel();
     	titlePanel.setOpaque(false);
