@@ -16,7 +16,6 @@ public class TestGetTopScores {
 		HighScore test = new HighScore();
 		List<List<String>> answer = test.getTopScores("resource/testTopScores");
 		ArrayList<ArrayList<String>> expected = new ArrayList<>();
-		ArrayList<String> added = new ArrayList<>();
 
 		expected.add(addScore("25", "Kiley"));
 		expected.add(addScore("22", "Grant"));
