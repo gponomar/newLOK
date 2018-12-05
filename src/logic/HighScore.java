@@ -1,5 +1,6 @@
 package logic;
 import java.awt.BorderLayout;
+
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -128,9 +130,9 @@ public class HighScore {
 	}
 
 	
-	public ArrayList<ArrayList<String>> getTopScores(String filename) {
-		ArrayList<ArrayList<String>> answer = new ArrayList<>();
-		ArrayList<String> inner = new ArrayList<>();
+	public List<List<String>> getTopScores(String filename) {
+		List<List<String>> answer = new ArrayList<List<String>>();
+		List<String> inner = new ArrayList<String>();
 		try
 		{
 			Scanner scanner = new Scanner(new File(filename));
@@ -168,7 +170,7 @@ public class HighScore {
 	}
 	
 	public void setHighScoreLabels(String filename) {
-		ArrayList<ArrayList<String>> highScoreList =  getTopScores(filename);
+		List<List<String>> highScoreList =  getTopScores(filename);
 		score1.setText("1.   " +
 				highScoreList.get(0).get(0) +
 				"   " + highScoreList.get(0).get(1));

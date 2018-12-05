@@ -7,7 +7,7 @@ import logic.HighScore;
 public class TestExHighScore {
 
 		@Test
-		public void TestForExcept() throws FileNotFoundException {
+		public void testForExcept() throws FileNotFoundException {
 			HighScore test = new HighScore();
 		    try{
 		        test.getTopScores("file-that-doesnt-exist");
