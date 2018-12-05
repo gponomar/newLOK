@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 import org.junit.Test;
 import logic.Home;
-import java.awt.Dimension;
 
 public class TestIntegrationGameSize {
 	@Test

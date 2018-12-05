@@ -9,7 +9,7 @@ import org.junit.Test;
 import logic.HighScore;
 import logic.Home;
 
-public class testHighScoreBackBtn {
+public class TestHighScoreBackBtn {
 	@Test
 	public void testBackBtn() throws InterruptedException {
 		Home testhome = new Home();

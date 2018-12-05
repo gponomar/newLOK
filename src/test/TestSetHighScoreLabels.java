@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import logic.HighScore;
 
-public class testSetHighScoreLabels {
+public class TestSetHighScoreLabels {
 	@Test
 	public void testSetScores() throws FileNotFoundException {
 		HighScore test = new HighScore();
