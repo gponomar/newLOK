@@ -61,6 +61,9 @@ public class Game {
     };
 
 	private JButton homeBtn;
+	public JButton getBackBtn() {
+		return homeBtn;
+	}
 	private HashMap<Integer, ArrayList<String>> lengthMap;
 	private int sentLength=20;
 	public int getSentLength() {
@@ -145,7 +148,8 @@ public class Game {
         	}
         }
         return ans;
-	}
+        
+    }
 	
 	// action to be performed when back button is hit
 	private void homeBtnAction() {

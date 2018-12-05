@@ -2,7 +2,7 @@ package logic;
 
 import java.util.TimerTask;
 
-class CountDown {
+public class CountDown {
 
 	private long curTime = 0;
 	public Boolean quit = false;
