@@ -113,11 +113,7 @@ public class Home {
 			soundClip = AudioSystem.getClip();
 	    	soundClip.open(audioIn);
 	    	soundClip.start();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 			e.printStackTrace();
 		}
 
