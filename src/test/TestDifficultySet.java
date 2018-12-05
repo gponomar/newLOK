@@ -12,7 +12,7 @@ public class TestDifficultySet {
 
 	@Test
 	public void testPlayBtn() throws InterruptedException {
-		Home test = new Home();
+		Home test =  new Home();
 		test.getSettingsBtn().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
 		test.settingsPage.getSelectDiffs().setSelectedItem("Hard");

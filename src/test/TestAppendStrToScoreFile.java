@@ -19,12 +19,12 @@ public class TestAppendStrToScoreFile {
 		boolean answer = false;
 		YourScore test = new YourScore();
 		try {
-			test.appendStrToScoreFile(10000, "Gracie");
+			test.appendStrToScoreFile(10000, "Gracie", "Hard");
 			Scanner scanner = new Scanner(new File("resource/HighScoreList"));
 			while (scanner.hasNextLine())
 			{
 				String line = scanner.nextLine();
-				if (line.compareTo("10000 Gracie") == 0)
+				if (line.compareTo("10000 Gracie-Hard") == 0)
 				{
 					answer = true;
 					break;
@@ -40,4 +40,5 @@ public class TestAppendStrToScoreFile {
 			LOGGER.severe("exception occoured" + e);
 		}
 	}
-}
+}	
+
