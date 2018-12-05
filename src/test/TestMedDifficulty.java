@@ -1,5 +1,6 @@
 package test;
-// Integration test  - test that medium diff set in settings
+// Gracie - Integration test  
+// test that medium diff set in settings
 // also sets in game page when back button is hit
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +13,7 @@ import logic.Home;
 public class TestMedDifficulty {
 
 	@Test
-	public void testMedDiffBtn() throws InterruptedException {
+	public void testPlayBtn() throws InterruptedException {
 		Home test =  new Home();
 		test.getSettingsBtn().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
