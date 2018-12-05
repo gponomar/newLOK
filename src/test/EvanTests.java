@@ -1,3 +1,4 @@
+
 package test;
 
 import org.junit.runner.RunWith;
@@ -5,7 +6,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestTopScoreManager.class })
-public class IshanTests {
+@SuiteClasses({ TestDrawnButtonFactory.class })
+public class EvanTests {
 
 }

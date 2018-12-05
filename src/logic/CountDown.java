@@ -7,15 +7,19 @@ public class CountDown {
 	private long curTime = 0;
 	public Boolean quit = false;
 	
-	CountDown(final Observer<Long> o, String diff) {
+	public long timeToRun(String diff) {
 		if(diff.equals("Easy")) {
-			curTime = 30000;
+			return 30000;
 		} else if(diff.equals("Medium")) {
-			curTime = 20000;
+			return 20000;
 		} else {
-			curTime = 10000;
+			return 10000;
 		}
+	}
+	
+	public CountDown(final Observer<Long> o, String diff) {
 		java.util.Timer clock = new java.util.Timer("Timer");
+		curTime = timeToRun(diff);
 		TimerTask task = new TimerTask() {
 			public void run() {
 				curTime -= 1000;

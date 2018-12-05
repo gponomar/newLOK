@@ -1,5 +1,6 @@
 package test;
-//Gracie - integration
+//Gracie - Junit Test 1
+// Tests that appendStrToFile writes to file
 import static org.junit.Assert.assertTrue;
 
 

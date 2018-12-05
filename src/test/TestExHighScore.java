@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import logic.HighScore;
+
 public class TestExHighScore {
 
 		@Test
