@@ -34,8 +34,14 @@ public class YourScore {
 		scorepage = val;
 	}
 	private static final Logger LOGGER = Logger.getLogger(YourScore.class.getName());
-	public static JTextArea getname = new JTextArea("Your_Name");
-	public JButton done = new JButton("done");
+	private JTextArea getname = new JTextArea("Your_Name");
+	public JTextArea getGetName() {
+		return getname;
+	}
+	private JButton done = new JButton("done");
+	public JButton getDone() {
+		return done;
+	}
 	private int theScore;
 	public void setScore(int x) {
 		this.theScore = x;
@@ -126,7 +132,6 @@ public class YourScore {
     public static void appendStrToScoreFile(
             int score, String name, String diff)throws IOException
     {
-    	BufferedWriter out = null;
     	String path = "resource/HighScoreList";
     	try (BufferedWriter br = new BufferedWriter(new FileWriter(path, true))){
     		String str = "\n" + Integer.toString(score)+ " " + name + "-"+ diff;
@@ -134,9 +139,6 @@ public class YourScore {
     	}
     	catch (IOException e) {
     		LOGGER.severe("exception occoured" + e);
-    	}
-    	finally {
-    		out.close();
     	}
     }
 }

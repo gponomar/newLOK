@@ -1,11 +1,8 @@
 package test;
-
+//Gracie - Unit test
 import static org.junit.Assert.assertTrue;
-
 import java.io.FileNotFoundException;
-
 import org.junit.Test;
-
 import logic.HighScore;
 import logic.TopScoreManager;
 

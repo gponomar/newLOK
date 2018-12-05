@@ -17,6 +17,7 @@ import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -60,6 +61,9 @@ public class Game {
     };
 
 	private JButton homeBtn;
+	public JButton getBackBtn() {
+		return homeBtn;
+	}
 	private HashMap<Integer, ArrayList<String>> lengthMap;
 	private int sentLength=20;
 	public int getSentLength() {
@@ -80,6 +84,10 @@ public class Game {
 	public final JLabel labelGame = new JLabel();
 	private Random rand = new Random();
 	
+	public void setLengthMap(HashMap<Integer, ArrayList<String>> map) {
+		lengthMap = map;
+	}
+	
 	public Game() {
 		
 		//Formatting
@@ -99,35 +107,7 @@ public class Game {
         labelGame.requestFocus();
         labelGame.addKeyListener(new SimpleKeyListener());
         
-        //Create sentences
-        BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
-        String source;
-        try {
-        	source = new String(Files.readAllBytes(Paths.get("resource/for.txt")), StandardCharsets.UTF_8);
-        	source=source.replace("\n", "").replace("\r", "").replaceAll("#", "");
-
-			iterator.setText(source);
-		} catch (IOException e1) {
-			LOGGER.severe("File not found");
-			return;
-		}
-        int start = iterator.first();
-        lengthMap = new HashMap<>();
-        String sent;
-        for (int end = iterator.next();
-            end != BreakIterator.DONE;
-            start = end, end = iterator.next()) {
-        	sent = source.substring(start,end).trim();
-        	if(lengthMap.containsKey(sent.length())) {
-        		ArrayList<String> temp = new ArrayList<>(lengthMap.get(sent.length()));
-        		temp.add(sent);
-        		lengthMap.put(sent.length(), temp);
-        	} else {
-        		ArrayList<String> temp = new ArrayList<>();
-        		temp.add(sent);
-        		lengthMap.put(sent.length(), temp);
-        	}
-        }
+        lengthMap = createSentences();
         
         // Start the game
         ArrayList<String> finalResultsList = new ArrayList<>(getCorrectLengthSentences());       
@@ -135,6 +115,39 @@ public class Game {
 
     	// Exit to main menu
         homeBtn.addActionListener(action -> homeBtnAction());
+        
+    }
+	public HashMap<Integer, ArrayList<String>> createSentences() {
+		//Create sentences
+		HashMap<Integer, ArrayList<String>> ans = new HashMap<>();
+        BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
+        String source = null;
+        try {
+        	source = new String(Files.readAllBytes(Paths.get("resource/for.txt")), StandardCharsets.UTF_8);
+        	source=source.replace("\n", "").replace("\r", "").replaceAll("#", "");
+
+			iterator.setText(source);
+		} catch (IOException e1) {
+			
+		}
+        int start = iterator.first();
+        
+        String sent;
+        for (int end = iterator.next();
+            end != BreakIterator.DONE;
+            start = end, end = iterator.next()) {
+        	sent = source.substring(start,end).trim();
+        	if(ans.containsKey(sent.length())) {
+        		ArrayList<String> temp = new ArrayList<>(ans.get(sent.length()));
+        		temp.add(sent);
+        		ans.put(sent.length(), temp);
+        	} else {
+        		ArrayList<String> temp = new ArrayList<>();
+        		temp.add(sent);
+        		ans.put(sent.length(), temp);
+        	}
+        }
+        return ans;
         
     }
 	
@@ -151,7 +164,7 @@ public class Game {
 	// Sentence logic 
 	
     //picking out sentences from the book
-    private ArrayList<String> getCorrectLengthSentences() {
+    public ArrayList<String> getCorrectLengthSentences() {
     	ArrayList<String> resultsList = new ArrayList<>();
         for(int i=sentLength-diff; i<sentLength+diff; i++) {
         	if(lengthMap.containsKey(i)) {
