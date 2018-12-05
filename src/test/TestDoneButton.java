@@ -1,5 +1,6 @@
-// Kiley Roberson - JUnit test 2
-// Test that clicking the done button writes score to file
+// Kiley Roberson - Integration test 2
+// Tests that done button actions is performed and that 
+// strAppendFile which is called on done button, works
 package test;
 
 import static org.junit.Assert.assertTrue;
@@ -24,21 +25,21 @@ public class TestDoneButton {
 		test.setDiff("Easy");
 		test.getDone().doClick();
 		TimeUnit.MILLISECONDS.sleep(50);
-		Boolean answer = false;
+		Boolean answ = false;
 		try {
-			Scanner scanner = new Scanner(new File("resource/HighScoreList"));
-			while (scanner.hasNextLine())
+			Scanner scan = new Scanner(new File("resource/HighScoreList"));
+			while (scan.hasNextLine())
 			{
-				String line = scanner.nextLine();
+				String line = scan.nextLine();
 				if (line.compareTo("3 Kiley-Easy") == 0)
 				{
-					answer = true;
+					answ = true;
 					break;
 				}
 			}
-			scanner.close();
+			scan.close();
 			
-		assertTrue(answer);
+		assertTrue(answ);
 		
 		}catch (FileNotFoundException e) {
 			LOGGER.severe("File not found");

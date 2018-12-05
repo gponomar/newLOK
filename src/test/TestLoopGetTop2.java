@@ -1,6 +1,7 @@
 package test;
-//Gracie- Loop test
+//Gracie- Loop test 2
 import static org.junit.Assert.assertTrue;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,25 +10,16 @@ import org.junit.Test;
 
 import logic.HighScore;
 
-public class TestGetTopScores {
+public class TestLoopGetTop2 {
 
 	@Test
 	public void testTopScores() throws FileNotFoundException {
 		HighScore test = new HighScore();
-		List<List<String>> answer = test.getTopScores("resource/testTopScores");
+		List<List<String>> answer = test.getTopScores("resource/testTopScores2");
 		ArrayList<ArrayList<String>> expected = new ArrayList<>();
 
-		expected.add(addScore("25", "Kiley"));
-		expected.add(addScore("22", "Grant"));
-		expected.add(addScore("20", "Evan"));
-		expected.add(addScore("15", "Ryan"));
-		expected.add(addScore("13", "Gracie"));
-		expected.add(addScore("12", "Ishan"));
-		expected.add(addScore("0", "-"));
-		expected.add(addScore("0", "-"));
-		expected.add(addScore("0", "-"));
-		expected.add(addScore("0", "-"));
-		expected.add(addScore("0", "-"));
+		expected.add(addScore("20", "YourScore"));
+		expected.add(addScore("10", "MyScore"));
 		assertTrue(answer.equals(expected));
 		
 

@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 
 public class Settings {
@@ -109,10 +110,13 @@ public class Settings {
 	    homeBtn.addActionListener(action -> homeBtnAction());
 	 }
 	private void pauseButtonAction() {
-		if(homepage.getSoundClip().isRunning()) {
-			homepage.getSoundClip().stop();
-		} else {
-			homepage.getSoundClip().start();
+		Clip clip = homepage.getSoundClip();
+		if(clip!=null) {
+			if(clip.isRunning()) {
+				clip.stop();
+			} else {
+				clip.start();
+			}
 		}
 	}
 	// action to be performed when back button is hit

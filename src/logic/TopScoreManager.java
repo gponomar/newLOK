@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class TopScoreManager {
 	private static TopScoreManager myInstance;
-	List<List<String>> answer = new ArrayList<List<String>>();
+	private static final Logger LOGGER = Logger.getLogger(TopScoreManager.class.getName());
+	List<List<String>> answer = new ArrayList<>();
 	private TopScoreManager() {
 		
 	}
@@ -20,8 +22,8 @@ public class TopScoreManager {
 		return myInstance;
 	}
 	public void refreshScores(String fileName) {
-		answer = new ArrayList<List<String>>();
-		List<String> inner = new ArrayList<String>();
+		answer = new ArrayList<>();
+		List<String> inner = new ArrayList<>();
 		try
 		{
 			Scanner scanner = new Scanner(new File(fileName));
@@ -32,6 +34,7 @@ public class TopScoreManager {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
+			LOGGER.severe("File not found");
 		}
 		ArrayList<String> temp;
 		for(int i = 0; i< inner.size()-1; i+=2)

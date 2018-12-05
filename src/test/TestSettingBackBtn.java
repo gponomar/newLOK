@@ -1,5 +1,6 @@
 package test;
-//Gracie- Integration
+//Evan - Integration 
+// Test that home button and then back button take you to the right pages
 import static org.junit.Assert.assertEquals;
 import java.util.concurrent.TimeUnit;
 import org.junit.Test;

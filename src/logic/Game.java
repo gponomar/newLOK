@@ -15,9 +15,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -64,7 +65,7 @@ public class Game {
 	public JButton getBackBtn() {
 		return homeBtn;
 	}
-	private HashMap<Integer, ArrayList<String>> lengthMap;
+	private Map<Integer, ArrayList<String>> lengthMap;
 	private int sentLength=20;
 	public int getSentLength() {
 		return sentLength;
@@ -84,7 +85,7 @@ public class Game {
 	public final JLabel labelGame = new JLabel();
 	private Random rand = new Random();
 	
-	public void setLengthMap(HashMap<Integer, ArrayList<String>> map) {
+	public void setLengthMap(Map<Integer, ArrayList<String>> map) {
 		lengthMap = map;
 	}
 	
@@ -117,9 +118,9 @@ public class Game {
         homeBtn.addActionListener(action -> homeBtnAction());
         
     }
-	public HashMap<Integer, ArrayList<String>> createSentences(String src) {
+	public Map<Integer, ArrayList<String>> createSentences(String src) {
 		//Create sentences
-		HashMap<Integer, ArrayList<String>> ans = new HashMap<>();
+		Map<Integer, ArrayList<String>> ans = new HashMap<>();
         BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
         String source = null;
         try {
@@ -128,7 +129,7 @@ public class Game {
 
 			iterator.setText(source);
 		} catch (IOException e1) {
-			
+			LOGGER.severe("File not found");
 		}
         int start = iterator.first();
         
@@ -150,7 +151,7 @@ public class Game {
         return ans;
         
     }
-	public HashMap<Integer, ArrayList<String>> createSentences() {
+	public Map<Integer, ArrayList<String>> createSentences() {
 		return createSentences("resource/for.txt");
 	}
 	
@@ -163,9 +164,20 @@ public class Game {
     	homepage.frm.validate();
     	homepage.frm.repaint();
 	}
-	
-	// Sentence logic 
-    private void startRound(ArrayList<String> finalResultsList) {
+    //picking out sentences from the book
+    public List<String> getCorrectLengthSentences() {
+    	ArrayList<String> resultsList = new ArrayList<>();
+        for(int i=sentLength-diff; i<sentLength+diff; i++) {
+        	if(lengthMap.containsKey(i)) {
+        		for(String s : lengthMap.get(i)) {
+        			resultsList.add(s);
+        		}
+        	}
+        }
+        return resultsList;
+    }
+     
+    private void startRound(List<String> finalResultsList) {
         progress=0;
         if(!finalResultsList.isEmpty()) {
         	if(finalResultsList.size()==1) {

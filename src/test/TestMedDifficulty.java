@@ -1,5 +1,7 @@
 package test;
-
+// Gracie - Integration test  
+// test that medium diff set in settings
+// also sets in game page when back button is hit
 import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;

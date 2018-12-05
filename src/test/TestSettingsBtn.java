@@ -1,5 +1,6 @@
 package test;
-//Gracie - Unit test
+//Evan - Unit test
+// Test that settings button creates correct class
 import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;

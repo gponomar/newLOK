@@ -1,4 +1,4 @@
-// Kiley Roberson - Integration Test 1
+// Evan - Integration Test 1
 // Test that the settings selector is working and that choosing a 
 // diff on the selector and exiting to the home page sets the game difficulty
 

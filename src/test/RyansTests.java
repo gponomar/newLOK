@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestBaseLabel.class, TestJunitCounter.class})
+@SuiteClasses({ TestBaseLabel.class, TestCreditsBtn.class, TestYourScoreTransition.class, 
+	TestHighScoreGameComplete.class})
 	public class RyansTests {
 	
  }
