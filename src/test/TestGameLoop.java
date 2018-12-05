@@ -13,16 +13,31 @@ import logic.Game;
 public class TestGameLoop {
 	//unit
 	@Test
-	public void testGameCreateSentencesLoop() throws InterruptedException {
+	public void testGameCreateSentencesLoopTyp() throws InterruptedException {
 		Game game = new Game();
 		Map<Integer, ArrayList<String>> sents = game.createSentences();
 		assertTrue(sents instanceof HashMap<?, ?> && sents.size() >0);
 	}
+	//test loop 2 times
 	@Test
-	public void testGetCorrectLengthSentencesLoop() throws InterruptedException {
+	public void testGameCreateSentencesLoopTwo() throws InterruptedException {
 		Game game = new Game();
-		game.setLengthMap(game.createSentences());
-		ArrayList<String> sents = game.getCorrectLengthSentences();
-		assertTrue(sents.size() >0);
+		Map<Integer, ArrayList<String>> sents = game.createSentences("resource/forTest2.txt");
+		System.out.println(sents.size());
+		assertTrue(sents instanceof HashMap<?, ?> && sents.size() ==2);
+	}
+	//test loop 1 time
+	@Test
+	public void testGameCreateSentencesLoopOne() throws InterruptedException {
+		Game game = new Game();
+		Map<Integer, ArrayList<String>> sents = game.createSentences("resource/forTest1.txt");
+		assertTrue(sents instanceof HashMap<?, ?> && sents.size() == 1);
+	}
+	//test loop 0 times
+	@Test
+	public void testGameCreateSentencesLoopZero() throws InterruptedException {
+		Game game = new Game();
+		Map<Integer, ArrayList<String>> sents = game.createSentences("resource/forTest0.txt");
+		assertTrue(sents instanceof HashMap<?, ?> && sents.size() == 0);
 	}
 }

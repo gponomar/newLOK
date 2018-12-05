@@ -42,6 +42,10 @@ public class HighScore {
 	private JLabel score4 = new JLabel("4.   " + "-");
 	private JLabel score5 = new JLabel("5.   " + "-");
 	private JLabel blank = new JLabel("");
+	
+	public JLabel getScore1Label() {
+		return score1;
+	}
 	public static final JPanel pnlHolderHighScore = new JPanel(new GridBagLayout())
 	{
 		@Override

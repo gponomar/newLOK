@@ -110,20 +110,20 @@ public class Game {
         lengthMap = createSentences();
         
         // Start the game
-        ArrayList<String> finalResultsList = new ArrayList<>(getCorrectLengthSentences());       
+        ArrayList<String> finalResultsList = new ArrayList<>(lengthMap.get(sentLength));       
     	startRound(finalResultsList);
 
     	// Exit to main menu
         homeBtn.addActionListener(action -> homeBtnAction());
         
     }
-	public HashMap<Integer, ArrayList<String>> createSentences() {
+	public HashMap<Integer, ArrayList<String>> createSentences(String src) {
 		//Create sentences
 		HashMap<Integer, ArrayList<String>> ans = new HashMap<>();
         BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
         String source = null;
         try {
-        	source = new String(Files.readAllBytes(Paths.get("resource/for.txt")), StandardCharsets.UTF_8);
+        	source = new String(Files.readAllBytes(Paths.get(src)), StandardCharsets.UTF_8);
         	source=source.replace("\n", "").replace("\r", "").replaceAll("#", "");
 
 			iterator.setText(source);
@@ -150,6 +150,9 @@ public class Game {
         return ans;
         
     }
+	public HashMap<Integer, ArrayList<String>> createSentences() {
+		return createSentences("resource/for.txt");
+	}
 	
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
@@ -162,19 +165,6 @@ public class Game {
 	}
 	
 	// Sentence logic 
-	
-    //picking out sentences from the book
-    public ArrayList<String> getCorrectLengthSentences() {
-    	ArrayList<String> resultsList = new ArrayList<>();
-        for(int i=sentLength-diff; i<sentLength+diff; i++) {
-        	if(lengthMap.containsKey(i)) {
-        		for(String s : lengthMap.get(i)) {
-        			resultsList.add(s);
-        		}
-        	}
-        }
-        return resultsList;
-    }
     private void startRound(ArrayList<String> finalResultsList) {
         progress=0;
         if(!finalResultsList.isEmpty()) {
@@ -199,7 +189,7 @@ public class Game {
             if(progress==result.length()) {
             	sentLength++;
             	score++;
-                startRound(getCorrectLengthSentences());
+                startRound(lengthMap.get(sentLength));
             }
         }
 

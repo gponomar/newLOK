@@ -22,6 +22,9 @@ public class DrawnButtonFactory {
 		else if(type.equalsIgnoreCase("CREDITS")) {
 			return new CreditsButton();
 		}
+		else if(type.equalsIgnoreCase("PAUSE")) {
+			return new PauseButton();
+		}
 		return null;
 	}
 }

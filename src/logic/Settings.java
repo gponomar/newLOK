@@ -37,6 +37,10 @@ public class Settings {
 	public JComboBox getSelectDiffs() {
 		return selectDiffs;
 	}
+	private JButton pauseButton;
+	public JButton getPauseButton() {
+		return pauseButton;
+	}
 	public static final JPanel pnlHolderSettings = new JPanel(new GridBagLayout())
 	{
 		@Override
@@ -81,20 +85,36 @@ public class Settings {
 		bigGBC.gridy = 1;
 	   	bigGBC.insets = new Insets(90, 2, 2, 30);
 		pnlHolderSettings.add(selectDiffs, bigGBC);
+		
+		DrawnButton dbPaus = btnFactory.getButton("PAUSE");
+		pauseButton = dbPaus.draw();
+    	bigGBC.gridx = 0;
+		bigGBC.gridy = 2;
+    	bigGBC.insets = new Insets(30, 2, 2, 30);
+    	pnlHolderSettings.add(pauseButton, bigGBC);
+    	backpnl.setOpaque(false);
+        pnlHolderSettings.add(backpnl, bigGBC);
+        pauseButton.addActionListener(action -> pauseButtonAction());
     	
     	// add back button
 		DrawnButton dbBack = btnFactory.getButton("BACK");
 		homeBtn = dbBack.draw();
     	backpnl.add(homeBtn, BorderLayout.CENTER);
     	bigGBC.gridx = 0;
-    	bigGBC.gridy = 2;
-    	bigGBC.insets = new Insets(275, 2, 2, 30);
+    	bigGBC.gridy = 3;
+    	bigGBC.insets = new Insets(235, 2, 2, 30);
     	backpnl.setOpaque(false);
         pnlHolderSettings.add(backpnl, bigGBC);
 	     
 	    homeBtn.addActionListener(action -> homeBtnAction());
 	 }
-	
+	private void pauseButtonAction() {
+		if(homepage.getSoundClip().isRunning()) {
+			homepage.getSoundClip().stop();
+		} else {
+			homepage.getSoundClip().start();
+		}
+	}
 	// action to be performed when back button is hit
 	private void homeBtnAction() {
 		homepage.setDiff(String.valueOf(selectDiffs.getSelectedItem()));

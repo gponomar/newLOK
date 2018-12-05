@@ -19,6 +19,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Home {
 	private DrawnButtonFactory btnFactory = new DrawnButtonFactory();
@@ -74,13 +79,20 @@ public class Home {
     public static final Credits creditsPage = new Credits();
     public static final HighScore scorePage = new HighScore();
 	public static final YourScore yourscorePage = new YourScore();
-	
+	private Clip soundClip;
+	private AudioInputStream audioIn;
 	private CountDown clock;
 	public CountDown getClock() {
 		return clock;
 	}
 	
+	public Clip getSoundClip() {
+		return soundClip;
+	}
 	
+	public AudioInputStream getAudioIn() {
+		return audioIn;
+	}
     
     public Home() {
     	frm.pack();
@@ -94,6 +106,23 @@ public class Home {
     	DrawnButton dbCredits = btnFactory.getButton("CREDITS");
     	DrawnButton dbSettings = btnFactory.getButton("SETTINGS");
     	DrawnButton dbScore = btnFactory.getButton("SCORES");
+    	
+		try {
+			File file = new File("resource/song1.wav");
+			audioIn = AudioSystem.getAudioInputStream(file);
+			soundClip = AudioSystem.getClip();
+	    	soundClip.open(audioIn);
+	    	soundClip.start();
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     	playBtn = dbPlay.draw();
     	settingBtn = dbSettings.draw();
