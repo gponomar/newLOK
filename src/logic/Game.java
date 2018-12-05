@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
@@ -163,7 +164,7 @@ public class Game {
 	// Sentence logic 
 	
     //picking out sentences from the book
-    public ArrayList<String> getCorrectLengthSentences() {
+    public List<String> getCorrectLengthSentences() {
     	ArrayList<String> resultsList = new ArrayList<>();
         for(int i=sentLength-diff; i<sentLength+diff; i++) {
         	if(lengthMap.containsKey(i)) {
@@ -174,8 +175,8 @@ public class Game {
         }
         return resultsList;
     }
-    
-    private void startRound(ArrayList<String> finalResultsList) {
+     
+    private void startRound(List<String> finalResultsList) {
         progress=0;
         if(!finalResultsList.isEmpty()) {
         	if(finalResultsList.size()==1) {

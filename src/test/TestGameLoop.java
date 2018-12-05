@@ -2,7 +2,9 @@ package test;
 
 import static org.junit.Assert.assertTrue;
 
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +24,7 @@ public class TestGameLoop {
 	public void testGetCorrectLengthSentencesLoop() throws InterruptedException {
 		Game game = new Game();
 		game.setLengthMap(game.createSentences());
-		ArrayList<String> sents = game.getCorrectLengthSentences();
+		List<String> sents = game.getCorrectLengthSentences();
 		assertTrue(!sents.isEmpty());
 	}
 }
