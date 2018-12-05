@@ -20,7 +20,6 @@ public class TestTimer {
 		assertEquals(quit, false);
 		test.getGamePage().getBackBtn().doClick();
 		Boolean stopped = test.getClock().quit;
-		System.out.println(stopped);
 		assertEquals(stopped, true);
 	}
 }

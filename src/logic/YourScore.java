@@ -132,7 +132,6 @@ public class YourScore {
     public static void appendStrToScoreFile(
             int score, String name, String diff)throws IOException
     {
-    	BufferedWriter out = null;
     	String path = "resource/HighScoreList";
     	try (BufferedWriter br = new BufferedWriter(new FileWriter(path, true))){
     		String str = "\n" + Integer.toString(score)+ " " + name + "-"+ diff;
@@ -140,9 +139,6 @@ public class YourScore {
     	}
     	catch (IOException e) {
     		LOGGER.severe("exception occoured" + e);
-    	}
-    	finally {
-    		out.close();
     	}
     }
 }
